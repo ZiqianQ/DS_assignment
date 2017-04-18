@@ -1,0 +1,48 @@
+package apache;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.BasicParser;
+import org.apache.commons.cli.CommandLine; 
+
+public class apache {
+	public static void main(String[] args) throws ParseException {
+		CommandLineParser parser = new BasicParser();
+		Options options = new Options();
+		
+    //define all kinds of command line commands
+		options.addOption("channel", true, "channel");
+		options.addOption("debug", false, "print debug information");
+		options.addOption("description", true, "resource description");
+		options.addOption("exchange", false, "exchange server list with server");
+		options.addOption("fetch", false, "fetch resources from server");
+		options.addOption("host", true, "server host, a domain name or IP address");
+		options.addOption("name", true, "resource name");
+		options.addOption("owner", true, "owner");
+		options.addOption("port", true, "server port, an integer");
+		options.addOption("publish", false, "publish resource on server");
+		options.addOption("query", false, "query for resources from server");
+		options.addOption("remove", false, "remove resource from server");
+		options.addOption("secret", true, "secret");
+		options.addOption("servers", true, "server list, host1:port1,host2:port2,...");
+		options.addOption("share", false, "share resource on server");
+		options.addOption("tags", true, "resource tags, tag1,tag2,tag3,...");
+		options.addOption("uri", true, "resource URI");
+		options.addOption("h","help", false, "information about how to use");
+		try {
+			CommandLine commandline = parser.parse(options, args);
+		
+      //when there's "-h",print the whole cmi list
+			if (commandline.hasOption("h")) {
+				HelpFormatter formatter = new HelpFormatter();
+				formatter.printHelp("client command line argument", options);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	
+		
+	}
+}
