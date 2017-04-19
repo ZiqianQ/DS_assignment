@@ -1,10 +1,10 @@
 package Client;
 
-import java.util.ArrayList;
-
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 public class Resource {
+	private JSONObject resource;
 	private String name;
 	private String description;
 	private JSONArray tags;
@@ -13,9 +13,10 @@ public class Resource {
 	private String owner;
 	private String ezserver;
 	
-	private static ArrayList<Resource> resources = new ArrayList<Resource>();
+	//private static ArrayList<Resource> resources = new ArrayList<Resource>();
 	
 	public Resource(){ //initiate; resourceTemplate
+		this.resource = new JSONObject();
 		this.name = "";
 		this.description = "";
 		this.tags = new JSONArray();
@@ -25,22 +26,21 @@ public class Resource {
 		this.ezserver = null;	
 	}
 	
-	//public String toString(){
-	//	return 
-	//}
-	
-	public String getName() {
-		return name;
+	public JSONObject render(){
+		resource.put("name", name);		
+		resource.put("tags",tags);
+		resource.put("description", description);
+		resource.put("uri", uri);
+		resource.put("channel", channel);
+		resource.put("owner", owner);
+		resource.put("ezserver", ezserver);
+		return resource;
 	}
+	
 
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-
-	public String getDescription() {
-		return description;
 	}
 
 
@@ -49,18 +49,8 @@ public class Resource {
 	}
 
 
-	public JSONArray getTags() {
-		return tags;
-	}
-
-
-	public void setTags(JSONArray tags) {
-		this.tags = tags;
-	}
-
-
-	public String getUri() {
-		return uri;
+	public void setTags(String tags) {
+		this.tags.add(tags);
 	}
 
 
@@ -69,28 +59,13 @@ public class Resource {
 	}
 
 
-	public String getOwner() {
-		return owner;
-	}
-
-
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
 
 
-	public String getEzserver() {
-		return ezserver;
-	}
-
-
 	public void setEzserver(String ezserver) {
 		this.ezserver = ezserver;
-	}
-
-
-	public String getChannel() {
-		return channel;
 	}
 
 
