@@ -28,8 +28,7 @@ public class Client {
 			ClientCommands aClientCommand = new ClientCommands();
 			JSONObject newCommand = new JSONObject();
 			
-			String arg = args[0];
-			switch (arg) {
+			
 				case "-query":
 					newCommand = aClientCommand.query();
 					break;
