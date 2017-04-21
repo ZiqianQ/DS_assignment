@@ -1,0 +1,527 @@
+package Client;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+import org.apache.commons.cli.BasicParser;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import com.sun.java.swing.plaf.windows.resources.windows_zh_TW;
+import com.sun.javafx.stage.WindowCloseRequestHandler;
+import com.sun.org.apache.regexp.internal.recompile;
+import com.sun.webkit.SharedBuffer;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Receiver;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+import org.apache.log4j.Logger;
+
+public class Client {
+
+	private static String getchannel ;
+	private static String getdescription = null;
+	private static String gethost = null;
+	private static String getname = null;
+	private static String getowner = null ;
+	private static String getport = null;
+	private static String getsecret = null;
+	private static String getservers = null;
+	private static String gettags = null;
+	private static String geturi = null ;
+	private static String getezserver = null;
+	private static String setdebug = null;
+	private static String setrelay = null;
+
+	private final static Logger logger = Logger.getLogger(Client.class);
+	
+	//aaron domain: sunrise.cis.unimelb.edu.au:3780 ip:128.250.22.135
+	private static String ip = "sunrise.cis.unimelb.edu.au";
+	private static int port = 3780;
+	
+	
+	public static void main(String[] args) throws ParseException {
+
+		Boolean status = true; 
+		String arg = "";
+		CommandLineParser parser = new BasicParser();
+		Options options = new Options();
+		
+		//commands have argument
+		options.addOption("channel", true, "channel");
+		options.addOption("description", true, "resource description");
+		options.addOption("host", true, "server host, a domain name or IP address");
+		options.addOption("name", true, "resource name");
+		options.addOption("owner", true, "owner");
+		options.addOption("port", true, "server port, an integer");
+		options.addOption("secret", true, "secret");
+		options.addOption("servers", true, "server list, host1:port1,host2:port2,...");
+		options.addOption("tags", true, "resource tags, tag1,tag2,tag3,...");
+		options.addOption("uri", true, "resource URI");
+		options.addOption("ezserver", true, "ezserser name");
+		
+		//command without argument
+		options.addOption("relay", false, "print debug information");
+		options.addOption("debug", false, "print debug information");
+		options.addOption("exchange", false, "exchange server list with server");
+		options.addOption("fetch", false, "fetch resources from server");
+		options.addOption("publish", false, "publish resource on server(same uri cannot publish multi-tiems)");
+		options.addOption("query", false, "query for resources from server");
+		options.addOption("remove", false, "remove resource from server");
+		options.addOption("share", false, "share resource on server");
+		options.addOption("h","help", false, "information about how to use");
+		try {
+			CommandLine commandline = parser.parse(options, args);
+		
+
+			if (commandline.hasOption("h")) {
+				HelpFormatter formatter = new HelpFormatter();
+				
+				formatter.printHelp("client command line argument", options);
+			}
+			if (commandline.hasOption("channel")) {
+				getchannel = commandline.getOptionValue("channel");		
+			}
+			if (commandline.hasOption("description")) {
+				getdescription = commandline.getOptionValue("decription");
+			}
+			if (commandline.hasOption("host")) {
+				gethost = commandline.getOptionValue("host");
+			}
+			if (commandline.hasOption("name")) {
+				getname = commandline.getOptionValue("name");
+			}
+			if (commandline.hasOption("owner")) {
+				getowner = commandline.getOptionValue("owner");
+			}
+			if (commandline.hasOption("port")) {
+				getport = commandline.getOptionValue("port");
+			}
+			if (commandline.hasOption("secert")) {
+				getsecret = commandline.getOptionValue("secret");
+			}
+			if (commandline.hasOption("servers")) {
+				getservers = commandline.getOptionValue("servers");
+			}
+			if (commandline.hasOption("tags")) {
+				gettags = commandline.getOptionValue("tags");
+			}
+			if (commandline.hasOption("uri")) {
+				geturi = commandline.getOptionValue("uri");
+			}
+			if (commandline.hasOption("ezserver")) {
+				getezserver = commandline.getOptionValue("ezserver");
+			}
+			if (commandline.hasOption("relay")) {
+				setrelay = commandline.getOptionValue("relay");
+			}
+			if (commandline.hasOption("debug")) {
+				setdebug = commandline.getOptionValue("debug");
+				logger.debug("setting debug on");
+			}
+			
+
+			//query resource from server
+			if (commandline.hasOption("query")) {
+				Query();
+			}
+			//publish resource to server
+			if (commandline.hasOption("publish")) {
+				Publish();
+			}
+			//remove resource from server
+			if (commandline.hasOption("remove")) {
+				Remove();
+			}
+			//share file to server
+			/*if (commandline.hasOption("share")) {
+				Share();
+			}*/
+			//fetch files from server
+			if (commandline.hasOption("fetch")) {
+				Fetch();
+			}
+			//exchange server address and port
+			if (commandline.hasOption("exchange")) {
+				Exchange();
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+}
+
+public static void  Remove() {
+		 try(Socket socket = new Socket(ip,port)){
+				//output stream
+				DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+				//input stream
+				DataInputStream input = new DataInputStream(socket.getInputStream());
+				
+				//QUERY function
+				JSONObject newconmmand = new JSONObject();
+				newconmmand.put("command", "REMOVE");
+				
+				JSONArray tag = new JSONArray();
+				JSONObject template = new JSONObject();
+				template.put("name",getname);
+				template.put("tags", tag);
+				template.put("description", getdescription);
+				template.put("uri", geturi);
+				template.put("channel", getchannel);
+				template.put("owner", getowner);
+				template.put("ezserver", getezserver);
+				
+				newconmmand.put("resource", template);
+				
+				//print jsonobject
+				logger.info("SENT:");
+				System.out.println(newconmmand.toJSONString());
+				
+				//send command to server
+				output.writeUTF(newconmmand.toJSONString());
+				output.flush();
+				//read from server and print out
+							while(true){
+					if (input.available()>0) {
+						String result = input.readUTF();
+						logger.info("REVEIVED:");
+						System.out.println(result);
+					}
+				}
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} 
+
+	
+private static void Publish() {
+	try(Socket socket = new Socket(ip,port)){
+		//output stream
+		DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+		//input stream
+		DataInputStream input = new DataInputStream(socket.getInputStream());
+		
+		//QUERY function
+		JSONObject newconmmand = new JSONObject();
+		newconmmand.put("command", "PUBLISH");
+		
+		JSONArray tag = new JSONArray();
+		//write tags to json
+		if (gettags!=null) {
+			String[] tags = gettags.split(",");
+			for (int i = 0; i < tags.length; i++) {
+				tag.add(tags[i]);
+			}
+		}		
+		
+		JSONObject template = new JSONObject();
+		template.put("name", getname);
+		template.put("tags", tag);
+		template.put("description", getdescription);
+		template.put("uri", geturi);
+		template.put("channel", getchannel);
+		template.put("owner", getowner);
+		template.put("ezserver", getezserver);
+		
+		newconmmand.put("resource", template);
+		
+		//print jsonobject
+		logger.info("SENT:");
+		System.out.println(newconmmand.toJSONString());
+		
+		//send command to server
+		output.writeUTF(newconmmand.toJSONString());
+		output.flush();
+		//read from server and print out
+		while(true){
+			if (input.available()>0) {
+				String result = input.readUTF();
+				logger.info("RECEIVED:");
+				System.out.println(result);
+			}
+		}
+	} catch (UnknownHostException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+}
+
+	
+public static void  Share() {
+		 try(Socket socket = new Socket(ip,port)){
+				//output stream
+				DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+				//input stream
+				DataInputStream input = new DataInputStream(socket.getInputStream());
+				
+				//QUERY function
+				JSONObject newconmmand = new JSONObject();
+				newconmmand.put("command", "SHARE");
+				newconmmand.put("secret", "aswecan");
+				
+				JSONArray tag = new JSONArray();
+				//write tags to json
+				String[] tags = gettags.split(",");
+				for (int i = 0; i < tags.length; i++) {
+					tag.add(tags[i]);
+				}
+				
+				JSONObject template = new JSONObject();
+				template.put("name", getname);
+				template.put("tags", tag);
+				template.put("description", getdescription);
+				//the uri should point to a file
+				template.put("uri", geturi);
+				template.put("channel", getchannel);
+				template.put("owner", getowner);
+				template.put("ezserver", getezserver);
+				
+				newconmmand.put("resource", template);
+				
+				//print jsonobject
+				logger.info("SENT:");
+				System.out.println(newconmmand.toJSONString());
+				
+				//send command to server
+				output.writeUTF(newconmmand.toJSONString());
+				output.flush();
+				//read from server and print out
+				while(true){
+					if (input.available()>0) {
+						String result = input.readUTF();
+						logger.info("RECEIVED:");
+						System.out.println(result);
+					}
+				}
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} 
+
+	
+private static void Exchange() {
+	try(Socket socket = new Socket(ip,port)){
+		//output stream
+		DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+		//input stream
+		DataInputStream input = new DataInputStream(socket.getInputStream());
+		
+		//QUERY function
+		JSONObject newconmmand = new JSONObject();
+		newconmmand.put("command", "EXCHANGE");
+		
+		//split the host from server list
+		String[] servers = getservers.split(",");
+		JSONObject host_port = new JSONObject();
+		String host = null;
+		String port = null;
+		
+		JSONArray list = new JSONArray();
+
+		//write the host and port to json split from servers list
+		for (int i = 0; i < servers.length; i++) {
+			host = servers[i].split(":")[0];
+			port = servers[i].split(":")[1];
+			host_port.put("hostname", host);
+			host_port.put("port", port);
+			list.add(host_port);
+		}
+
+		newconmmand.put("serverList", list);
+		
+		//print jsonobject
+		logger.info("SENT:");
+		System.out.println(newconmmand.toJSONString());
+		
+		//send command to server
+		output.writeUTF(newconmmand.toJSONString());
+		output.flush();
+		//read from server and print out
+			while(true){
+				if (input.available()>0) {
+					String result = input.readUTF();
+					logger.info("RECEIVED:");
+					System.out.println(result);
+			}
+		}
+	} catch (UnknownHostException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+}
+
+
+private static void Fetch() throws ParseException {
+	 try(Socket socket = new Socket(ip, port);){
+			// Output and Input Stream
+			DataInputStream input = new DataInputStream(socket.getInputStream());
+		    DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+			   
+		    
+			JSONObject newCommand = new JSONObject();
+	 		newCommand.put("command", "FETCH");
+	 		
+	 		JSONObject resourceTemplate = new JSONObject();
+	 		resourceTemplate.put("name",getname);
+	 		
+	 		JSONArray tag = new JSONArray();
+	 		//write tags to json
+			String[] tags = gettags.split(",");
+			for (int i = 0; i < tags.length; i++) {
+				tag.add(tags[i]);
+			}
+			
+	 		resourceTemplate.put("tags",tag );
+	 		resourceTemplate.put("description",getdescription);
+	 		//"file:///usr/local/share/ezshare/photo.jpg"
+	 		resourceTemplate.put("uri",geturi);
+	 		resourceTemplate.put("channel",getchannel);
+	 		resourceTemplate.put("owner",getowner);
+	 		resourceTemplate.put("ezserver",getezserver);
+	 		newCommand.put("resourceTemplate",resourceTemplate);  
+	 		
+	 		logger.info("SENT:");
+	 		System.out.println(newCommand.toJSONString());
+	 		
+	 		// Send RMI to Server
+	 		output.writeUTF(newCommand.toJSONString());
+	 		output.flush();
+	 		JSONParser parser = new JSONParser();
+	 		// Print out results received from server..
+	 		while (true){
+	 			if(input.available() > 0){
+	 				String result = input.readUTF();
+	 				logger.info("RECEIVED:");
+	 				System.out.println(result);
+	 				JSONObject command = (JSONObject) parser.parse(result);
+	 				if(command.containsKey("uri")){
+	 					//System.out.println(command.get("uri"));
+	 					// The file location
+							String fileName = "client_files/"+command.get("name");
+							// Create a RandomAccessFile to read and write the output file.
+							RandomAccessFile downloadingFile = new RandomAccessFile(fileName, "rw");
+							// Find out how much size is remaining to get from the server.
+							long fileSizeRemaining = (Long) command.get("resourceSize");
+							int chunkSize = setChunkSize(fileSizeRemaining);
+							
+							// Represents the receiving buffer
+							byte[] receiveBuffer = new byte[chunkSize];
+							// Variable used to read if there are remaining size left to read.
+							int num;
+							//System.out.println("Downloading "+fileName+" of size "+fileSizeRemaining);
+							while((num=input.read(receiveBuffer))>0){
+								// Write the received bytes into the RandomAccessFile
+								downloadingFile.write(Arrays.copyOf(receiveBuffer, num));
+								
+								// Reduce the file size left to read..
+								fileSizeRemaining-=num;
+								
+								// Set the chunkSize again
+								chunkSize = setChunkSize(fileSizeRemaining);
+								receiveBuffer = new byte[chunkSize];
+								
+								// If you're done then break
+								if(fileSizeRemaining==0){
+									break;
+								}
+							}
+//							System.out.println("File received!");
+							downloadingFile.close();
+	 				}
+	 			}
+	 		}
+			
+		}catch (IOException e) {		
+	} catch (org.json.simple.parser.ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+}
+
+
+private static int setChunkSize(long fileSizeRemaining) {
+	// determine the chunksize
+	int chunkSize = 1024*1024;
+	//if the file size remaining is less than chunksize reset it
+	if (fileSizeRemaining<chunkSize) {
+		chunkSize=(int) fileSizeRemaining;
+	}
+	return chunkSize;
+}
+
+
+public static void  Query() {
+	 try(Socket socket = new Socket(ip,port)){
+			//output stream
+			DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+			//input stream
+			DataInputStream input = new DataInputStream(socket.getInputStream());
+			
+			//QUERY function
+			JSONObject newconmmand = new JSONObject();
+			newconmmand.put("command", "QUERY");
+			newconmmand.put("relay", Boolean.parseBoolean(setrelay));
+			
+			JSONArray tag = new JSONArray();
+			
+			//write tags to json
+			if (gettags!=null) {
+				String[] tags = gettags.split(",");
+				for (int i = 0; i < tags.length; i++) {
+					tag.add(tags[i]);
+				}
+				
+			}
+			
+			JSONObject template = new JSONObject();
+			template.put("name", getname);
+			template.put("tags", tag);
+			template.put("description", getdescription);
+			template.put("uri", geturi);
+			template.put("channel", getchannel);
+			template.put("owner", getowner);
+			template.put("ezserver", getezserver);
+			
+			newconmmand.put("resourceTemplate", template);
+			
+			//print jsonobject
+			logger.info("SENT:");
+			System.out.println(newconmmand.toJSONString());
+			
+			//send command to server
+			output.writeUTF(newconmmand.toJSONString());
+			output.flush();
+			//read from server and print out
+			while(true){
+				if (input.available()>0) {
+					String result = input.readUTF();
+					logger.info("RECEIVED");
+					System.out.println(result);
+				}
+			}
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	} 
+}
