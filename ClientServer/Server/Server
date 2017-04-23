@@ -4,8 +4,10 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Iterator;
 import java.net.ServerSocket;
 import javax.net.ServerSocketFactory;
+import javax.print.attribute.standard.OutputDeviceAssigned;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -15,17 +17,22 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Receiver;
+
+import jdk.internal.dynalink.beans.StaticClass;
+import jdk.nashorn.internal.runtime.StoredScript;
 
 
 
 public class Server {
 
 	private static int port = 3000;
-
+	static JSONArray Store = new JSONArray();
 	
 	
 	public static void main(String[] args) {
@@ -71,30 +78,34 @@ public class Server {
 			//json parser
 			JSONParser parser = new JSONParser();
 			
-			JSONObject received ; 
-			JSONObject print = new JSONObject();
-			String Receive;
-			
-			
-
-		
-			print.put("command","query");
-			print.put("detailes", "noting");
-			
+			JSONObject received ; 	
+			//initial
+			JSONObject initial = new JSONObject();
+			initial.put("command", "startup");
+			Store.add(initial);
 			
 			while (input.available()>0) {
 				received = (JSONObject) parser.parse(input.readUTF());
-				if (received.containsKey("command")) {
-					if (received.get("command").toString().toLowerCase().equals("query")) {
-						output.writeUTF(print.toJSONString());
-						output.writeUTF((String) received.get("command"));
-						output.flush();
-					}
+				
+//				System.out.println(received.toJSONString());
+//				System.out.println(received.get("command").toString().toLowerCase());
+				switch (received.get("command").toString().toLowerCase()) {
+				case "query":
+					Query(client);
+					break;
+				case "publish":
+					Publish(client,received);
+					break;
+				default:
+					JSONObject error = new JSONObject();
+					error.put("response", "error");
+					error.put("errorMessage", "invalid resourceTemplate");
+					output.writeUTF(error.toJSONString());
+					output.close();
+					break;
 				}
 			}
-			
-			
-			
+	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,5 +114,39 @@ public class Server {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public static void Query(Socket client) throws IOException{
+		
+		//Input stream
+		DataInputStream input = new DataInputStream(client.getInputStream());
+		
+		//Output steam
+		DataOutputStream output = new DataOutputStream(client.getOutputStream());
+		//reveiced 
+		JSONObject message = new JSONObject();
+		message.put("response", "sucess");
+		output.writeUTF(message.toJSONString());
+//		output.close();
+		//print the jsonArray
+		for (Iterator iterator = Store.iterator();iterator.hasNext();) {
+			output.writeUTF(((JSONObject)iterator.next()).toJSONString());
+//			output.close();
+		}
+	}
+	
+	public static void Publish(Socket client, JSONObject received) throws IOException{
+		
+		//Input stream
+		DataInputStream input = new DataInputStream(client.getInputStream());
+		
+		//Output steam
+		DataOutputStream output = new DataOutputStream(client.getOutputStream());
+		//stroe the json received from client to jsonArray
+		Store.add(received);
+		//reveiced 
+		JSONObject message = new JSONObject();
+		message.put("response", "sucess");
+		output.writeUTF(message.toJSONString());
+		output.close();
+	}
 }
