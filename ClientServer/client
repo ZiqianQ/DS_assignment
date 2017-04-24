@@ -18,44 +18,34 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.sun.java.swing.plaf.windows.resources.windows_zh_TW;
-import com.sun.javafx.stage.WindowCloseRequestHandler;
-import com.sun.org.apache.regexp.internal.recompile;
-import com.sun.webkit.SharedBuffer;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Receiver;
-
 import java.util.Arrays;
-import java.util.Scanner;
-
 import org.apache.log4j.Logger;
 
 public class Client {
 
-	private static String getchannel ;
-	private static String getdescription = null;
-	private static String gethost = null;
-	private static String getname = null;
-	private static String getowner = null ;
-	private static String getport = null;
-	private static String getsecret = null;
-	private static String getservers = null;
-	private static String gettags = null;
-	private static String geturi = null ;
-	private static String getezserver = null;
-	private static String setdebug = null;
-	private static String setrelay = null;
+	private static String getchannel = "" ;
+	private static String getdescription = "";
+	private static String gethost = "";
+	private static String getname = "";
+	private static String getowner = "" ;
+	private static String getport = "";
+	private static String getsecret = "";
+	private static String getservers = "";
+	private static String gettags = "";
+	private static String geturi = "" ;
+	private static String getezserver = "";
+	private static String setdebug = "";
+	private static String setrelay = "";
 
 	private final static Logger logger = Logger.getLogger(Client.class);
 	
 	//aaron domain: sunrise.cis.unimelb.edu.au:3780 ip:128.250.22.135
-	private static String ip = "sunrise.cis.unimelb.edu.au";
-	private static int port = 3780;
+	private static String ip ;
+	private static int port ;
 	
 	
 	public static void main(String[] args) throws ParseException {
 
-		Boolean status = true; 
-		String arg = "";
 		CommandLineParser parser = new BasicParser();
 		Options options = new Options();
 		
@@ -71,24 +61,32 @@ public class Client {
 		options.addOption("tags", true, "resource tags, tag1,tag2,tag3,...");
 		options.addOption("uri", true, "resource URI");
 		options.addOption("ezserver", true, "ezserser name");
+		options.addOption("sip", true, "server ip that want to connect");
+		options.addOption("sport", true, "server port that want to connect");
 		
 		//command without argument
 		options.addOption("relay", false, "print debug information");
 		options.addOption("debug", false, "print debug information");
 		options.addOption("exchange", false, "exchange server list with server");
-		options.addOption("fetch", false, "fetch resources from server");
+		options.addOption("fetch", false, "fetch resources from server(create file folder where you put this jar)");
 		options.addOption("publish", false, "publish resource on server(same uri cannot publish multi-tiems)");
 		options.addOption("query", false, "query for resources from server");
 		options.addOption("remove", false, "remove resource from server");
 		options.addOption("share", false, "share resource on server");
 		options.addOption("h","help", false, "information about how to use");
+		
+		HelpFormatter formatter = new HelpFormatter();
+		
 		try {
 			CommandLine commandline = parser.parse(options, args);
 		
-
+			if (commandline.hasOption("sip")) {
+				ip = commandline.getOptionValue("sip");
+			}
+			if (commandline.hasOption("sport")) {
+				port = Integer.parseInt(commandline.getOptionValue("sport"));
+			}
 			if (commandline.hasOption("h")) {
-				HelpFormatter formatter = new HelpFormatter();
-				
 				formatter.printHelp("client command line argument", options);
 			}
 			if (commandline.hasOption("channel")) {
@@ -160,6 +158,8 @@ public class Client {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			logger.info("Invaild command!"+"\n");
+			formatter.printHelp("client command line argument", options);
 		}
 }
 
@@ -381,14 +381,17 @@ private static void Fetch() throws ParseException {
 	 		newCommand.put("command", "FETCH");
 	 		
 	 		JSONObject resourceTemplate = new JSONObject();
-	 		resourceTemplate.put("name",getname);
+	 		resourceTemplate.put("name","Aaron");
 	 		
 	 		JSONArray tag = new JSONArray();
 	 		//write tags to json
-			String[] tags = gettags.split(",");
-			for (int i = 0; i < tags.length; i++) {
-				tag.add(tags[i]);
+			if (gettags!=null) {
+				String[] tags = gettags.split(",");
+				for (int i = 0; i < tags.length; i++) {
+					tag.add(tags[i]);
+				}
 			}
+	 		
 			
 	 		resourceTemplate.put("tags",tag );
 	 		resourceTemplate.put("description",getdescription);
@@ -416,7 +419,7 @@ private static void Fetch() throws ParseException {
 	 				if(command.containsKey("uri")){
 	 					//System.out.println(command.get("uri"));
 	 					// The file location
-							String fileName = "client_files/"+command.get("name");
+							String fileName = "/"+command.get("name");
 							// Create a RandomAccessFile to read and write the output file.
 							RandomAccessFile downloadingFile = new RandomAccessFile(fileName, "rw");
 							// Find out how much size is remaining to get from the server.
