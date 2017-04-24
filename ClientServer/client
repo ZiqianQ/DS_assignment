@@ -2,6 +2,7 @@ package Client;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.Socket;
@@ -144,9 +145,9 @@ public class Client {
 				Remove();
 			}
 			//share file to server
-			/*if (commandline.hasOption("share")) {
+			if (commandline.hasOption("share")) {
 				Share();
-			}*/
+			}
 			//fetch files from server
 			if (commandline.hasOption("fetch")) {
 				Fetch();
@@ -209,7 +210,7 @@ public static void  Remove() {
 		} 
 
 	
-private static void Publish() {
+private static void Publish() throws IOException {
 	try(Socket socket = new Socket(ip,port)){
 		//output stream
 		DataOutputStream output = new DataOutputStream(socket.getOutputStream());
@@ -255,10 +256,7 @@ private static void Publish() {
 				System.out.println(result);
 			}
 		}
-	} catch (UnknownHostException e) {
-		e.printStackTrace();
-	} catch (IOException e) {
-		e.printStackTrace();
+
 	}
 }
 
@@ -278,9 +276,12 @@ public static void  Share() {
 				JSONArray tag = new JSONArray();
 				//write tags to json
 				String[] tags = gettags.split(",");
-				for (int i = 0; i < tags.length; i++) {
-					tag.add(tags[i]);
+				if (gettags!=null) {
+					for (int i = 0; i < tags.length; i++) {
+						tag.add(tags[i]);
+					}
 				}
+				
 				
 				JSONObject template = new JSONObject();
 				template.put("name", getname);
@@ -302,6 +303,38 @@ public static void  Share() {
 				output.writeUTF(newconmmand.toJSONString());
 				output.flush();
 				//read from server and print out
+				/*while(true){
+					if (input.available()>0) {
+						String result = input.readUTF();
+						logger.info("RECEIVED:");
+						System.out.println(result);
+					}
+				}*/
+				
+				//allow server to download
+				String fileName = (String) template.get("name");
+				// Check if file exists
+				File f = new File("client_files/"+fileName);
+				if(f.exists()){
+					
+					// Send this back to client so that they know what the file is.
+					
+					template.put("resourceSize",f.length());
+				
+					// Send trigger to client
+					output.writeUTF(template.toJSONString());
+					output.flush();
+					// Start sending file
+					RandomAccessFile byteFile = new RandomAccessFile(f,"r");
+					byte[] sendingBuffer = new byte[1024*1024];
+					int num;
+					// While there are still bytes to send..
+					while((num = byteFile.read(sendingBuffer)) > 0){
+//						System.out.println(num);
+						output.write(Arrays.copyOf(sendingBuffer, num));
+					}
+					byteFile.close();
+				}
 				while(true){
 					if (input.available()>0) {
 						String result = input.readUTF();
@@ -391,8 +424,7 @@ private static void Fetch() throws ParseException {
 					tag.add(tags[i]);
 				}
 			}
-	 		
-			
+
 	 		resourceTemplate.put("tags",tag );
 	 		resourceTemplate.put("description",getdescription);
 	 		//"file:///usr/local/share/ezshare/photo.jpg"
