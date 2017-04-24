@@ -80,31 +80,34 @@ public class Server {
 			
 			JSONObject received ; 	
 			//initial
-			JSONObject initial = new JSONObject();
+		/*	JSONObject initial = new JSONObject();
 			initial.put("command", "startup");
-			Store.add(initial);
-			
-			while (input.available()>0) {
-				received = (JSONObject) parser.parse(input.readUTF());
-				
-//				System.out.println(received.toJSONString());
-//				System.out.println(received.get("command").toString().toLowerCase());
-				switch (received.get("command").toString().toLowerCase()) {
-				case "query":
-					Query(client);
-					break;
-				case "publish":
-					Publish(client,received);
-					break;
-				default:
-					JSONObject error = new JSONObject();
-					error.put("response", "error");
-					error.put("errorMessage", "invalid resourceTemplate");
-					output.writeUTF(error.toJSONString());
-					output.close();
-					break;
-				}
-			}
+			initial.put("name", "mike");
+			Store.add(initial);*/
+			while (true) {
+				while (input.available()>0) {
+					received = (JSONObject) parser.parse(input.readUTF());
+					
+					System.out.println(received.toJSONString());
+					System.out.println(received.get("command").toString().toLowerCase());
+					switch (received.get("command").toString().toLowerCase()) {
+					case "query":
+						Query(client);
+						break;
+					case "publish":
+						Publish(client,received);
+						break;
+					default:
+						JSONObject error = new JSONObject();
+						error.put("response", "error");
+						error.put("errorMessage", "invalid resourceTemplate");
+						output.writeUTF(error.toJSONString());
+						output.flush();
+//						output.close();
+						break;
+					}	
+				}	
+			}		
 	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -115,38 +118,55 @@ public class Server {
 		}
 	}
 	
-	public static void Query(Socket client) throws IOException{
-		
+	public static void Query(Socket client) {
+		try {
 		//Input stream
 		DataInputStream input = new DataInputStream(client.getInputStream());
 		
 		//Output steam
-		DataOutputStream output = new DataOutputStream(client.getOutputStream());
+		DataOutputStream output;
+		
+		output = new DataOutputStream(client.getOutputStream());
+		
 		//reveiced 
 		JSONObject message = new JSONObject();
 		message.put("response", "sucess");
 		output.writeUTF(message.toJSONString());
-//		output.close();
+		output.flush();
 		//print the jsonArray
 		for (Iterator iterator = Store.iterator();iterator.hasNext();) {
 			output.writeUTF(((JSONObject)iterator.next()).toJSONString());
-//			output.close();
+			output.flush();
+		}
+//		output.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
-	
 	public static void Publish(Socket client, JSONObject received) throws IOException{
-		
-		//Input stream
-		DataInputStream input = new DataInputStream(client.getInputStream());
-		
-		//Output steam
-		DataOutputStream output = new DataOutputStream(client.getOutputStream());
-		//stroe the json received from client to jsonArray
-		Store.add(received);
-		//reveiced 
-		JSONObject message = new JSONObject();
-		message.put("response", "sucess");
-		output.writeUTF(message.toJSONString());
-		output.close();
+		try {
+			
+
+			//Input stream
+			DataInputStream input = new DataInputStream(client.getInputStream());
+			
+			//Output steam
+			DataOutputStream output = new DataOutputStream(client.getOutputStream());
+
+			//stroe the json received from client to jsonArray
+			Store.add(received);
+			
+			//reveiced 
+			JSONObject message = new JSONObject();
+			message.put("response", "sucess");
+			output.writeUTF(message.toJSONString());
+			output.flush();
+			
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 	}
 }
