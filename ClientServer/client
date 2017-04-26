@@ -271,9 +271,8 @@ public static void  Share() {
 				
 				//QUERY function
 				JSONObject newconmmand = new JSONObject();
-				newconmmand.put("command", "SHARE");
-				newconmmand.put("secret", "aswecan");
-				
+				newconmmand.put("command", "SHARE"); 
+				newconmmand.put("secret", getsecret);
 				JSONArray tag = new JSONArray();
 				//write tags to json
 				String[] tags = gettags.split(",");
@@ -303,19 +302,14 @@ public static void  Share() {
 				//send command to server
 				output.writeUTF(newconmmand.toJSONString());
 				output.flush();
-				//read from server and print out
-				/*while(true){
-					if (input.available()>0) {
-						String result = input.readUTF();
-						logger.info("RECEIVED:");
-						System.out.println(result);
-					}
-				}*/
+				
 				
 				//allow server to download
 				String fileName = (String) template.get("name");
 				// Check if file exists
-				File f = new File("client_files/"+fileName);
+				String uri= (String) template.get("uri");
+				 
+				File f = new File(uri.substring(8));
 				if(f.exists()){
 					
 					// Send this back to client so that they know what the file is.
@@ -337,8 +331,12 @@ public static void  Share() {
 					byteFile.close();
 				}
 				else {
-					logger.info("ERROR: ");
-					System.out.println("File not exist!");
+					logger.info("RECEIVED: ");
+					
+					JSONObject error = new JSONObject();
+					error.put("response", "error");
+					error.put("errorMessage", "cannot share resource");
+					System.out.println(error);
 				}
 				while(true){
 					if (input.available()>0) {
@@ -353,6 +351,7 @@ public static void  Share() {
 				e.printStackTrace();
 			}
 		} 
+
 
 	
 private static void Exchange() {
