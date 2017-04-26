@@ -39,7 +39,7 @@ public class Client {
 	private static String setrelay = "";
 
 	private final static Logger logger = Logger.getLogger(Client.class);
-	
+	private static boolean debug = false;
 	//aaron domain: sunrise.cis.unimelb.edu.au:3780 ip:128.250.22.135
 	private static String ip ;
 	private static int port ;
