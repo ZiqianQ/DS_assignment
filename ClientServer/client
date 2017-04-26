@@ -39,7 +39,7 @@ public class Client {
 	private static String setrelay = "";
 
 	private final static Logger logger = Logger.getLogger(Client.class);
-	private static boolean debug = false;
+	
 	//aaron domain: sunrise.cis.unimelb.edu.au:3780 ip:128.250.22.135
 	private static String ip ;
 	private static int port ;
@@ -255,6 +255,7 @@ private static void Publish() throws IOException {
 				logger.info("RECEIVED:");
 				System.out.println(result);
 			}
+			else break;
 		}
 
 	}
@@ -335,6 +336,10 @@ public static void  Share() {
 					}
 					byteFile.close();
 				}
+				else {
+					logger.info("ERROR: ");
+					System.out.println("File not exist!");
+				}
 				while(true){
 					if (input.available()>0) {
 						String result = input.readUTF();
@@ -414,8 +419,8 @@ private static void Fetch() throws ParseException {
 	 		newCommand.put("command", "FETCH");
 	 		
 	 		JSONObject resourceTemplate = new JSONObject();
-	 		resourceTemplate.put("name","Aaron");
-	 		
+	 		//resourceTemplate.put("name","Aaron");
+	 		resourceTemplate.put("name",getname);
 	 		JSONArray tag = new JSONArray();
 	 		//write tags to json
 			if (gettags!=null) {
@@ -424,7 +429,8 @@ private static void Fetch() throws ParseException {
 					tag.add(tags[i]);
 				}
 			}
-
+	 		
+			
 	 		resourceTemplate.put("tags",tag );
 	 		resourceTemplate.put("description",getdescription);
 	 		//"file:///usr/local/share/ezshare/photo.jpg"
@@ -447,15 +453,18 @@ private static void Fetch() throws ParseException {
 	 				String result = input.readUTF();
 	 				logger.info("RECEIVED:");
 	 				System.out.println(result);
-	 				JSONObject command = (JSONObject) parser.parse(result);
-	 				if(command.containsKey("uri")){
+	 				JSONObject command = (JSONObject) parser.parse(input.readUTF());
+	 				System.out.println(command);
+	 				JSONObject resourcesTemplate = (JSONObject) command.get("resourceTemplate");
+	 				String fileName ="client_files/"+ (String) resourcesTemplate.get("name"); 
+	 				if(command.get("command").equals("FETCH")){
 	 					//System.out.println(command.get("uri"));
 	 					// The file location
-							String fileName = "/"+command.get("name");
+	 					    //System.out.println(resourcesTemplate.get("name"));
 							// Create a RandomAccessFile to read and write the output file.
 							RandomAccessFile downloadingFile = new RandomAccessFile(fileName, "rw");
 							// Find out how much size is remaining to get from the server.
-							long fileSizeRemaining = (Long) command.get("resourceSize");
+							long fileSizeRemaining = (Long) command.get("resourceSizeOF");
 							int chunkSize = setChunkSize(fileSizeRemaining);
 							
 							// Represents the receiving buffer
@@ -478,8 +487,8 @@ private static void Fetch() throws ParseException {
 								if(fileSizeRemaining==0){
 									break;
 								}
-							}
-//							System.out.println("File received!");
+							}	
+							//System.out.println("File received!");
 							downloadingFile.close();
 	 				}
 	 			}
@@ -487,10 +496,11 @@ private static void Fetch() throws ParseException {
 			
 		}catch (IOException e) {		
 	} catch (org.json.simple.parser.ParseException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 		}
 }
+
 
 
 private static int setChunkSize(long fileSizeRemaining) {
