@@ -282,6 +282,10 @@ public class Server {
 						output.write(Arrays.copyOf(sendingBuffer, num));
 					}
 					byteFile.close();
+					JSONObject finish = new JSONObject();
+					finish.put("resultSize", "1");
+					output.writeUTF(finish.toJSONString());
+					output.flush();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
