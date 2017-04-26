@@ -2,6 +2,7 @@ package Server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.Socket;
@@ -102,6 +103,9 @@ public class Server {
 					case "share":
 						Share(client, received);
 						break;
+					case "fetch":
+						Fetch(client, received);
+						break;
 					default:
 						JSONObject error = new JSONObject();
 						error.put("response", "error");
@@ -125,14 +129,12 @@ public class Server {
 	
 	public static void Query(Socket client) {
 
-		try {
+		try{
 		//Input stream
 		DataInputStream input = new DataInputStream(client.getInputStream());
 		
 		//Output steam
-		DataOutputStream output;
-		
-		output = new DataOutputStream(client.getOutputStream());
+		DataOutputStream output = new DataOutputStream(client.getOutputStream());
 		
 		//reveiced 
 		JSONObject message = new JSONObject();
@@ -240,6 +242,60 @@ public class Server {
 		output.flush();
 	}
 	
+	
+	private static void Fetch(Socket client, JSONObject received) {
+		try {
+			//Input stream
+			DataInputStream input = new DataInputStream(client.getInputStream());
+			
+			//Output steam
+			DataOutputStream output = new DataOutputStream(client.getOutputStream());
+			
+			//reveiced 
+			JSONObject message = new JSONObject();
+			message.put("response", "sucess");
+			output.writeUTF(message.toJSONString());
+			output.flush();
+
+			// Send this back to client so that they know what the file is.
+			JSONObject resourcesTemplate = (JSONObject) received.get("resourceTemplate");
+			String fileName = (String) resourcesTemplate.get("name"); 
+			File f = new File("K:/eclipseworkshop/ClientServer/server_files"+fileName);
+			received.put("resourceSizeOF",f.length());
+			
+			//prepare sending files to client
+			 
+			// Check if file exists
+			if(f.exists()){
+				
+				try {
+					// Send trigger to client 
+					output.writeUTF(received.toJSONString());
+					output.flush();
+					// Start sending file
+					RandomAccessFile byteFile = new RandomAccessFile(f,"r");
+					byte[] sendingBuffer = new byte[1024*1024];
+					int num;
+					// While there are still bytes to send..
+					while((num = byteFile.read(sendingBuffer)) > 0){
+						//System.out.println(num);
+						output.write(Arrays.copyOf(sendingBuffer, num));
+					}
+					byteFile.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			else{
+				// Throw an error here..
+			}
+			
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}
 	
 	private static int setChunkSize(long fileSizeRemaining) {
 		// determine the chunksize
