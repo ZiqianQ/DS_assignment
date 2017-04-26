@@ -36,7 +36,7 @@ public class Server {
 
 	private static int port = 3000;
 	static JSONArray Store = new JSONArray();
-	
+	private static String secret = "aswecan";
 	
 	public static void main(String[] args) {
 		
@@ -181,66 +181,90 @@ public class Server {
 	}
 
 	
-	public static void Share(Socket client,JSONObject received) throws IOException, org.json.simple.parser.ParseException{
+	public static void Share(Socket client, JSONObject received)
+			throws IOException, org.json.simple.parser.ParseException {
 
-		//Input stream
-				DataInputStream input = new DataInputStream(client.getInputStream());
+		// Input stream
+		DataInputStream input = new DataInputStream(client.getInputStream());
+
+		// Output steam
+		DataOutputStream output;
+
+		output = new DataOutputStream(client.getOutputStream());
+		JSONParser parser = new JSONParser();
+		while (true) {
+			if (input.available() > 0) {
+				String result = input.readUTF();
+				// logger.info("RECEIVED:");
+				System.out.println(result);
 				
-				//Output steam
-				DataOutputStream output;
-				
-				output = new DataOutputStream(client.getOutputStream());
-				JSONParser parser = new JSONParser();
-		while (true){
- 			if(input.available() > 0){
- 				String result = input.readUTF();
-// 				logger.info("RECEIVED:");
- 				System.out.println(result);
- 				JSONObject command = (JSONObject) parser.parse(result);
- 				if(command.containsKey("uri")){
- 					//System.out.println(command.get("uri"));
- 					// The file location
-						String fileName = "server_files/"+command.get("name");
-						// Create a RandomAccessFile to read and write the output file.
+				JSONObject command = (JSONObject) parser.parse(result);
+				 
+				if (command.containsKey("uri") && received.containsKey("secret")) {
+					if (received.get("secret").equals(secret) ){ 
+						// The file location
+						String fileName = "server_files/" + command.get("name");
+						// Create a RandomAccessFile to read and write the
+						 
 						RandomAccessFile downloadingFile = new RandomAccessFile(fileName, "rw");
 						// Find out how much size is remaining to get from the server.
 						long fileSizeRemaining = (Long) command.get("resourceSize");
 						int chunkSize = setChunkSize(fileSizeRemaining);
-						
+
 						// Represents the receiving buffer
 						byte[] receiveBuffer = new byte[chunkSize];
 						// Variable used to read if there are remaining size left to read.
 						int num;
-						//System.out.println("Downloading "+fileName+" of size "+fileSizeRemaining);
-						while((num=input.read(receiveBuffer))>0){
-							// Write the received bytes into the RandomAccessFile
+						 
+						while ((num = input.read(receiveBuffer)) > 0) {
+							// Write the received bytes into the
+							// RandomAccessFile
 							downloadingFile.write(Arrays.copyOf(receiveBuffer, num));
-							
+
 							// Reduce the file size left to read..
-							fileSizeRemaining-=num;
-							
+							fileSizeRemaining -= num;
+
 							// Set the chunkSize again
 							chunkSize = setChunkSize(fileSizeRemaining);
 							receiveBuffer = new byte[chunkSize];
-							
+
 							// If you're done then break
-							if(fileSizeRemaining==0){
+							if (fileSizeRemaining == 0) {
 								break;
 							}
 						}
-//						System.out.println("File received!");
+						//
 						downloadingFile.close();
- 				}
- 				
- 			}
- 			else break;
- 		}
-		//reveiced 
-		JSONObject message = new JSONObject();
-		message.put("response", "sucess");
-		output.writeUTF(message.toJSONString());
-		output.flush();
+						// reveiced
+						JSONObject message = new JSONObject();
+						message.put("response", "sucess");
+						output.writeUTF(message.toJSONString());
+						output.flush();
+						break;
+					} else {
+						JSONObject message = new JSONObject();
+						message.put("response", "error");
+						message.put("errorMessage", "incorrect secret");
+						output.writeUTF(message.toJSONString());
+						output.flush();
+					 
+					}
+				} else {
+					JSONObject message = new JSONObject();
+					message.put("response", "error");
+					message.put("errorMessage", "missing resource and/or secret");
+					output.writeUTF(message.toJSONString());
+					output.flush();
+					 
+				}
+
+			} else{
+				break;
+		}
+		}
+
 	}
+
 	
 	
 	private static void Fetch(Socket client, JSONObject received) {
