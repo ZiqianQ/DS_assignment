@@ -30,7 +30,7 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 public class Server {
 	private static int port = 3000;
 	private final static Logger logger = Logger.getLogger(Server.class);
-	private static JSONArray Store;
+	private static JSONArray Store = new JSONArray();
 
 	public static void main(String[] args) {
 
@@ -68,10 +68,10 @@ public class Server {
 		try (Socket clientServer = client) {
 
 			// Input stream
-			DataInputStream input = new DataInputStream(client.getInputStream());
+			DataInputStream input = new DataInputStream(clientServer.getInputStream());
 
 			// Output steam
-			DataOutputStream output = new DataOutputStream(client.getOutputStream());
+			DataOutputStream output = new DataOutputStream(clientServer.getOutputStream());
 
 			// json parser
 			JSONParser parser = new JSONParser();
@@ -91,20 +91,20 @@ public class Server {
 						
 					case "publish":
 						Publish publish = new Publish();
-						publish.exe(client, Store, received);
+						publish.exe(clientServer, Store, received);
 						break;
 						
 					case "remove":
 						Remove remove = new Remove();
 						remove.exe(clientServer, Store, received);
 						break;
-						
+					/**	
 					case "share":
 						ServerCommand.Share(client, received);
 						break;
 					case "fetch":
 						ServerCommand.Fetch(client, received);
-						break;
+						break;*/
 					default:
 						JSONObject error = new JSONObject();
 						error.put("response", "error");
