@@ -10,79 +10,107 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Query {
-	public void exe(Socket client, JSONArray Store, JSONObject received) throws IOException{
+	public void exe(Socket clientServer, JSONArray Store, JSONObject resource) throws IOException {
 		try {
-			//Input stream
-			DataInputStream input = new DataInputStream(client.getInputStream());
-			
-			//Output steam
-			DataOutputStream output = new DataOutputStream(client.getOutputStream());
-			
-			//tell client: received 
+			// Input stream
+			DataInputStream input = new DataInputStream(clientServer.getInputStream());
+
+			// Output steam
+			DataOutputStream output = new DataOutputStream(clientServer.getOutputStream());
+
+			// tell client: received
 			JSONObject message = new JSONObject();
 			message.put("response", "sucess");
 			output.writeUTF(message.toJSONString());
 			output.flush();
-			
-			JSONObject resourceTemplate = (JSONObject)received.get("resourceTemplate");
-			//primary key && other rules
-			String uri = (String)resourceTemplate.get("uri");
-			String channel = (String)resourceTemplate.get("channel");
-			String owner = (String)resourceTemplate.get("owner");
-			JSONArray tags = (JSONArray)resourceTemplate.get("tags");
-			CharSequence name = (CharSequence)resourceTemplate.get("name");
-			
+
+			JSONObject resourceTemplate = resource;
+
+			// primary key && other rules
+			String uri = (String) resourceTemplate.get("uri");
+			String channel = (String) resourceTemplate.get("channel");
+			String owner = (String) resourceTemplate.get("owner");
+			JSONArray tags = (JSONArray) resourceTemplate.get("tags");
+			CharSequence name = (CharSequence) resourceTemplate.get("name");
+			CharSequence description = (CharSequence) resourceTemplate.get("description");
+
+			// copy the stored things in server first, and decide which to
+			// display
 			JSONArray display = new JSONArray();
-			for (Iterator iterator = Store.iterator();iterator.hasNext();){
-				display.add(iterator.next());
+			for (int i = 0; i < Store.size(); i++) {
+				display.add(Store.get(i));
 			}
-			
-			for (Iterator iterator = display.iterator();iterator.hasNext();) {
-				//compare primary key
-				JSONObject storeResource = (JSONObject)iterator.next();
-				String storeUri = (String)storeResource.get("uri");
-				String storeChannel = (String)storeResource.get("channel");
-				String storeOwner = (String)storeResource.get("owner");
-				JSONArray storeTags = (JSONArray)storeResource.get("tags");
-				String storeName = (String)storeResource.get("name");
-			
-				if (!channel.equals(storeChannel)){
+
+			for (int i = 0; i < display.size(); i++) {
+
+				// compare primary key
+				JSONObject storeResource = (JSONObject) display.get(i);
+				String storeUri = (String) storeResource.get("uri");
+				String storeChannel = (String) storeResource.get("channel");
+				String storeOwner = (String) storeResource.get("owner");
+				JSONArray storeTags = (JSONArray) storeResource.get("tags");
+				String storeName = (String) storeResource.get("name");
+				String storeDesc = (String) storeResource.get("description");
+
+				// the template channel must equal the resource channel
+				if (!channel.equals(storeChannel)) {
 					display.remove(storeResource);
 				}
-				
-				else if (!owner.equals("") && !owner.equals(storeOwner)){
+
+				// if the template contains an owner that is not"", must equal
+				// the resource owner
+				else if (!owner.equals("") && !owner.equals(storeOwner)) {
 					display.remove(storeResource);
 				}
-				
-				else if (!tags.isEmpty() && !tags.equals(storeTags)){
+
+				// if any tags, should equal
+				else if (!tags.isEmpty() && !tags.equals(storeTags)) {
 					display.remove(storeResource);
 				}
-				
-				else if (!uri.equals("") && !uri.equals(storeUri)){
+
+				// if uri, must equal
+				else if (!uri.equals("") && !uri.equals(storeUri)) {
 					display.remove(storeResource);
 				}
-				
-				else if (!name.equals("") && !storeName.contains(name)){
+
+				// if name, must contain
+				else if (!name.equals("") && !storeName.contains(name)) {
+					display.remove(storeResource);
+				}
+
+				// if any description, must contain
+				else if (!description.equals("") && storeDesc.contains(description)) {
 					display.remove(storeResource);
 				}
 			}
-			int count = 0;
-			for (Iterator iterator = display.iterator();iterator.hasNext();){
-				output.writeUTF(((JSONObject)iterator.next()).toJSONString());
+
+			for (int i = 0; i < display.size(); i++) {
+				JSONObject displayResource = (JSONObject) display.get(i);
+
+				// the ezserver field be filled with hostname and port
+				displayResource.put("ezserver", "aswecan:3000");
+
+				// the server will never reveal the owner of a resource in a
+				// response
+				String displayOwner = (String) displayResource.get("owner");
+				if (!displayOwner.equals("")) {
+					displayResource.put("owner", "*");
+				}
+				output.writeUTF(displayResource.toJSONString());
 				output.flush();
-				count++;
 			}
-			JSONObject countresourece = new JSONObject();
-			countresourece.put("resourceSize:",count);
-			output.writeUTF(countresourece.toJSONString());
+
+			// print {"resultSize" : int }
+			JSONObject resultSize = new JSONObject();
+			resultSize.put("resultSize", display.size());
+			output.writeUTF(resultSize.toJSONString());
 			output.flush();
-			
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }
