@@ -66,11 +66,16 @@ public class Query {
 					display.remove(storeResource);
 				}
 			}
-			
+			int count = 0;
 			for (Iterator iterator = display.iterator();iterator.hasNext();){
 				output.writeUTF(((JSONObject)iterator.next()).toJSONString());
 				output.flush();
+				count++;
 			}
+			JSONObject countresourece = new JSONObject();
+			countresourece.put("resourceSize:",count);
+			output.writeUTF(countresourece.toJSONString());
+			output.flush();
 			
 
 		} catch (IOException e) {
