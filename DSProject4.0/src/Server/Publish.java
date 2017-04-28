@@ -4,68 +4,81 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Publish {
 	
-	public void exe(Socket client, JSONArray Store, JSONObject received) throws IOException{
+	public void exe(Socket clientServer, JSONArray Store, JSONObject resource) throws IOException{
 		try {
 		    //Input stream
-			DataInputStream input = new DataInputStream(client.getInputStream());
+			DataInputStream input = new DataInputStream(clientServer.getInputStream());
 		
 			//Output steam
-			DataOutputStream output = new DataOutputStream(client.getOutputStream());
+			DataOutputStream output = new DataOutputStream(clientServer.getOutputStream());
 		
 			//send respond to client
 			JSONObject message = new JSONObject();
 		
-			//store the json received from client to jsonArray
-			JSONObject resource = (JSONObject)received.get("resource");
-		
 			//check if the resource from client is valid or not
 			boolean valid = true;
-				
-			//primary key
-			String uri = (String)resource.get("uri");
-			String channel = (String)resource.get("channel");
-			String owner = (String)resource.get("owner");
-		
-			//rules: not file scheme, only http and ftp
-			CharSequence validUri1 = "http";
-			CharSequence validUri2 = "ftp";
-		
-			if (!uri.contains(validUri1) && !uri.contains(validUri2)){
-				valid = false; 
-				message.put("response", "error");
-		    	message.put("errorMessage", "missing resource"); 
-			}
-		
-			else if (owner.equals("*")){
-				valid = false; 
-				message.put("response", "error");
-		    	message.put("errorMessage", "invalid resource"); 
-			}
-		
-			for (Iterator iterator = Store.iterator();iterator.hasNext();) {
-				//compare primary key
-				JSONObject storeResource = (JSONObject)iterator.next();
-				String storeUri = (String)storeResource.get("uri");
-				String storeChannel = (String)storeResource.get("channel");
-				String storeOwner = (String)storeResource.get("owner");
 			
-				if (uri.equals(storeUri) && channel.equals(storeChannel)){
-					if (owner.equals(storeOwner)){
-						Store.remove(storeResource);
-					}else {
-						valid = false;
-						message.put("response", "error");
-						message.put("errorMessage", "invalid resource");
-						
-					}
+			//rules: not file scheme
+			String invalidUri = "file";
+			
+			//check if valid resource
+			if(resource.containsKey("uri") && resource.containsKey("channel") && resource.containsKey("owner") 
+					&& resource.containsKey("name") && resource.containsKey("description") && resource.containsKey("tags")){
+				
+				//primary keys
+				String uri = (String)resource.get("uri");
+				String channel = (String)resource.get("channel");
+				String owner = (String)resource.get("owner");
+				
+				//other keys
+				//String name = (String)resource.get("name");
+				//String description = (String)resource.get("description");
+				//String tag = (String)resource.get("tags");
+				//split tags
+				//List<String> tags = Arrays.asList(tag.split(","));
+				
+				
+				if (uri.startsWith(invalidUri)){
+					valid = false; 
+					message.put("response", "error");
+			    	message.put("errorMessage", "cannot publish resource"); 
+			    	
+				}else {
+					for (int i = 0; i < Store.size(); i++) {
+						//compare primary key
+						JSONObject storeResource = (JSONObject)Store.get(i);
+						String storeUri = (String)storeResource.get("uri");
+						String storeChannel = (String)storeResource.get("channel");
+						String storeOwner = (String)storeResource.get("owner");
+					
+						if (uri.equals(storeUri) && channel.equals(storeChannel)){
+							if (owner.equals(storeOwner)){
+								Store.remove(storeResource); //if same primary key, overwrites
+								break;
+							}else {
+								valid = false;
+								message.put("response", "error");
+								message.put("errorMessage", "cannot publish resource");
+								break;	
+							}
+						}
+					}	
 				}
+				
+			} else {
+				valid = false;
+				message.put("response", "error");
+				message.put("errorMessage", "invalid resource");	
 			}
 
 			if (valid == true) {
