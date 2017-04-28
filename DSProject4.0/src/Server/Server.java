@@ -10,27 +10,26 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.net.ServerSocket;
 import javax.net.ServerSocketFactory;
-import javax.print.attribute.standard.OutputDeviceAssigned;
 
-import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+
 
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.omg.CORBA.PUBLIC_MEMBER;
+import org.json.simple.parser.ParseException;
 
 
 
 public class Server {
 	private static int port = 3000;
 	private final static Logger logger = Logger.getLogger(Server.class);
-	private static JSONArray Store = new JSONArray();
+	private static JSONArray Store = new JSONArray();;
 
 	public static void main(String[] args) {
 
@@ -40,7 +39,7 @@ public class Server {
 		options.addOption("advertisedhostname", true, "advertised hostname");
 		options.addOption("connectionintervallimit", true, "connection interval limit in seconds");
 		options.addOption("exchangeinterval", true, "exchange interval in seconds");
-		;
+		
 		options.addOption("port", true, "server port, an integer");
 		options.addOption("secret", true, "secret");
 		options.addOption("debug", false, "print debug information");
@@ -77,54 +76,101 @@ public class Server {
 			JSONParser parser = new JSONParser();
 
 			JSONObject received;
+			JSONObject resource;
+			String owner;
+			
+			Error error = new Error();
 			 
 			while (true) {
-				while (input.available() > 0) {
+				if (input.available() > 0) {
 					received = (JSONObject) parser.parse(input.readUTF());
 					logger.info("RECEIVED:");
-					System.out.println(received.toJSONString()); 
-					switch (received.get("command").toString().toLowerCase()) {
+					
+					System.out.println(received.toJSONString());
+					
+					resource = (JSONObject)received.get("resource");
+					
+					//check if there is a resource field
+					if (received.containsKey("resource") || received.containsKey("resourceTemplate")){
+						if (received.containsKey("resource")){
+							resource = (JSONObject)received.get("resource");
+						}else {
+							resource = (JSONObject)received.get("resourceTemplate");
+						}
+						owner = (String)resource.get("owner");
+					}else {
+						if (received.containsKey("resource")){
+							output.writeUTF(error.missingRes().toJSONString());
+						}else if(received.containsKey("resourceTemplate")){
+							output.writeUTF(error.missingResT().toJSONString());
+						}
+						output.close();
+						break;//exit while loop
+					}
+					
+			        //check if the resource is valid
+					if(!resource.containsKey("uri") || !resource.containsKey("channel") || !resource.containsKey("owner") 
+							|| !resource.containsKey("name") || !resource.containsKey("description") ||!resource.containsKey("ezserver")
+							|| !resource.containsKey("tags") || owner.equals("*") || resource.size() != 7){
+						if (received.containsKey("resource")){
+							output.writeUTF(error.invalidRes().toJSONString());
+						}else if(received.containsKey("resourceTemplate")){
+							output.writeUTF(error.invalidResT().toJSONString());
+						}
+						output.close();
+						break;//exit while loop
+					}
+					
+					//check if there is a command field
+					else if (!received.containsKey("command")){
+						output.writeUTF(error.missingCmd().toJSONString());
+						output.close();
+						break;//exit while loop
+					}
+
+					String receivedCmd = received.get("command").toString();
+					
+					switch (receivedCmd.toLowerCase()) {
 					case "query":
 						Query query = new Query();
-						query.exe(clientServer, Store, received);
+						query.exe(clientServer, Store, resource);
 						break;
 						
 					case "publish":
 						Publish publish = new Publish();
-						publish.exe(clientServer, Store, received);
+						publish.exe(clientServer, Store, resource);
 						break;
 						
 					case "remove":
 						Remove remove = new Remove();
-						remove.exe(clientServer, Store, received);
+						remove.exe(clientServer, Store, resource);
 						break;
-					/**	
+						
+						/**
 					case "share":
-						ServerCommand.Share(client, received);
-						break;
-					case "fetch":
-						ServerCommand.Fetch(client, received);
+						Share share = new Share();
+						share.exe(clientServer, Store, received);
 						break;*/
+						
+					case "fetch":
+						Fetch fetch = new Fetch();
+						fetch.exe(clientServer, Store, resource);
+						break;
+					
 					default:
-						JSONObject error = new JSONObject();
-						error.put("response", "error");
-						error.put("errorMessage", "invalid resourceTemplate");
-						output.writeUTF(error.toJSONString());
-						output.flush();
-						// output.close();
+						output.writeUTF(error.unknownCmd().toJSONString());
+						output.close();
 						break;
 					}
+					
 				}
 			}
 
-		} catch (IOException e) {
+		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (org.json.simple.parser.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 	}
-	
-	
 }
+	
+	
