@@ -12,20 +12,21 @@ import org.json.simple.JSONObject;
 
 public class Fetch {
 
-	public static void exe(Socket client, JSONArray store, JSONObject received) {
+	public static void exe(Socket client, JSONArray Store, JSONObject resource) {
 		try {
 			// Input stream
+			
 			DataInputStream input = new DataInputStream(client.getInputStream());
 
 			// Output steam
 			DataOutputStream output = new DataOutputStream(client.getOutputStream());
 			JSONObject message = new JSONObject();
 			 //check if there is an record in server
-			System.out.println(datainclude( store,received));
-			if(datainclude( store,received)){
+			System.out.println(datainclude( Store,resource));
+			if(datainclude( Store,resource)){
 			
 			// Send this back to client so that they know what the file is.
-			JSONObject resourcesTemplate = (JSONObject) received.get("resourceTemplate");
+			JSONObject resourcesTemplate = resource;
 			String fileName = (String) resourcesTemplate.get("name");
 			File f = new File("server_files/" + fileName);
 
@@ -41,8 +42,9 @@ public class Fetch {
 				resourcesTemplate.put("resourceSize", f.length());
 				try {
 					// Send trigger to client
-					output.writeUTF(received.toJSONString());
+					output.writeUTF(resourcesTemplate.toJSONString());
 					output.flush();
+					
 					// Start sending file
 					RandomAccessFile byteFile = new RandomAccessFile(f, "r");
 					byte[] sendingBuffer = new byte[1024 * 1024];
@@ -81,13 +83,13 @@ public class Fetch {
 		
 	}
 	
-	private static boolean datainclude(JSONArray store, JSONObject received) {
+	private static boolean datainclude(JSONArray Store, JSONObject resource) {
 		Boolean exist = false;
 		JSONArray display = new JSONArray();
-		for (int i =0 ;i<store.size();i++){
-			display.add(store.get(i));
+		for (int i =0 ;i<Store.size();i++){
+			display.add(Store.get(i));
 		}
-		JSONObject resourceTemplate = (JSONObject)received.get("resourceTemplate");
+		JSONObject resourceTemplate = resource;
 		//primary key && other rules
 		String uri = (String)resourceTemplate.get("uri");
 		String channel = (String)resourceTemplate.get("channel");
