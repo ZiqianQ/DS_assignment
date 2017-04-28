@@ -3,6 +3,9 @@ package Client;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Resource {
 	private JSONObject resource;
 	private String name;
@@ -58,8 +61,11 @@ public class Resource {
 	}
 
 
-	public void setTags(String tags) {
-		this.tags.add(tags);
+	public void setTags(String tag) {
+		List<String> getTags = Arrays.asList(tag.split(","));
+		for (int i = 0; i < getTags.size(); i++){
+			this.tags.add(tags);
+		}
 	}
 
 
