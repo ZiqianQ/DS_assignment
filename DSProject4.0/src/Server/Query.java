@@ -24,7 +24,7 @@ public class Query {
 			message.put("response", "sucess");
 			output.writeUTF(message.toJSONString());
 			output.flush();
-			
+			System.out.println("received:"+received);
 			JSONObject resourceTemplate = received;
 			
 			// primary key && other rules
