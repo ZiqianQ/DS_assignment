@@ -34,7 +34,7 @@ public class queryCommand {
 
 			//print JSONObject
 			if(debugMode){
-				Client.logger.info("querying to localhost:3000"+"\n");	
+				Client.logger.info("querying to "+ip+":"+port+"\n");
 				Client.logger.info("SENT:");
 				System.out.println(newCommand.toJSONString());
 				} 
