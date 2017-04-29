@@ -35,34 +35,14 @@ public class shareCommand {
 		 		// Send command to Server	
 		 		output.writeUTF(newCommand.toJSONString());
 		 		output.flush();
-		 		//allow server to download 
-				// Check if file exists
-				String uri= (String) aResource.getUri();  
-				File f = new File(uri.substring(8)); 
-		 		if(f.exists()){
-		 			resource.put("resourceSize", f.length());
-		 			
-		 			//is this a trigger??
-		 			output.writeUTF(resource.toJSONString());
-		 			output.flush();
-		 			
-		 			try {
-		 			// Start sending file
-						RandomAccessFile byteFile = new RandomAccessFile(f,"r");
-						byte[] sendingBuffer = new byte[1024*1024];
-						int num;
-						// While there are still bytes to send..
-						while((num = byteFile.read(sendingBuffer)) > 0){
-							//System.out.println(num);
-							output.write(Arrays.copyOf(sendingBuffer, num));
-							//output.flush();
-						}
-						byteFile.close();
-		 			}catch (IOException e) {
-						e.printStackTrace();
+		 		//read from server and print out
+		 		while(true){
+					if (input.available()>0) {
+						String result = input.readUTF();
+						Client.logger.info("REVEIVED:");
+						System.out.println(result);
 					}
-		 			
-		 		}
+				}
 		 		 
 		 		
 		 }catch (IOException e) {
