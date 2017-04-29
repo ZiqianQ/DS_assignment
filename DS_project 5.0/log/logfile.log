@@ -1,0 +1,1422 @@
+2017-04-28 17:30:02,612 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 50 
+2017-04-28 17:30:02,615 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 51 
+2017-04-28 17:30:50,668 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 17:30:50,748 -[Server.Server.serverClient] [INFO] -RECEIVED: 84 
+2017-04-28 17:30:50,754 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 17:31:44,671 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 17:31:44,681 -[Server.Server.serverClient] [INFO] -RECEIVED: 84 
+2017-04-28 17:31:44,685 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 17:31:58,886 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 17:31:58,896 -[Server.Server.serverClient] [INFO] -RECEIVED: 84 
+2017-04-28 17:31:58,902 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 17:31:58,902 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 17:36:59,942 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 17:36:59,954 -[Server.Server.serverClient] [INFO] -RECEIVED: 84 
+2017-04-28 17:37:00,068 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 17:37:00,069 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 17:37:14,183 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 50 
+2017-04-28 17:37:14,187 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 51 
+2017-04-28 17:37:17,266 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 17:37:17,348 -[Server.Server.serverClient] [INFO] -RECEIVED: 84 
+2017-04-28 17:37:17,355 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 17:37:17,356 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:17:07,643 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 18:17:35,275 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 18:18:01,463 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 18:27:49,482 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 18:27:49,486 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 18:29:49,832 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 18:29:49,911 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 18:29:49,919 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 18:30:30,664 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 18:30:30,667 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 18:30:35,828 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 18:30:35,900 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 18:30:35,906 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 18:31:40,087 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 18:31:40,097 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 18:31:40,099 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 18:34:23,279 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 18:34:23,284 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 18:34:26,323 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 18:34:26,400 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 18:34:26,411 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 18:34:55,198 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 18:34:55,212 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 18:34:55,217 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:34:55,218 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:34:55,219 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:55:47,687 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 18:55:47,701 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 18:58:26,607 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 18:58:26,611 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 18:59:50,374 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 18:59:50,383 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,384 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,384 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,385 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,385 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,387 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,388 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,388 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,388 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,388 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,389 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,389 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,389 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,389 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,389 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,392 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,392 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 18:59:50,392 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:07,411 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:00:07,421 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:07,421 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,970 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:00:37,983 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,984 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,984 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,985 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,985 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,988 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,989 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,989 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,989 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,990 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,990 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,990 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,991 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,991 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,992 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,995 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,997 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:00:37,997 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:01:49,625 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 19:01:49,705 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:01:49,714 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 19:02:06,866 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:02:06,882 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:02:06,897 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:02:06,925 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:02:06,927 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:02:30,792 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:02:30,810 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:09:38,317 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:09:38,320 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:10:50,499 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:10:50,502 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:11:42,475 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 19:11:42,545 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:11:42,553 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 19:12:04,542 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:12:04,559 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:12:04,581 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:13:49,367 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:13:49,371 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:14:17,981 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 19:14:18,066 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:14:18,072 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 19:14:30,396 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:14:30,409 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:14:30,416 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:14:30,416 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:14:30,418 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:14:48,133 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:14:48,142 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:14:48,165 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:15:33,017 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:15:33,020 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:15:36,090 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:15:36,166 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:16:17,918 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 19:16:17,941 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:16:17,949 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 19:16:32,587 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:16:32,604 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:16:32,612 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:18:22,572 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:18:22,587 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,588 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,588 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,589 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,589 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,593 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,594 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,594 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,594 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,594 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,595 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,595 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,595 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,596 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,596 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,621 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,622 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:18:22,623 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:15,231 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:19:15,247 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:19:15,249 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:19:39,038 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:19:39,097 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,097 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,098 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,098 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,098 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,102 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,102 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,102 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,103 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,103 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,103 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,103 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,104 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,104 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,104 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,106 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,107 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:19:39,107 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:20:10,147 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:20:10,176 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:20:10,178 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:20:29,391 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:20:29,409 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:20:29,411 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:22:34,354 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:23:00,584 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:23:25,530 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:23:58,253 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:24:54,875 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:25:14,446 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:25:33,266 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:26:03,005 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:26:23,042 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:26:23,046 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:26:50,753 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:26:50,846 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:26:50,856 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:26:50,856 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-28 19:27:39,315 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-28 19:36:58,772 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:36:58,777 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:38:44,964 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 19:38:45,040 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:38:45,049 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 19:39:15,483 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:39:15,494 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:39:15,506 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:39:15,509 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:39:15,524 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:41:11,131 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:41:11,139 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:43:03,609 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:43:03,616 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:43:19,098 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:43:19,182 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:48:33,216 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:48:33,220 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:48:36,164 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:48:36,251 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:49:50,303 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:49:50,306 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:50:07,673 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 19:50:07,752 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:50:07,757 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 19:50:20,661 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:50:20,667 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:51:22,529 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:51:22,533 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:51:34,110 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 19:51:34,202 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:51:34,207 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 19:51:56,611 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:51:56,625 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:53:40,441 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:53:40,444 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:53:55,338 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 19:53:55,422 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:53:55,427 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 19:54:08,350 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:54:08,358 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:55:31,093 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 19:55:31,096 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 19:55:45,314 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 19:55:45,396 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:55:45,403 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 19:55:56,166 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 19:55:56,179 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 19:55:56,204 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:55:56,206 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 19:55:56,209 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 20:00:04,185 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 20:00:04,189 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 20:00:16,886 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 20:00:16,961 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:00:16,966 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 20:00:29,658 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:00:29,667 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:02:00,420 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 20:02:00,423 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 20:02:14,980 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 20:02:15,050 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:02:15,055 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 20:02:27,449 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:02:27,459 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:03:47,358 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 20:03:47,362 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 20:03:51,138 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:03:51,214 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:04:12,329 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 20:04:12,332 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 20:04:27,266 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 20:04:27,341 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:04:27,347 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 20:04:43,630 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:04:43,644 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:09:49,211 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 20:09:49,216 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 20:10:01,123 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 20:10:01,208 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:10:01,215 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 20:10:13,485 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:10:13,493 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:10:52,851 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 20:10:52,855 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 20:11:04,580 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 20:11:04,668 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:11:04,675 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 20:11:16,145 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:11:16,153 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:21:22,477 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:21:22,486 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:22:01,609 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 20:22:01,613 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 20:22:18,304 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 20:22:18,384 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:22:18,390 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 20:22:33,076 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:22:33,087 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:26:31,730 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 20:26:31,733 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 20:26:55,856 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 20:26:55,939 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:26:55,945 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 20:27:05,682 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 20:27:05,693 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:27:05,694 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 20:27:29,893 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:27:29,901 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:27:29,920 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 20:27:29,933 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 20:27:29,949 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 20:27:59,806 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:27:59,814 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:27:59,824 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 20:27:59,825 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 20:27:59,840 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 20:28:36,621 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:28:36,629 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:28:36,639 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 20:28:36,641 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 20:28:36,645 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-28 20:30:14,201 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-28 20:30:14,205 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-28 20:30:31,787 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-28 20:30:31,861 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-28 20:30:31,867 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-28 20:30:49,159 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-28 20:30:49,167 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:02:04,556 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 01:02:04,561 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 01:02:10,796 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 01:02:10,799 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 01:02:44,789 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 01:02:44,896 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:02:44,902 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 01:02:55,995 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 01:02:56,011 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:02:56,015 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 01:02:56,016 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 01:02:56,017 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 01:03:09,133 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:03:09,142 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:04:39,093 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 01:04:39,098 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 01:04:54,329 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:04:54,417 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:06:29,124 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 01:06:29,127 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 01:06:41,600 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:06:41,675 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:07:24,918 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:07:24,926 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:08:08,874 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 01:08:08,878 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 01:08:11,612 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:08:11,685 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:08:11,692 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 01:16:22,745 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 01:16:22,749 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 01:16:25,544 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:16:25,619 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:16:25,624 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 01:16:41,240 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 01:16:41,272 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:16:41,283 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 01:16:53,005 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 01:16:53,016 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:17:33,296 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:17:33,304 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:17:33,316 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 01:17:44,986 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:17:44,993 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:17:45,001 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 01:18:50,567 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 01:18:50,572 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 01:19:06,004 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 01:19:06,095 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:19:06,103 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 01:19:17,345 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:19:17,352 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:19:17,372 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 01:20:31,060 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 01:20:31,065 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 01:20:47,373 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 01:20:47,447 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:20:47,454 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 01:21:02,845 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:21:02,853 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:21:02,868 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 01:23:18,239 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 01:23:18,243 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 01:23:38,307 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 01:23:38,377 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:23:38,384 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 01:23:50,827 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 01:23:50,858 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:23:50,863 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 01:23:50,864 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 01:23:50,864 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 01:24:04,954 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:24:04,966 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:24:04,979 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 01:25:25,633 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 01:25:25,636 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 01:25:41,954 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 01:25:42,026 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:25:42,034 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 01:25:55,148 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 01:25:55,175 -[Server.Server.serverClient] [INFO] -RECEIVED: 83 
+2017-04-29 01:25:55,199 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 01:25:55,203 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 01:25:55,235 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 11:57:45,605 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 11:57:45,610 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 11:59:37,104 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 11:59:37,107 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 12:00:57,761 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 12:00:57,765 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 12:01:17,921 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 12:01:18,044 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:01:18,050 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 12:01:38,932 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 12:01:38,958 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:01:38,969 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:01:38,969 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:01:38,970 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:01:49,833 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:01:49,844 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:09:27,173 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 12:09:27,176 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 12:09:43,761 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 12:09:43,834 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:09:43,843 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 12:10:20,387 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:10:20,398 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:11:32,089 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 12:11:32,093 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 12:11:39,043 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:11:39,125 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:12:19,656 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 12:12:19,670 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:12:19,673 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:12:19,676 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:12:30,219 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:12:30,227 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:14:17,880 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 12:14:17,884 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 12:14:21,939 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:14:22,015 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:16:50,033 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 12:16:50,036 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 12:16:52,130 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:16:52,204 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:16:52,210 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 12:17:06,366 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 12:17:06,378 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:17:06,390 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 12:17:16,261 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:17:16,269 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:17:16,358 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 12:19:13,441 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 12:19:13,444 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 12:19:23,748 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:19:23,824 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:19:23,830 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 12:19:34,234 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 12:19:34,248 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:19:34,252 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 12:19:43,473 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:19:43,488 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:20:52,115 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 12:20:52,119 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 12:20:55,804 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:20:55,878 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:20:55,884 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 12:21:06,794 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 12:21:06,811 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:21:06,816 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 12:21:16,088 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 12:21:16,099 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:21:16,104 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:21:16,116 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:21:16,117 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:21:26,793 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:21:26,801 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:21:26,810 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 12:21:26,812 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 12:25:07,531 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 12:25:07,547 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,547 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,548 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,548 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,549 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,552 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,555 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,555 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,556 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,556 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,556 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,557 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,557 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,558 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,558 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,560 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,561 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,561 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,561 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,562 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,562 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:25:07,562 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:26:07,992 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:26:08,013 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:26:08,015 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:29:50,575 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:30:41,642 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 12:31:14,077 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 12:31:14,080 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 12:31:26,985 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 12:31:49,732 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 12:31:49,822 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:31:49,831 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:31:49,831 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:32:16,439 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 12:32:16,454 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:32:16,464 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 12:32:28,188 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:32:28,196 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:32:28,243 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:32:28,246 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:32:28,251 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:35:49,133 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 12:40:00,677 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 12:40:23,348 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:40:23,354 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:40:23,363 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:40:37,247 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 12:40:37,267 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:40:37,269 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 12:40:50,561 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:40:50,569 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:40:50,583 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:40:50,620 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:40:50,634 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:48:11,734 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 12:49:42,017 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:49:42,024 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:49:42,039 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:49:42,042 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:49:42,044 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:56:20,781 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:56:20,790 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 12:56:20,895 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:56:20,897 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:56:20,900 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:57:13,912 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,913 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,914 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,915 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,915 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,919 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,919 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,920 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,920 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,920 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,920 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,921 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,921 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,921 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,922 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,924 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,925 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,925 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,925 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,926 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,926 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:57:13,927 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 12:59:16,880 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 12:59:16,956 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:59:16,958 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 12:59:17,196 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:00:31,874 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 13:00:31,888 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:00:31,892 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 13:00:31,945 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 13:00:31,947 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 13:01:08,193 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 13:01:08,218 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:01:08,318 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:01:08,321 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:01:08,323 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:03:14,396 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 13:03:14,399 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 13:03:29,881 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 13:03:29,965 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:03:29,974 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:03:50,958 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 13:03:50,967 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:03:50,969 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 13:04:05,174 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 13:04:05,189 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:04:05,235 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:12:27,404 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 13:12:27,407 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 13:15:30,994 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 13:15:30,998 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 13:20:54,493 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 13:20:54,563 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:20:54,569 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 13:21:09,487 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 13:21:09,525 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:21:09,550 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:21:09,557 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:24:40,160 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 13:24:40,163 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 13:24:55,525 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 13:24:55,600 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:24:55,606 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 13:25:11,519 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 13:25:11,543 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:25:11,573 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:25:11,576 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:25:42,044 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 13:25:42,048 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 13:26:00,485 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 13:26:00,560 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:26:00,567 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 13:26:12,686 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 13:26:12,697 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:26:12,724 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:26:12,728 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:27:16,500 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 13:27:16,504 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 13:27:34,674 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 13:27:34,744 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:27:34,751 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 13:27:43,981 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 13:27:43,997 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:27:44,000 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 13:27:44,001 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 13:27:44,002 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 13:27:55,044 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 13:27:55,052 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:27:55,068 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:27:55,070 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:29:04,216 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 13:29:04,220 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 13:29:24,647 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 13:29:24,722 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:29:24,728 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 13:29:36,187 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 13:29:36,202 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:29:36,213 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:29:36,215 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:30:37,462 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 13:30:37,466 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 13:30:57,619 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 13:30:57,693 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:30:57,702 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 13:31:11,742 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 13:31:11,749 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:31:11,769 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:31:11,771 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:32:25,531 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 13:32:25,534 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 13:32:43,272 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 13:32:43,353 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:32:43,366 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 13:32:54,989 -[Client.Client.execute] [INFO] -SENT: 33 
+2017-04-29 13:32:54,998 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 13:32:55,016 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:32:55,019 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 13:32:55,022 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 14:44:37,716 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 14:44:37,719 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 14:45:13,355 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 14:45:13,433 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:45:13,441 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 14:45:13,442 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 14:46:12,195 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 14:46:12,218 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:48:41,493 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 14:48:41,499 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 14:48:44,614 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 14:48:44,695 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:50:04,909 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 14:50:04,912 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 14:50:13,726 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 14:50:13,808 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:51:04,249 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 14:51:04,258 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:51:34,050 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 14:51:34,055 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 14:51:38,307 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 14:51:38,379 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:52:38,430 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 14:52:38,433 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 14:52:49,673 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 14:52:49,747 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:53:45,128 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 14:53:45,137 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:53:45,143 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 14:53:45,144 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 14:53:45,144 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 14:54:11,634 -[Client.Client.execute] [INFO] -SENT: 34 
+2017-04-29 14:54:11,644 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:55:46,028 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 14:55:46,032 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 14:56:09,607 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 14:56:09,678 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:56:25,328 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 14:56:25,337 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:56:40,965 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 14:56:40,974 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:56:40,979 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 14:56:40,979 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 14:56:40,986 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 14:56:58,622 -[Client.Client.execute] [INFO] -SENT: 34 
+2017-04-29 14:56:58,631 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 14:56:58,639 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 14:58:50,616 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 14:58:50,621 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 14:59:03,713 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 14:59:03,787 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:01:36,805 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 15:01:36,815 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:02:14,994 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 15:02:14,997 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 15:02:25,686 -[Client.Client.execute] [INFO] -SENT: 32 
+2017-04-29 15:02:25,758 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:02:25,767 -[Client.Client.execute] [INFO] -REVEIVED: 42 
+2017-04-29 15:37:24,599 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:38:25,407 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:39:22,736 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:39:55,741 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:40:43,984 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:46:37,984 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:47:54,165 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:49:01,900 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:50:06,248 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:50:56,690 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:51:53,927 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:53:59,789 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:55:10,503 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 15:59:23,901 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:01:28,503 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:03:51,491 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:03:51,542 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:05:11,406 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:06:29,422 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:09:12,783 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:12:06,814 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:21:14,140 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 16:21:14,144 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 16:22:02,513 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 16:22:02,590 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:22:02,597 -[Client.Client.execute] [INFO] -REVEIVED: 45 
+2017-04-29 16:22:16,870 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:23:07,841 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:24:24,211 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:25:07,941 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:27:05,678 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:27:38,894 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:30:13,911 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 16:34:28,953 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:36:55,069 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:38:48,202 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:39:34,079 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:42:33,826 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 16:45:37,581 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,582 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,582 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,582 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,583 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,586 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,587 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,587 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,588 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,588 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,588 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,589 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,609 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,610 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,610 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,613 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,613 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,614 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,614 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,615 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,615 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,615 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,616 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 16:45:37,616 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 17:01:42,447 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:02:49,904 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:06:37,715 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:10:04,316 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:27:52,509 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 49 
+2017-04-29 17:27:52,513 -[Server.Server.main] [INFO] -Using secret: aswecan
+ 50 
+2017-04-29 17:32:41,401 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:33:49,676 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:34:24,843 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:35:03,672 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:35:41,386 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:36:09,275 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:36:36,770 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:37:15,766 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:38:36,702 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:39:10,771 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 17:39:10,780 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:39:10,787 -[Client.Client.execute] [INFO] -RECEIVED: 45 
+2017-04-29 17:39:20,151 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:40:08,918 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 17:40:08,938 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:40:08,966 -[Client.Client.execute] [INFO] -RECEIVED: 45 
+2017-04-29 17:40:26,847 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:40:33,631 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:43:38,928 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:44:16,318 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 17:44:16,326 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:44:16,327 -[Client.Client.execute] [INFO] -RECEIVED: 45 
+2017-04-29 17:44:48,870 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:47:24,224 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:48:33,173 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 17:50:13,953 -[Server.Server.serverClient] [INFO] -RECEIVED: 87 
+2017-04-29 18:15:16,650 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 51 
+2017-04-29 18:15:16,654 -[Server.Server.main] [INFO] -Using secret: seed
+ 52 
+2017-04-29 18:18:28,331 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 51 
+2017-04-29 18:18:28,335 -[Server.Server.main] [INFO] -Using secret: seed
+ 52 
+2017-04-29 18:18:28,335 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 53 
+2017-04-29 18:18:28,335 -[Server.Server.main] [INFO] -boundt to port 3000
+ 54 
+2017-04-29 18:18:28,335 -[Server.Server.main] [INFO] -started
+ 55 
+2017-04-29 18:22:42,813 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 51 
+2017-04-29 18:22:42,816 -[Server.Server.main] [INFO] -Using secret: seed
+ 52 
+2017-04-29 18:22:42,816 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 53 
+2017-04-29 18:22:42,817 -[Server.Server.main] [INFO] -boundt to port 3000
+ 54 
+2017-04-29 18:22:42,817 -[Server.Server.main] [INFO] -started
+ 55 
+2017-04-29 18:24:37,706 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 51 
+2017-04-29 18:24:37,709 -[Server.Server.main] [INFO] -Using secret: XJdbmdKXqNlHQy3kN4l4
+ 52 
+2017-04-29 18:24:37,709 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 53 
+2017-04-29 18:24:37,709 -[Server.Server.main] [INFO] -boundt to port 3000
+ 54 
+2017-04-29 18:24:37,710 -[Server.Server.main] [INFO] -started
+ 55 
+2017-04-29 18:38:19,279 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 51 
+2017-04-29 18:38:19,282 -[Server.Server.main] [INFO] -Using secret: q6jrSn0IHkzXNUoT1iOO
+ 52 
+2017-04-29 18:38:19,282 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 53 
+2017-04-29 18:38:19,283 -[Server.Server.main] [INFO] -boundt to port 3000
+ 54 
+2017-04-29 18:38:19,283 -[Server.Server.main] [INFO] -started
+ 55 
+2017-04-29 18:38:33,328 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 18:38:33,344 -[Client.Client.execute] [INFO] -RECEIVED: 47 
+2017-04-29 18:39:05,527 -[Client.Client.main] [INFO] -setting debug on 132 
+2017-04-29 18:39:05,559 -[Client.Client.execute] [INFO] -publishing to localhost:3000 36 
+2017-04-29 18:39:05,559 -[Client.Client.execute] [INFO] -SENT: 37 
+2017-04-29 18:39:05,563 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 18:39:05,567 -[Client.Client.execute] [INFO] -RECEIVED: 47 
+2017-04-29 18:40:59,940 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 18:40:59,992 -[Client.Client.execute] [INFO] -publishing to localhost:3000
+ 36 
+2017-04-29 18:40:59,993 -[Client.Client.execute] [INFO] -SENT: 37 
+2017-04-29 18:40:59,996 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 18:41:00,019 -[Client.Client.execute] [INFO] -RECEIVED: 47 
+2017-04-29 18:53:25,422 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 18:53:25,427 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 18:53:42,633 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 18:53:42,636 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 18:54:29,418 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 18:54:29,431 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 18:54:42,580 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 18:54:42,706 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 18:54:42,707 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 18:54:42,711 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 18:54:42,714 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 18:59:51,987 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 51 
+2017-04-29 18:59:51,991 -[Server.Server.main] [INFO] -Using secret: gd9ncuL9V13KgmpVa7Nf
+ 52 
+2017-04-29 18:59:51,991 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 53 
+2017-04-29 18:59:51,991 -[Server.Server.main] [INFO] -boundt to port 3000
+ 54 
+2017-04-29 18:59:51,991 -[Server.Server.main] [INFO] -started
+ 55 
+2017-04-29 19:00:34,047 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 19:00:34,080 -[Client.Client.execute] [INFO] -publishing to localhost:3000
+ 36 
+2017-04-29 19:00:34,081 -[Client.Client.execute] [INFO] -SENT: 37 
+2017-04-29 19:00:34,170 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:00:34,178 -[Client.Client.execute] [INFO] -RECEIVED: 47 
+2017-04-29 19:01:55,565 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:01:55,573 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:06:26,263 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 51 
+2017-04-29 19:06:26,268 -[Server.Server.main] [INFO] -Using secret: wy30tYbUKTxe3EtRPRAq
+ 52 
+2017-04-29 19:06:26,268 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 53 
+2017-04-29 19:06:26,268 -[Server.Server.main] [INFO] -boundt to port 3000
+ 54 
+2017-04-29 19:06:26,268 -[Server.Server.main] [INFO] -started
+ 55 
+2017-04-29 19:06:45,315 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:06:45,325 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:06:45,346 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:07:16,743 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:07:16,757 -[Client.Client.execute] [INFO] -RECEIVED: 47 
+2017-04-29 19:07:30,960 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:07:30,963 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:09:00,002 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 51 
+2017-04-29 19:09:00,006 -[Server.Server.main] [INFO] -Using secret: YKg7ODuY8oVTwzHG3vXA
+ 52 
+2017-04-29 19:09:00,007 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 53 
+2017-04-29 19:09:00,008 -[Server.Server.main] [INFO] -boundt to port 3000
+ 54 
+2017-04-29 19:09:00,008 -[Server.Server.main] [INFO] -started
+ 55 
+2017-04-29 19:09:14,565 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:09:14,576 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:09:14,589 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:09:37,603 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:09:37,611 -[Client.Client.execute] [INFO] -RECEIVED: 47 
+2017-04-29 19:09:49,249 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:09:49,252 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:09:49,271 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:09:49,272 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:12:04,504 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 19:12:04,629 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 19:12:04,629 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 19:12:04,633 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:12:04,635 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:12:04,635 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:12:04,636 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:19:18,106 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:19:18,108 -[Client.Client.execute] [INFO] -RECEIVED: 47 
+2017-04-29 19:19:33,412 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:19:33,450 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:19:33,454 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:19:33,454 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:20:06,450 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:20:06,460 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:20:06,532 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:20:06,532 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:20:06,532 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:20:25,663 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:20:30,931 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 19:20:31,121 -[Client.Client.execute] [INFO] -Removing to localhost:3000
+ 35 
+2017-04-29 19:20:31,121 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 19:20:31,128 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:20:31,131 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 19:22:20,637 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 19:22:20,851 -[Client.Client.execute] [INFO] -Removing to localhost:3000
+ 35 
+2017-04-29 19:22:20,851 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 19:22:20,858 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:22:20,867 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 19:28:27,057 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:28:27,119 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:28:27,174 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:28:27,244 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:29:16,137 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:29:16,196 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:29:16,201 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:29:16,201 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:31:02,245 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 51 
+2017-04-29 19:31:02,248 -[Server.Server.main] [INFO] -Using secret: QxzQ9nbiXkZEfoSh6eqE
+ 52 
+2017-04-29 19:31:02,249 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 53 
+2017-04-29 19:31:02,249 -[Server.Server.main] [INFO] -boundt to port 3000
+ 54 
+2017-04-29 19:31:02,249 -[Server.Server.main] [INFO] -started
+ 55 
+2017-04-29 19:36:26,908 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:36:26,917 -[Client.Client.execute] [INFO] -REVEIVED: 44 
+2017-04-29 19:38:10,803 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:38:10,810 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:38:10,835 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:38:10,836 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 19:40:19,161 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 19:40:19,212 -[Client.Client.execute] [INFO] -Fetching to localhost:3000
+ 34 
+2017-04-29 19:40:19,212 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 19:40:19,221 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:40:19,286 -[Client.Client.execute] [INFO] -RECEIVED: 46 
+2017-04-29 19:41:49,026 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 19:41:49,125 -[Client.Client.execute] [INFO] -Fetching to localhost:3000
+ 34 
+2017-04-29 19:41:49,126 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 19:41:49,132 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 19:41:49,144 -[Client.Client.execute] [INFO] -RECEIVED: 46 
+2017-04-29 19:41:49,146 -[Client.Client.execute] [INFO] -RECEIVED: 46 
+2017-04-29 19:41:49,151 -[Client.Client.execute] [INFO] -RECEIVED: 46 
+2017-04-29 20:07:07,311 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:07:58,263 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:43:03,709 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 52 
+2017-04-29 20:43:03,714 -[Server.Server.main] [INFO] -Using secret: TDfN4e7cOybSXiUPGgE7
+ 53 
+2017-04-29 20:43:03,715 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 54 
+2017-04-29 20:43:03,716 -[Server.Server.main] [INFO] -Bound to port 3000
+ 55 
+2017-04-29 20:43:10,062 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:43:10,173 -[Client.Client.execute] [INFO] -Fetching to localhost:3000
+ 34 
+2017-04-29 20:43:10,179 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 20:43:10,194 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:43:10,203 -[Client.Client.execute] [INFO] -RECEIVED: 46 
+2017-04-29 20:43:15,280 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:43:15,417 -[Client.Client.execute] [INFO] -Fetching to localhost:3000
+ 34 
+2017-04-29 20:43:15,419 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 20:43:15,423 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:43:15,433 -[Client.Client.execute] [INFO] -RECEIVED: 46 
+2017-04-29 20:44:49,595 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:44:49,713 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 20:44:49,713 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 20:44:49,717 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:44:49,719 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:44:49,720 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:45:20,919 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:45:21,034 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 20:45:21,035 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 20:45:21,039 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:45:21,047 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:45:21,049 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:46:01,981 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:46:02,167 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 20:46:02,167 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 20:46:02,171 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:46:02,180 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:46:02,181 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:46:29,431 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:46:29,611 -[Client.Client.execute] [INFO] -ERROR: missing or invalid serverlists 63 
+2017-04-29 20:47:07,298 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:47:07,510 -[Client.Client.execute] [INFO] -SENT: 46 
+2017-04-29 20:47:07,514 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:47:07,517 -[Client.Client.execute] [INFO] -REVEIVED: 56 
+2017-04-29 20:47:07,526 -[Client.Client.execute] [INFO] -REVEIVED: 56 
+2017-04-29 20:47:52,663 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:47:52,836 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 20:47:52,837 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 20:47:52,840 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:47:52,843 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:47:52,844 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:49:24,910 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:49:25,047 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 20:49:25,047 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 20:49:25,051 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:49:25,052 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:49:25,052 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:50:42,868 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:50:43,042 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 20:50:43,043 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 20:50:43,046 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:50:43,048 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:52:37,509 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:52:57,282 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 52 
+2017-04-29 20:52:57,286 -[Server.Server.main] [INFO] -Using secret: JsaQY6aKfXMcNNrVb6wt
+ 53 
+2017-04-29 20:52:57,287 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 54 
+2017-04-29 20:52:57,287 -[Server.Server.main] [INFO] -Bound to port 3000
+ 55 
+2017-04-29 20:53:00,125 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:53:00,149 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 20:53:00,150 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 20:53:00,227 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:53:00,236 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:53:00,237 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:55:07,581 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:55:29,615 -[Client.Client.execute] [INFO] -SENT: 46 
+2017-04-29 20:55:29,623 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:55:29,626 -[Client.Client.execute] [INFO] -REVEIVED: 56 
+2017-04-29 20:55:29,636 -[Client.Client.execute] [INFO] -REVEIVED: 56 
+2017-04-29 20:55:59,250 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:55:59,357 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 20:55:59,358 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 20:55:59,366 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:55:59,368 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:55:59,369 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:56:17,384 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 20:56:17,438 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 20:56:17,439 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 20:56:17,444 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:56:17,450 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 20:58:16,417 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 52 
+2017-04-29 20:58:16,421 -[Server.Server.main] [INFO] -Using secret: yASFDX2gs4RxfqcWuqOx
+ 53 
+2017-04-29 20:58:16,422 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 54 
+2017-04-29 20:58:16,422 -[Server.Server.main] [INFO] -Bound to port 3000
+ 55 
+2017-04-29 20:58:20,558 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:59:15,099 -[Client.Client.execute] [INFO] -SENT: 46 
+2017-04-29 20:59:15,106 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:59:15,114 -[Client.Client.execute] [INFO] -REVEIVED: 56 
+2017-04-29 20:59:15,120 -[Client.Client.execute] [INFO] -REVEIVED: 56 
+2017-04-29 20:59:38,638 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 20:59:38,642 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:01:35,908 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 52 
+2017-04-29 21:01:35,910 -[Server.Server.main] [INFO] -Using secret: v3RlwPpHWR3MJqVe9HMY
+ 53 
+2017-04-29 21:01:35,911 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 54 
+2017-04-29 21:01:35,911 -[Server.Server.main] [INFO] -Bound to port 3000
+ 55 
+2017-04-29 21:01:40,607 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:01:40,616 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:01:40,620 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:02:56,902 -[Client.Client.execute] [INFO] -SENT: 46 
+2017-04-29 21:02:56,909 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:02:56,916 -[Client.Client.execute] [INFO] -REVEIVED: 56 
+2017-04-29 21:02:56,926 -[Client.Client.execute] [INFO] -REVEIVED: 56 
+2017-04-29 21:03:23,674 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:03:23,680 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:03:23,719 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:03:23,720 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:05:17,172 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 52 
+2017-04-29 21:05:17,175 -[Server.Server.main] [INFO] -Using secret: 2zUAXi3BTVC3ju1F63g6
+ 53 
+2017-04-29 21:05:17,176 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 54 
+2017-04-29 21:05:17,176 -[Server.Server.main] [INFO] -Bound to port 3000
+ 55 
+2017-04-29 21:06:04,088 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:06:04,097 -[Client.Client.execute] [INFO] -RECEIVED: 47 
+2017-04-29 21:06:17,824 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 21:06:17,911 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 21:06:17,912 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 21:06:17,926 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:06:17,935 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:06:17,939 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:06:17,939 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:06:54,867 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:06:54,870 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 21:07:16,031 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:07:16,041 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 21:07:45,550 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 21:07:45,689 -[Client.Client.execute] [INFO] -Sharing to localhost:3000
+ 33 
+2017-04-29 21:07:45,689 -[Client.Client.execute] [INFO] -SENT: 34 
+2017-04-29 21:07:45,692 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:07:45,694 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 21:09:01,349 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 21:09:01,486 -[Client.Client.execute] [INFO] -Sharing to localhost:3000
+ 33 
+2017-04-29 21:09:01,487 -[Client.Client.execute] [INFO] -SENT: 34 
+2017-04-29 21:09:01,490 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:09:01,497 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 21:09:17,583 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 21:09:17,730 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 21:09:17,731 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 21:09:17,744 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:09:17,747 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:09:17,747 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:09:17,748 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:09:41,479 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 21:09:41,625 -[Client.Client.execute] [INFO] -Removing to localhost:3000
+ 35 
+2017-04-29 21:09:41,626 -[Client.Client.execute] [INFO] -SENT: 36 
+2017-04-29 21:09:41,630 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:09:41,685 -[Client.Client.execute] [INFO] -REVEIVED: 46 
+2017-04-29 21:09:58,919 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:09:58,941 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:09:58,983 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:09:58,983 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:11:02,521 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 21:11:02,648 -[Client.Client.execute] [INFO] -Sharing to localhost:3000
+ 33 
+2017-04-29 21:11:02,649 -[Client.Client.execute] [INFO] -SENT: 34 
+2017-04-29 21:11:02,652 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:11:02,654 -[Client.Client.execute] [INFO] -RECEIVED: 44 
+2017-04-29 21:11:22,413 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 21:11:22,703 -[Client.Client.execute] [INFO] -Fetching to localhost:3000
+ 34 
+2017-04-29 21:11:22,703 -[Client.Client.execute] [INFO] -SENT: 35 
+2017-04-29 21:11:22,708 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:11:22,719 -[Client.Client.execute] [INFO] -RECEIVED: 46 
+2017-04-29 21:11:22,780 -[Client.Client.execute] [INFO] -RECEIVED: 46 
+2017-04-29 21:11:22,785 -[Client.Client.execute] [INFO] -RECEIVED: 46 
+2017-04-29 21:12:45,600 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 21:12:45,854 -[Client.Client.execute] [INFO] -querying to localhost:3000
+ 37 
+2017-04-29 21:12:45,863 -[Client.Client.execute] [INFO] -SENT: 38 
+2017-04-29 21:12:45,893 -[Server.Server.serverClient] [INFO] -RECEIVED: 92 
+2017-04-29 21:12:46,013 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:12:46,028 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:12:46,028 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:12:46,033 -[Client.Client.execute] [INFO] -RECEIVED: 48 
+2017-04-29 21:18:52,333 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 52 
+2017-04-29 21:18:52,339 -[Server.Server.main] [INFO] -Using secret: JWnyHQZ4PG8mzj4LA1R3
+ 53 
+2017-04-29 21:18:52,339 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 54 
+2017-04-29 21:18:52,339 -[Server.Server.main] [INFO] -Bound to port 3000
+ 55 
+2017-04-29 21:19:12,211 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 21:19:12,243 -[Client.Client.execute] [INFO] -ERROR: missing or invalid serverlists 66 
+2017-04-29 21:19:12,243 -[Client.Client.execute] [INFO] -RECEIVED: 70 
+2017-04-29 21:20:58,470 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 52 
+2017-04-29 21:20:58,474 -[Server.Server.main] [INFO] -Using secret: bpsICWZ4u3eoUsKTEMIj
+ 53 
+2017-04-29 21:20:58,475 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 54 
+2017-04-29 21:20:58,475 -[Server.Server.main] [INFO] -Bound to port 3000
+ 55 
+2017-04-29 21:21:09,313 -[Client.Client.main] [INFO] -setting debug on
+ 132 
+2017-04-29 21:21:09,343 -[Client.Client.execute] [INFO] -RECEIVED: 69 
+2017-04-29 22:49:48,516 -[Server.Server.main] [INFO] -Starting the EZShare Server
+ 56 
+2017-04-29 22:49:48,520 -[Server.Server.main] [INFO] -Using secret: 7duPtva3T2WJvyc0VnIt
+ 57 
+2017-04-29 22:49:48,520 -[Server.Server.main] [INFO] -Using advertised hostname: aswecan3000 
+ 58 
+2017-04-29 22:49:48,520 -[Server.Server.main] [INFO] -Bound to port 3000
+ 59 
