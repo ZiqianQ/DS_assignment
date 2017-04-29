@@ -8,7 +8,8 @@ public class Client {
 
 	private static String ip;
     private static int port;
-
+    
+    public static boolean debugState= false;
 	private static String getchannel = null;
 	private static String getdescription = null;
 	private static String gethost = null;
@@ -114,6 +115,10 @@ public class Client {
 			if (commandline.hasOption("servers")) {
 				getservers = commandline.getOptionValue("servers");
 			}
+			
+//			if (commandline.hasOption("debug")) {
+//				debugState = true;
+//			}
 
 
 			//整理好之后就可以向server端传command了，把整理好的resource跟着command传过去
