@@ -17,7 +17,7 @@ import org.json.simple.parser.ParseException;
 public class fetchCommand {
 	
 
-	public void execute(String ip, int port, Resource aResource) throws ParseException {
+	public void execute(String ip, int port, Resource aResource, boolean debugMode) throws ParseException {
 		 try(Socket socket = new Socket(ip, port);){
 				// Output and Input Stream
 				DataInputStream input = new DataInputStream(socket.getInputStream());
@@ -30,9 +30,11 @@ public class fetchCommand {
 		 		JSONObject resource = aResource.render();
 		 		
 		 		newCommand.put("resourceTemplate",resource);  
-		 		Client.logger.info("SENT:");
-		 		System.out.println(newCommand.toJSONString());
-		 		
+		 		if(debugMode){
+					Client.logger.info("Fetching to "+ip+":"+port+"\n");	
+					Client.logger.info("SENT:");
+					System.out.println(newCommand.toJSONString());
+					} 
 		 		// Send RMI to Server
 		 		output.writeUTF(newCommand.toJSONString());
 		 		output.flush();
@@ -41,19 +43,18 @@ public class fetchCommand {
 		 		while (true){
 		 			if(input.available() > 0){
 		 				String result = input.readUTF();
-		 				Client.logger.info("REVEIVED:");
+		 				Client.logger.info("RECEIVED:");
 		 				System.out.println(result);
 		 				JSONObject command = (JSONObject) parser.parse(result);
 		 				
-		 				if(command.containsKey("command")){
-		 					JSONObject resourcesTemplate = (JSONObject) command.get("resourceTemplate");
-			 				String fileName ="client_files/"+ (String) resourcesTemplate.get("name"); 
+		 				if(command.containsKey("resourceSize")){ 
+			 				String fileName ="client_files/"+ (String) command.get("name"); 
 			 				 
 		 					// The file location
 								// Create a RandomAccessFile to read and write the output file.
 								RandomAccessFile downloadingFile = new RandomAccessFile(fileName, "rw");
 								// Find out how much size is remaining to get from the server.
-								long fileSizeRemaining = (Long) resourcesTemplate.get("resourceSize");
+								long fileSizeRemaining = (Long) command.get("resourceSize");
 								int chunkSize = setChunkSize(fileSizeRemaining);
 								
 								// Represents the receiving buffer
