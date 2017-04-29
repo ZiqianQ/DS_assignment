@@ -17,7 +17,7 @@ import org.json.simple.parser.ParseException;
 public class removeCommand {
 	
 
-	public static void execute(String ip, int port, Resource aResource){
+	public static void execute(String ip, int port, Resource aResource, boolean debugMode){
 		try(Socket socket = new Socket(ip,port)){
 			//output stream
 			DataOutputStream output = new DataOutputStream(socket.getOutputStream());
@@ -31,9 +31,11 @@ public class removeCommand {
 			newCommand.put("resource", resource); 
 			
 			//print JSONObject
-			Client.logger.info("SENT:");
-			System.out.println(newCommand.toJSONString());
-			
+			if(debugMode){
+				Client.logger.info("Removing to "+ip+":"+port+"\n");	
+				Client.logger.info("SENT:");
+				System.out.println(newCommand.toJSONString());
+				}
 			//send command to server
 			output.writeUTF(newCommand.toJSONString());
 			output.flush();
