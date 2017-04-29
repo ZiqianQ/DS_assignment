@@ -23,7 +23,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
+import org.apache.commons.lang3.RandomStringUtils;
 
 
 public class Server {
@@ -31,7 +31,8 @@ public class Server {
 	private final static Logger logger = Logger.getLogger(Server.class);
 	private static JSONArray Store = new JSONArray();
 	private static String secret = "seed";
-
+//	public static final String secret = RandomStringUtils.randomAlphanumeric(20);
+	public static JSONArray serverList = new JSONArray();
 	public static void main(String[] args) {
 
 		Options options = new Options();
