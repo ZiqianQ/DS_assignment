@@ -3,13 +3,16 @@ package Client;
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 
+import com.sun.webkit.ThemeClient;
+
+import sun.security.krb5.internal.ReplayCache;
+
 public class Client {
 	
 
 	private static String ip;
     private static int port;
-    
-    public static boolean debugState= false;
+
 	private static String getchannel = null;
 	private static String getdescription = null;
 	private static String gethost = null;
@@ -20,6 +23,7 @@ public class Client {
 	private static String getservers = null;
 	private static String gettags = null;
 	private static String geturi = null;
+	private static boolean relay = false;
 
 	private static Resource aResource = new Resource();
 
@@ -48,6 +52,7 @@ public class Client {
 		options.addOption("share", false, "share resource on server");
 		options.addOption("tags", true, "resource tags, tag1,tag2,tag3,...");
 		options.addOption("uri", true, "resource URI");
+		options.addOption("relay", true, "relay status");
 		options.addOption("h","help", false, "information about how to use");
 
 	   
@@ -116,9 +121,11 @@ public class Client {
 				getservers = commandline.getOptionValue("servers");
 			}
 			
-//			if (commandline.hasOption("debug")) {
-//				debugState = true;
-//			}
+			//set relay status
+			if (commandline.hasOption("relay")) {
+				 relay = new Boolean(commandline.getOptionValue("relay"));
+	
+			}
 
 
 			//整理好之后就可以向server端传command了，把整理好的resource跟着command传过去
@@ -129,7 +136,8 @@ public class Client {
 			//query resource from server
 			if (commandline.hasOption("query")) {
 				queryCommand query = new queryCommand(); 
-				query.execute(ip, port, aResource);
+
+				query.execute(ip, port, aResource, relay);
 			}
 			//publish resource to server
 			if (commandline.hasOption("publish")) {
@@ -152,10 +160,10 @@ public class Client {
 				fetch.execute(ip, port, aResource);
 			}
 			//exchange server address and port
-			if (commandline.hasOption("exchange")) {
+			/*if (commandline.hasOption("exchange")) {
 				exchangeCommand exchange = new exchangeCommand();
-				exchange.execute(ip, port); //实际上exchange用不到这个aResource,应该有一个servers list
-			} 
+				exchange.execute(ip, port, getservers); //实际上exchange用不到这个aResource,应该有一个servers list
+			} */
 			
 			
 		} catch (Exception e) {
