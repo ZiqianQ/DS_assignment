@@ -8,9 +8,10 @@ import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
 public class Query {
-	public void exe(Socket clientServer, JSONArray Store, JSONObject received) throws IOException {
+	public void exe(Socket clientServer, JSONArray Store, JSONObject received) throws IOException, ParseException {
 		try {
 			// Input stream
 			DataInputStream input = new DataInputStream(clientServer.getInputStream());
@@ -24,7 +25,7 @@ public class Query {
 			output.writeUTF(message.toJSONString());
 			output.flush();
 
-			JSONObject resourceTemplate = received;
+			JSONObject resourceTemplate = (JSONObject) received.get("resourceTemplate");
 
 			// primary key && other rules
 			String uri = (String) resourceTemplate.get("uri");
@@ -93,7 +94,8 @@ public class Query {
 					display.remove(storeResource);
 				}
 			}
-
+		
+			int count = 0;
 			for (int i = 0; i < display.size(); i++) {
 				JSONObject displayResource = (JSONObject) display.get(i);
 
@@ -108,11 +110,12 @@ public class Query {
 				}
 				output.writeUTF(displayResource.toJSONString());
 				output.flush();
+				count++;
 			}
 
 			// print {"resultSize" : int }
 			JSONObject resultSize = new JSONObject();
-			resultSize.put("resultSize", display.size());
+			resultSize.put("resultSize", count);
 			output.writeUTF(resultSize.toJSONString());
 			output.flush();
 
