@@ -17,6 +17,7 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
+
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -24,14 +25,15 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.apache.commons.lang3.RandomStringUtils;
 
+
 public class Server {
 	private static int port = 3000;
 	private final static Logger logger = Logger.getLogger(Server.class);
 	private static JSONArray Store = new JSONArray();
-	// private static String secret = "seed";
+	//private static String secret = "seed"
 	public static final String secret = RandomStringUtils.randomAlphanumeric(20);
 	public static JSONArray serverList = new JSONArray();
-
+	
 	public static void main(String[] args) {
 
 		Options options = new Options();
@@ -40,15 +42,17 @@ public class Server {
 		options.addOption("advertisedhostname", true, "advertised hostname");
 		options.addOption("connectionintervallimit", true, "connection interval limit in seconds");
 		options.addOption("exchangeinterval", true, "exchange interval in seconds");
-
+		
 		options.addOption("port", true, "server port, an integer");
 		options.addOption("secret", true, "secret");
 		options.addOption("debug", false, "print debug information");
 
 		ServerSocketFactory factory = ServerSocketFactory.getDefault();
 		try (ServerSocket server = factory.createServerSocket(port)) {
-			logger.info("Starting the EZShare Server" + "\n");
-			logger.info("Using secret: " + secret + "\n");
+			logger.info("Starting the EZShare Server"+"\n");
+			logger.info("Using secret: "+ secret + "\n");
+			logger.info("Using advertised hostname: aswecan3000"+" \n");
+			logger.info("Bound to port "+port +"\n"); 
 			// wait for connection
 			while (true) {
 
@@ -79,37 +83,29 @@ public class Server {
 			JSONObject received;
 			JSONObject resource;
 			String owner;
-
-			/*
-			 * JSONObject Fiona = new JSONObject(); Fiona.put("host",
-			 * "10.12.67.55"); Fiona.put("port", "3000");
-			 * 
-			 * serverList.add(Fiona);
-			 */
+			
 			Error error = new Error();
-
+			 
 			while (true) {
 				if (input.available() > 0) {
 					received = (JSONObject) parser.parse(input.readUTF());
 					logger.info("RECEIVED:");
-
-					System.out.println(received.toJSONString());
-
 					
-//					resource = (JSONObject) received.get("resourceTemplate");
+					System.out.println(received.toJSONString());
+					 
 
-					// check if there is a resource field
-					if (received.containsKey("resource") || received.containsKey("resourceTemplate")) {
-						if (received.containsKey("resource")) {
-							resource = (JSONObject) received.get("resource");
-						} else {
-							resource = (JSONObject) received.get("resourceTemplate");
+					//check if there is a resource field
+					if (received.containsKey("resource") || received.containsKey("resourceTemplate")){
+						if (received.containsKey("resource")){
+							resource = (JSONObject)received.get("resource");
+						}else {
+							resource = (JSONObject)received.get("resourceTemplate");
 						}
-						owner = (String) resource.get("owner");
-					} else {
-						if (received.containsKey("resource")) {
+						owner = (String)resource.get("owner");
+					}else {
+						if (received.containsKey("resource")){
 							output.writeUTF(error.missingRes().toJSONString());
-						} else if (received.containsKey("resourceTemplate")) {
+						}else if(received.containsKey("resourceTemplate")){
 							output.writeUTF(error.missingResT().toJSONString());
 						}
 						else {
@@ -121,89 +117,85 @@ public class Server {
 							}
 							
 						}
-						
+
 						output.close();
-						break;// exit while loop
+						break;//exit while loop
 					}
-					// check if the resource is valid
-					if (!resource.containsKey("uri") || !resource.containsKey("channel")
-							|| !resource.containsKey("owner") || !resource.containsKey("name")
-							|| !resource.containsKey("description") || !resource.containsKey("ezserver")
-							|| !resource.containsKey("tags") || owner.equals("*") || resource.size() != 7) {
-						if (received.containsKey("resource")) {
+					
+			        //check if the resource is valid
+					if(!resource.containsKey("uri") || !resource.containsKey("channel") || !resource.containsKey("owner") 
+							|| !resource.containsKey("name") || !resource.containsKey("description") ||!resource.containsKey("ezserver")
+							|| !resource.containsKey("tags") || owner.equals("*") || resource.size() != 7){
+						if (received.containsKey("resource")){
 							output.writeUTF(error.invalidRes().toJSONString());
-						} else if (received.containsKey("resourceTemplate")) {
+						}else if(received.containsKey("resourceTemplate")){
 							output.writeUTF(error.invalidResT().toJSONString());
 						}
-						
 						output.close();
-						break;// exit while loop
+						break;//exit while loop
 					}
-
-					// check if there is a command field
-					else if (!received.containsKey("command")) {
+					
+					//check if there is a command field
+					else if (!received.containsKey("command")){
 						output.writeUTF(error.missingCmd().toJSONString());
 						output.close();
-						break;// exit while loop
+						break;//exit while loop
 					}
 
 					String receivedCmd = received.get("command").toString();
-				
+					
 					switch (receivedCmd.toLowerCase()) {
 					case "query":
 						Query query = new Query();
 						query.exe(clientServer, Store, received);
 						break;
-
+						
 					case "publish":
 						Publish publish = new Publish();
 						publish.exe(clientServer, Store, resource);
 						break;
-
+						
 					case "remove":
 						Remove remove = new Remove();
 						remove.exe(clientServer, Store, resource);
 						break;
-
+						
+						
 					case "share":
-						if (received.containsKey("secret")) {
+						if (received.containsKey("secret")){
 							String receivedSecret = (String) received.get("secret");
-							if (receivedSecret.equals(secret)) {
+							if (receivedSecret.equals(secret)){
 								Share share = new Share();
-								share.exe(clientServer, Store, resource);
-							} else {
+						        share.exe(clientServer, Store, resource);
+							}else {
 								output.writeUTF(error.incorrectSecret().toJSONString());
 								output.close();
 							}
-						} else {
+						}else {
 							output.writeUTF(error.noSecret().toJSONString());
 							output.close();
-						}
+						}					
 						break;
-
+						
 					case "fetch":
 						Fetch fetch = new Fetch();
 						fetch.exe(clientServer, Store, resource);
 						break;
-
-					/*case "exchange":
-						Exchange exchange = new Exchange();
-						JSONArray serverList = (JSONArray) received.get("serverList");
-						System.out.println("server183 serverList:" + serverList);
-						exchange.exe(clientServer, serverList);
-						*/
+					
 					default:
 						output.writeUTF(error.unknownCmd().toJSONString());
 						output.close();
 						break;
 					}
-
+					
 				}
 			}
 
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 	}
 }
+	
+	
