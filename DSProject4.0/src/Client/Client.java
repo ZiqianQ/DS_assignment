@@ -167,10 +167,10 @@ public class Client {
 				fetch.execute(ip, port, aResource,debugMode);
 			}
 			//exchange server address and port
-			/*if (commandline.hasOption("exchange")) {
+			if (commandline.hasOption("exchange")) {
 				exchangeCommand exchange = new exchangeCommand();
 				exchange.execute(ip, port, getservers); //实际上exchange用不到这个aResource,应该有一个servers list
-			} */
+			} 
 			
 			
 		} catch (Exception e) {
