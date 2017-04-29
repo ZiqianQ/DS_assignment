@@ -25,7 +25,8 @@ public class Query {
 			output.writeUTF(message.toJSONString());
 			output.flush();
 			System.out.println("received:"+received);
-			JSONObject resourceTemplate = (JSONObject) received.get("resourceTemplate");			
+			JSONObject resourceTemplate = (JSONObject) received.get("resourceTemplate");
+			
 			// primary key && other rules
 			String uri = (String) resourceTemplate.get("uri");
 			String channel = (String) resourceTemplate.get("channel");
@@ -45,7 +46,7 @@ public class Query {
 			if ((boolean) received.get("relay")) {
 				for (int i = 0; i < Server.serverList.size(); i++) {
 					String ip = (String) ((JSONObject)(Server.serverList.get(i))).get("host");
-					int port = Integer.parseInt((String)((JSONObject)(Server.serverList.get(i))).get("port"));
+					int port = (int)((JSONObject)Server.serverList.get(i)).get("port");
 					received.put("relay", false);
 					queryRelay.execute(ip,port,received,display);
 				}
@@ -62,7 +63,7 @@ public class Query {
 				String storeName = (String) storeResource.get("name");
 				String storeDesc = (String) storeResource.get("description");
 
-				// the template channel must equal the resource channel
+				// the template channel must equal the resource channel 
 				if (!channel.equals(storeChannel)) {
 					display.remove(storeResource);
 				}
