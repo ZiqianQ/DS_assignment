@@ -144,7 +144,7 @@ public class Client {
 			if (commandline.hasOption("query")) {
 				queryCommand query = new queryCommand(); 
 
-				query.execute(ip, port, aResource);
+				query.execute(ip, port, aResource, debugMode);
 			}
 			//publish resource to server
 			if (commandline.hasOption("publish")) {
@@ -154,17 +154,17 @@ public class Client {
 			//remove resource from server
 			if (commandline.hasOption("remove")) {
 				removeCommand remove = new removeCommand();
-				remove.execute(ip, port, aResource);
+				remove.execute(ip, port, aResource,debugMode);
 			}
 			//share file to server
 			if (commandline.hasOption("share")) {
 				shareCommand share = new shareCommand();
-				share.execute(ip, port, aResource);
+				share.execute(ip, port, aResource,debugMode);
 			}
 			//fetch files from server
 			if (commandline.hasOption("fetch")) {
 				fetchCommand fetch = new fetchCommand();
-				fetch.execute(ip, port, aResource);
+				fetch.execute(ip, port, aResource,debugMode);
 			}
 			//exchange server address and port
 			/*if (commandline.hasOption("exchange")) {
