@@ -16,7 +16,7 @@ import org.json.simple.parser.ParseException;
 
 public class shareCommand {
 	
-	public static void execute (String ip, int port, Resource aResource){
+	public static void execute (String ip, int port, Resource aResource, boolean debugMode){
 		try(Socket socket = new Socket(ip,port)){
 			//output stream
 			DataOutputStream output = new DataOutputStream(socket.getOutputStream());
@@ -29,9 +29,11 @@ public class shareCommand {
 			 newCommand.put("command", "SHARE");		
 		 		newCommand.put("secret", aResource.getSecret());	
 		 		newCommand.put("resource",resource); 
-		 		Client.logger.info("SENT:");
-		 		System.out.println(newCommand.toJSONString());
-		 		
+		 		if(debugMode){
+					Client.logger.info("Sharing to "+ip+":"+port+"\n");	
+					Client.logger.info("SENT:");
+					System.out.println(newCommand.toJSONString());
+					} 
 		 		// Send command to Server	
 		 		output.writeUTF(newCommand.toJSONString());
 		 		output.flush();
@@ -39,7 +41,7 @@ public class shareCommand {
 		 		while(true){
 					if (input.available()>0) {
 						String result = input.readUTF();
-						Client.logger.info("REVEIVED:");
+						Client.logger.info("RECEIVED:");
 						System.out.println(result);
 					}
 				}
