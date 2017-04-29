@@ -23,16 +23,26 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import com.sun.org.apache.bcel.internal.util.SecuritySupport;
+
 import org.apache.commons.lang3.RandomStringUtils;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.*;
 
 
 public class Server {
 	private static int port = 3000;
-	private final static Logger logger = Logger.getLogger(Server.class);
+	private static Logger logger = Logger.getLogger(Server.class);
 	private static JSONArray Store = new JSONArray();
 	//private static String secret = "seed"
-	public static final String secret = RandomStringUtils.randomAlphanumeric(20);
+	public static String secret = RandomStringUtils.randomAlphanumeric(20);
 	public static JSONArray serverList = new JSONArray();
+	private static int getinterval = 600000;
+	private static String hostname = "Aswecan server";
+	private static int connectinterval = 500000;
+	private static int setport = 3000;
 	
 	public static void main(String[] args) {
 
@@ -47,11 +57,34 @@ public class Server {
 		options.addOption("secret", true, "secret");
 		options.addOption("debug", false, "print debug information");
 
+		
+		
 		ServerSocketFactory factory = ServerSocketFactory.getDefault();
 		try (ServerSocket server = factory.createServerSocket(port)) {
+			
+			CommandLineParser commandparser = new DefaultParser();
+			CommandLine commandLine = commandparser.parse(options, args);
+			if (commandLine.hasOption("exchangeinterval")) {
+				getinterval = Integer.parseInt(commandLine.getOptionValue("exchangeinterval"))*1000;
+			}
+			if (commandLine.hasOption("advertisedhostname")) {
+				hostname = commandLine.getOptionValue("advertisedhostname");
+			}
+			if (commandLine.hasOption("connectionintervallimit")) {
+				connectinterval = Integer.parseInt(commandLine.getOptionValue("connectionintervallimit"));
+			}
+			if (commandLine.hasOption("port")) {
+				setport = Integer.parseInt(commandLine.getOptionValue("port"));
+			}
+			if (commandLine.hasOption("secret")) {
+				secret = commandLine.getOptionValue("secret");
+			}
+			if (commandLine.hasOption("debug")) {
+				
+			}
 			logger.info("Starting the EZShare Server"+"\n");
 			logger.info("Using secret: "+ secret + "\n");
-			logger.info("Using advertised hostname: aswecan3000"+" \n");
+			logger.info("Using advertised hostname: "+hostname+" \n");
 			logger.info("Bound to port "+port +"\n"); 
 			// wait for connection
 			while (true) {
@@ -62,14 +95,15 @@ public class Server {
 				t.start();
 			}
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-
-	private static void serverClient(Socket client) {
+	
+	private static void serverClient(Socket client)  {
 		try (Socket clientServer = client) {
+			
 
 			// Input stream
 			DataInputStream input = new DataInputStream(clientServer.getInputStream());
@@ -87,6 +121,24 @@ public class Server {
 			Error error = new Error();
 			 
 			while (true) {
+				int interval = getinterval;
+				int delay = 1000;
+				Timer t = new Timer();
+				t.scheduleAtFixedRate(new TimerTask(){
+					 public void run() {
+						 if(serverList!=null){
+							 Random random = new Random();
+							 int index = random.nextInt(serverList.size());
+							 JSONObject server = (JSONObject) serverList.get(index);
+							 JSONArray serverlist = new JSONArray();
+							 serverlist.add(server);
+							 Exchange exchange = new Exchange();
+							 exchange.exe(clientServer, serverlist);
+							 System.out.println("here");
+						 }
+					}
+				 }, delay, interval);
+
 				if (input.available() > 0) {
 					received = (JSONObject) parser.parse(input.readUTF());
 					logger.info("RECEIVED:");
