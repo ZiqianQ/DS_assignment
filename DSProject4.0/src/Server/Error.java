@@ -48,6 +48,19 @@ public class Error {
 		
 	}
 	
+	public JSONObject incorrectSecret(){
+		JSONObject message = new JSONObject();
+		message.put("response", "error");
+		message.put("errorMessage", "incorrect secret");	
+		return message;
+	}
+	
+	public JSONObject noSecret(){
+		JSONObject message = new JSONObject();
+		message.put("response", "error");
+		message.put("errorMessage","missing resource and/or secret");	
+		return message;
+	}
 	
 
 }
