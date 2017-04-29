@@ -25,8 +25,7 @@ public class Query {
 			output.writeUTF(message.toJSONString());
 			output.flush();
 			System.out.println("received:"+received);
-			JSONObject resourceTemplate = received;
-			
+			JSONObject resourceTemplate = (JSONObject) received.get("resourceTemplate");			
 			// primary key && other rules
 			String uri = (String) resourceTemplate.get("uri");
 			String channel = (String) resourceTemplate.get("channel");
