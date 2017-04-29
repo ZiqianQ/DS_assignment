@@ -61,10 +61,10 @@ public class Resource {
 	}
 
 
-	public void setTags(String tag) {
-		List<String> getTags = Arrays.asList(tag.split(","));
+	public void setTags(String gettags) {
+		List<String> getTags = Arrays.asList(gettags.split(","));
 		for (int i = 0; i < getTags.size(); i++){
-			this.tags.add(tags);
+			this.tags.add(getTags.get(i));
 		}
 	}
 
