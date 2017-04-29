@@ -24,9 +24,9 @@ public class Query {
 			message.put("response", "sucess");
 			output.writeUTF(message.toJSONString());
 			output.flush();
-
-			JSONObject resourceTemplate = (JSONObject) received.get("resourceTemplate");
-
+			
+			JSONObject resourceTemplate = received;
+			
 			// primary key && other rules
 			String uri = (String) resourceTemplate.get("uri");
 			String channel = (String) resourceTemplate.get("channel");
