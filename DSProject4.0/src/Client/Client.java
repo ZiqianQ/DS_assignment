@@ -2,10 +2,7 @@ package Client;
 
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
-
-import com.sun.webkit.ThemeClient;
-
-import sun.security.krb5.internal.ReplayCache;
+ 
 
 public class Client {
 	
@@ -25,6 +22,8 @@ public class Client {
 	private static String geturi = null;
 	private static boolean relay = false;
 
+	public static boolean debugMode = false;
+	
 	private static Resource aResource = new Resource();
 
 	public final static Logger logger = Logger.getLogger(Client.class);
@@ -127,6 +126,14 @@ public class Client {
 	
 			}
 
+			//set debug status
+			if (commandline.hasOption("debug")) {
+				 debugMode = true;
+				 logger.info("setting debug on"+"\n");	
+	
+			}
+
+
 
 			//整理好之后就可以向server端传command了，把整理好的resource跟着command传过去
 			//此处单独建立了一个ClientCommand 文件 管理执行Cmd
@@ -137,12 +144,12 @@ public class Client {
 			if (commandline.hasOption("query")) {
 				queryCommand query = new queryCommand(); 
 
-				query.execute(ip, port, aResource, relay);
+				query.execute(ip, port, aResource);
 			}
 			//publish resource to server
 			if (commandline.hasOption("publish")) {
 				publishCommand publish = new publishCommand();
-				publish.execute(ip, port, aResource);
+				publish.execute(ip, port, aResource,debugMode);
 			}
 			//remove resource from server
 			if (commandline.hasOption("remove")) {
