@@ -17,7 +17,7 @@ import org.json.simple.parser.ParseException;
 public class publishCommand {
 	
 
-	public static void execute (String ip, int port, Resource aResource){
+	public static void execute (String ip, int port, Resource aResource, boolean debugMode){
 		try(Socket socket = new Socket(ip,port)){
 			//output stream
 			DataOutputStream output = new DataOutputStream(socket.getOutputStream());
@@ -32,9 +32,11 @@ public class publishCommand {
 				
 
 			//print JSONObject
+			if(debugMode){
+			Client.logger.info("publishing to localhost:3000"+"\n");	
 			Client.logger.info("SENT:");
 			System.out.println(newCommand.toJSONString());
-			
+			}
 			//send command to server
 			output.writeUTF(newCommand.toJSONString());
 			output.flush();
@@ -42,7 +44,7 @@ public class publishCommand {
 			while(true){
 				if (input.available()>0) {
 					String result = input.readUTF();
-					Client.logger.info("REVEIVED:");
+					Client.logger.info("RECEIVED:");
 					System.out.println(result);
 				}
 			}
