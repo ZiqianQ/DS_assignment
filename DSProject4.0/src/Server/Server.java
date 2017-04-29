@@ -29,7 +29,8 @@ import org.json.simple.parser.ParseException;
 public class Server {
 	private static int port = 3000;
 	private final static Logger logger = Logger.getLogger(Server.class);
-	private static JSONArray Store = new JSONArray();;
+	private static JSONArray Store = new JSONArray();
+	private static String secret = "seed";
 
 	public static void main(String[] args) {
 
@@ -47,7 +48,7 @@ public class Server {
 		ServerSocketFactory factory = ServerSocketFactory.getDefault();
 		try (ServerSocket server = factory.createServerSocket(port)) {
 			logger.info("Starting the EZShare Server"+"\n");
-			logger.info("Using secret: aswecan"+"\n");
+			logger.info("Using secret: "+ secret + "\n");
 			// wait for connection
 			while (true) {
 
@@ -146,11 +147,22 @@ public class Server {
 						remove.exe(clientServer, Store, resource);
 						break;
 						
-						/**
+						
 					case "share":
-						Share share = new Share();
-						share.exe(clientServer, Store, received);
-						break;*/
+						if (received.containsKey("secret")){
+							String receivedSecret = (String) received.get("secret");
+							if (receivedSecret.equals(secret)){
+								Share share = new Share();
+						        share.exe(clientServer, Store, resource);
+							}else {
+								output.writeUTF(error.incorrectSecret().toJSONString());
+								output.close();
+							}
+						}else {
+							output.writeUTF(error.noSecret().toJSONString());
+							output.close();
+						}					
+						break;
 						
 					case "fetch":
 						Fetch fetch = new Fetch();
