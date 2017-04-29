@@ -90,8 +90,9 @@ public class Server {
 					
 					System.out.println(received.toJSONString());
 					
-					resource = (JSONObject)received.get("resource");
+					resource = (JSONObject)received.get("resourceTemplate");
 					
+
 					//check if there is a resource field
 					if (received.containsKey("resource") || received.containsKey("resourceTemplate")){
 						if (received.containsKey("resource")){
@@ -135,7 +136,7 @@ public class Server {
 					switch (receivedCmd.toLowerCase()) {
 					case "query":
 						Query query = new Query();
-						query.exe(clientServer, Store, resource);
+						query.exe(clientServer, Store, received);
 						break;
 						
 					case "publish":
