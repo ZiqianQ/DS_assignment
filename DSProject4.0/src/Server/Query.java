@@ -10,7 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Query {
-	public void exe(Socket clientServer, JSONArray Store, JSONObject resource) throws IOException {
+	public void exe(Socket clientServer, JSONArray Store, JSONObject received) throws IOException {
 		try {
 			// Input stream
 			DataInputStream input = new DataInputStream(clientServer.getInputStream());
@@ -24,7 +24,7 @@ public class Query {
 			output.writeUTF(message.toJSONString());
 			output.flush();
 
-			JSONObject resourceTemplate = resource;
+			JSONObject resourceTemplate = received;
 
 			// primary key && other rules
 			String uri = (String) resourceTemplate.get("uri");
@@ -39,6 +39,16 @@ public class Query {
 			JSONArray display = new JSONArray();
 			for (int i = 0; i < Store.size(); i++) {
 				display.add(Store.get(i));
+			}
+			
+			//if realy is true, query from serverList
+			if ((boolean) received.get("relay")) {
+				for (int i = 0; i < Server.serverList.size(); i++) {
+					String ip = (String) ((JSONObject)(Server.serverList.get(i))).get("host");
+					int port = Integer.parseInt((String)((JSONObject)(Server.serverList.get(i))).get("port"));
+					received.put("relay", false);
+					queryRelay.execute(ip,port,received,display);
+				}
 			}
 
 			for (int i = 0; i < display.size(); i++) {
