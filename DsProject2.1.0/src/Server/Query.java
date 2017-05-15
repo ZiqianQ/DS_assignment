@@ -24,9 +24,8 @@ public class Query {
 			message.put("response", "sucess");
 			output.writeUTF(message.toJSONString());
 			output.flush();
-			System.out.println("received:"+received);
 			JSONObject resourceTemplate = (JSONObject) received.get("resourceTemplate");
-			
+
 			// primary key && other rules
 			String uri = (String) resourceTemplate.get("uri");
 			String channel = (String) resourceTemplate.get("channel");
@@ -35,78 +34,70 @@ public class Query {
 			CharSequence name = (CharSequence) resourceTemplate.get("name");
 			CharSequence description = (CharSequence) resourceTemplate.get("description");
 
-			// copy the stored things in server first, and decide which to
-			// display
+                        //this array will store the data returned to client
 			JSONArray display = new JSONArray();
+
 			for (int i = 0; i < Store.size(); i++) {
-				display.add(Store.get(i));
-			}
-			
-			//if realy is true, query from serverList
-			if ((boolean) received.get("relay")) {
-				for (int i = 0; i < Server.serverList.size(); i++) {
-					String ip = (String) ((JSONObject)(Server.serverList.get(i))).get("host");
-					int port = (int)((JSONObject)Server.serverList.get(i)).get("port");
-					received.put("relay", false);
-					queryRelay.execute(ip,port,received,display);
-				}
-			}
-
-			//new array to store correct data
-			JSONArray results = new JSONArray();
-
-			for (int i = 0; i < display.size(); i++) {
 
 				// compare primary key
-				JSONObject storeResource = (JSONObject) display.get(i);
+				JSONObject storeResource = (JSONObject) Store.get(i);
 				String storeUri = (String) storeResource.get("uri");
 				String storeChannel = (String) storeResource.get("channel");
+				// System.out.println(storeChannel);
 				String storeOwner = (String) storeResource.get("owner");
 				JSONArray storeTags = (JSONArray) storeResource.get("tags");
 				String storeName = (String) storeResource.get("name");
 				String storeDesc = (String) storeResource.get("description");
 
-				
-				// the template channel must equal the resource channel 
+				// the template channel must equal the resource channel
 				if (!channel.equals(storeChannel)) {
-					 
+					// do nothing
 				}
 
 				// if the template contains an owner that is not"", must equal
 				// the resource owner
 				else if (!owner.equals("") && !owner.equals(storeOwner)) {
-					 
+					// do nothing
 				}
 
 				// if any tags, should equal
 				else if (!tags.isEmpty() && !tags.equals(storeTags)) {
-					 
+					// do nothing
 				}
 
 				// if uri, must equal
 				else if (!uri.equals("") && !uri.equals(storeUri)) {
-					 
+					// do nothing
 				}
 
 				// if name, must contain
 				else if (!name.equals("") && !storeName.contains(name)) {
-					 
+					// do nothing
 				}
 
 				// if any description, must contain
 				else if (!description.equals("") && storeDesc.contains(description)) {
-					  
-				}else {
-					results.add(display.get(i)); 
+					// do nothing
 				}
-				
 
-				
+				else {
+					display.add(storeResource);
+				}
 			}
-		
+
+			// if realy is true, query from serverList
+			if ((boolean) received.get("relay")) {
+				for (int i = 0; i < Server.serverList.size(); i++) {
+					String ip = (String) ((JSONObject) (Server.serverList.get(i))).get("host");
+					int port = (int) ((JSONObject) Server.serverList.get(i)).get("port");
+					received.put("relay", false);
+					queryRelay.execute(ip, port, received, display);
+				}
+			}
+
 			int count = 0;
-			for (int i = 0; i < results.size(); i++) {
-				JSONObject displayResource = (JSONObject) results.get(i);
+			for (int i = 0; i < display.size(); i++) {
+				JSONObject displayResource = (JSONObject) display.get(i);
 
 				// the ezserver field be filled with hostname and port
 				displayResource.put("ezserver", "aswecan:3000");
