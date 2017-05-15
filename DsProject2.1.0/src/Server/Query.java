@@ -52,6 +52,9 @@ public class Query {
 				}
 			}
 
+			//new array to store correct data
+			JSONArray results = new JSONArray();
+
 			for (int i = 0; i < display.size(); i++) {
 
 				// compare primary key
@@ -63,41 +66,47 @@ public class Query {
 				String storeName = (String) storeResource.get("name");
 				String storeDesc = (String) storeResource.get("description");
 
+				
 				// the template channel must equal the resource channel 
 				if (!channel.equals(storeChannel)) {
-					display.remove(storeResource);
+					 
 				}
 
 				// if the template contains an owner that is not"", must equal
 				// the resource owner
 				else if (!owner.equals("") && !owner.equals(storeOwner)) {
-					display.remove(storeResource);
+					 
 				}
 
 				// if any tags, should equal
 				else if (!tags.isEmpty() && !tags.equals(storeTags)) {
-					display.remove(storeResource);
+					 
 				}
 
 				// if uri, must equal
 				else if (!uri.equals("") && !uri.equals(storeUri)) {
-					display.remove(storeResource);
+					 
 				}
 
 				// if name, must contain
 				else if (!name.equals("") && !storeName.contains(name)) {
-					display.remove(storeResource);
+					 
 				}
 
 				// if any description, must contain
 				else if (!description.equals("") && storeDesc.contains(description)) {
-					display.remove(storeResource);
+					  
+				}else {
+					results.add(display.get(i)); 
 				}
+				
+
+				
 			}
 		
 			int count = 0;
-			for (int i = 0; i < display.size(); i++) {
-				JSONObject displayResource = (JSONObject) display.get(i);
+			for (int i = 0; i < results.size(); i++) {
+				JSONObject displayResource = (JSONObject) results.get(i);
 
 				// the ezserver field be filled with hostname and port
 				displayResource.put("ezserver", "aswecan:3000");
