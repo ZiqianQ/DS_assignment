@@ -29,9 +29,7 @@ public class Fetch {
 				display = datainclude(Store, resource);
 		
 				// Send this back to client so that they know what the file is.
-				String uri = (String) display.get("uri"); 
-				String[] uriPattern = uri.split("/");
-				String fileName = uriPattern[uriPattern.length - 1]; 
+				String fileName = (String)display.get("name"); 
 				File f = new File("server_files/" + fileName);
 
 
