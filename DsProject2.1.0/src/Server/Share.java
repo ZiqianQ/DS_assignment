@@ -18,9 +18,7 @@ public class Share {
 
 	public void exe(Socket client, JSONArray Store, JSONObject resource) throws IOException {
 		try {
-			// Input stream
-			DataInputStream input = new DataInputStream(client.getInputStream());
-
+			
 			// Output steam
 			DataOutputStream output = new DataOutputStream(client.getOutputStream());
 
@@ -73,6 +71,7 @@ public class Share {
 				//System.out.println(fileName);
 				// check if the file is exist
 				if (file.exists()) {
+					resource.put("name", fileName);
 					Store.add(resource);
 					message.put("response", "success");
 					//message.put("response", "The resource has been shared");
