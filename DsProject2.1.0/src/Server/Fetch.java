@@ -1,6 +1,5 @@
 package Server;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -16,17 +15,14 @@ public class Fetch {
 	public static void exe(Socket client, JSONArray Store, JSONObject resource) {
 		Error error = new Error();
 		try {
-			// Input stream
-			DataInputStream input = new DataInputStream(client.getInputStream());
-
+			
 			// Output steam
 			DataOutputStream output = new DataOutputStream(client.getOutputStream());
 			
 			
 			JSONObject message = new JSONObject();
-			// check if there is an record in server
-			//System.out.println(datainclude(Store, resource));
 			
+			// check if there is an record in server
 			if (datainclude(Store, resource)!= null) {
 				
 				JSONObject display = new JSONObject();
@@ -37,7 +33,6 @@ public class Fetch {
 				System.out.println(fileName);
 				File f = new File("server_files/" + fileName);
 
-				// prepare sending files to client
 
 				// Check if file exists in server
 				if (f.exists()) {
@@ -46,6 +41,7 @@ public class Fetch {
 					output.writeUTF(message.toJSONString());
 					output.flush();
 					resource.put("name", fileName);
+					resource.put("ezserver", "aswecan:3000");
 					resource.put("resourceSize", f.length());
 					try {
 						// Send trigger to client
@@ -85,12 +81,8 @@ public class Fetch {
 	}
 
 	private static JSONObject datainclude(JSONArray Store, JSONObject resource) {
-		//Boolean exist = false;
+
 		JSONObject display = new JSONObject();
-		/**
-		for (int i = 0; i < Store.size(); i++) {
-			display.add(Store.get(i));
-		}*/
 		
 		// primary key && other rules
 		String uri = (String) resource.get("uri");
