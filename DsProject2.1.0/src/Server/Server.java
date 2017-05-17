@@ -13,8 +13,7 @@ import javax.net.ServerSocketFactory;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.DefaultParser; 
 import org.apache.commons.cli.Options;
 
 import org.apache.log4j.Logger;
@@ -28,7 +27,7 @@ import java.util.TimerTask;
 import java.util.*;
 
 public class Server {
-	private static int port = 3000;
+	public static int port = 3000;
 	private static Logger logger = Logger.getLogger(Server.class);
 	private static JSONArray Store = new JSONArray();
 	// private static String secret = "seed"
@@ -37,7 +36,8 @@ public class Server {
 	private static int getinterval = 600000;
 	public static String hostname = "Aswecan server";
 	private static int connectinterval = 500000;
-	public static int setport = 3000;
+	//public static int setport = 3000;
+	public static int sport =3781;
 
 	public static void main(String[] args) {
 
@@ -47,16 +47,15 @@ public class Server {
 		options.addOption("advertisedhostname", true, "advertised hostname");
 		options.addOption("connectionintervallimit", true, "connection interval limit in seconds");
 		options.addOption("exchangeinterval", true, "exchange interval in seconds");
-
 		options.addOption("port", true, "server port, an integer");
 		options.addOption("secret", true, "secret");
 		options.addOption("debug", false, "print debug information");
+		options.addOption("sport", false, "Secure server port, an integer");
 
-		ServerSocketFactory factory = ServerSocketFactory.getDefault();
-		try (ServerSocket server = factory.createServerSocket(port)) {
-
-			CommandLineParser commandparser = new DefaultParser();
-			CommandLine commandLine = commandparser.parse(options, args);
+		CommandLineParser commandparser = new DefaultParser();
+		CommandLine commandLine;
+		try {
+			commandLine = commandparser.parse(options, args);
 			if (commandLine.hasOption("exchangeinterval")) {
 				getinterval = Integer.parseInt(commandLine.getOptionValue("exchangeinterval")) * 1000;
 			}
@@ -67,24 +66,29 @@ public class Server {
 				connectinterval = Integer.parseInt(commandLine.getOptionValue("connectionintervallimit"));
 			}
 			if (commandLine.hasOption("port")) {
-				setport = Integer.parseInt(commandLine.getOptionValue("port"));
+				port = Integer.parseInt(commandLine.getOptionValue("port"));
 			}
 			if (commandLine.hasOption("secret")) {
 				secret = commandLine.getOptionValue("secret");
+			} 
+			if (commandLine.hasOption("sport")) {
+				port = Integer.parseInt(commandLine.getOptionValue("sport"));
 			}
-			//??????
-			if (commandLine.hasOption("debug")) {
-
-			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		ServerSocketFactory factory = ServerSocketFactory.getDefault();
+		try (ServerSocket server = factory.createServerSocket(port)) {
+			//print out the server information 
 			logger.info("Starting the EZShare Server" + "\n");
 			logger.info("Using secret: " + secret + "\n");
 			logger.info("Using advertised hostname: " + hostname + " \n");
-			logger.info("Bound to port " + setport + "\n");
+			logger.info("Bound to port " + port + "\n");
 			// wait for connection
 			while (true) {
-
 				Socket client = server.accept();
-
 				Thread t = new Thread(() -> serverClient(client));
 				t.start();
 			}
@@ -100,19 +104,14 @@ public class Server {
 
 			// Input stream
 			DataInputStream input = new DataInputStream(clientServer.getInputStream());
-
 			// Output steam
 			DataOutputStream output = new DataOutputStream(clientServer.getOutputStream());
-
 			// json parser
 			JSONParser parser = new JSONParser();
-
 			JSONObject received;
 			JSONObject resource;
 			String owner;
-
 			Error error = new Error();
-
 			while (true) {
 				/*int interval = getinterval;
 				int delay = 1000;
@@ -131,13 +130,11 @@ public class Server {
 						}
 					}
 				}, delay, interval);*/
-
 				if (input.available() > 0) {
 					received = (JSONObject) parser.parse(input.readUTF());
 					logger.info("RECEIVED:");
 
 					System.out.println(received.toJSONString());
-
 					// check if there is a resource field
 					if (received.containsKey("resource") || received.containsKey("resourceTemplate")) {
 						if (received.containsKey("resource")) {
@@ -160,7 +157,6 @@ public class Server {
 							}
 
 						}
-
 						output.close();
 						break;// exit while loop
 					}
