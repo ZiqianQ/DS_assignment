@@ -99,7 +99,7 @@ public class Query {
 				JSONObject displayResource = (JSONObject) display.get(i);
 
 				// the ezserver field be filled with hostname and port
-				displayResource.put("ezserver", "aswecan:3000");
+				displayResource.put("ezserver", Server.hostname + " " + Server.setport);
 
 				// the server will never reveal the owner of a resource in a
 				// response
