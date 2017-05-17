@@ -29,7 +29,10 @@ public class Fetch {
 				display = datainclude(Store, resource);
 		
 				// Send this back to client so that they know what the file is.
-				String fileName = (String)display.get("name"); 
+				String uri = (String) display.get("uri"); 
+				String[] uriPattern = uri.split("/");
+				String fileName = uriPattern[uriPattern.length - 1]; 
+				
 				File f = new File("server_files/" + fileName);
 
 
@@ -40,7 +43,7 @@ public class Fetch {
 					output.writeUTF(message.toJSONString());
 					output.flush();
 					resource.put("name", fileName);
-					resource.put("ezserver", "aswecan:3000");
+					resource.put("ezserver", Server.hostname + " " + Server.setport);
 					resource.put("resourceSize", f.length());
 					try {
 						// Send trigger to client
