@@ -85,7 +85,7 @@ public class sendMessage {
 	}
 	
 	//ONLY USEFUL WHEN ITS FETCH COMMAND
-	private int setChunkSize(long fileSizeRemaining) {
+	private static int setChunkSize(long fileSizeRemaining) {
 		// determine the chunksize
 		int chunkSize = 1024*1024;
 		//if the file size remaining is less than chunksize reset it
