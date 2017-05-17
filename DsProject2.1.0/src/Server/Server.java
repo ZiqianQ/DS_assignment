@@ -35,9 +35,9 @@ public class Server {
 	public static String secret = RandomStringUtils.randomAlphanumeric(20);
 	public static JSONArray serverList = new JSONArray();
 	private static int getinterval = 600000;
-	private static String hostname = "Aswecan server";
+	public static String hostname = "Aswecan server";
 	private static int connectinterval = 500000;
-	private static int setport = 3000;
+	public static int setport = 3000;
 
 	public static void main(String[] args) {
 
@@ -79,7 +79,7 @@ public class Server {
 			logger.info("Starting the EZShare Server" + "\n");
 			logger.info("Using secret: " + secret + "\n");
 			logger.info("Using advertised hostname: " + hostname + " \n");
-			logger.info("Bound to port " + port + "\n");
+			logger.info("Bound to port " + setport + "\n");
 			// wait for connection
 			while (true) {
 
