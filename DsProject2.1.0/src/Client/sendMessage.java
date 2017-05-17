@@ -71,6 +71,9 @@ public class sendMessage {
 							downloadingFile.close();
 	 				}
 				}
+				else{
+					System.exit(0);
+				}
 			}
 			
 		
