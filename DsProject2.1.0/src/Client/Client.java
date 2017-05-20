@@ -2,13 +2,16 @@ package Client;
 
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.SSLSocket;
  
 
 public class Client {
 	
 
 	private static String ip;
-    private static int port;
+    	private static int port;
+	private static int sport;
 
 	private static String getchannel = null;
 	private static String getdescription = null;
@@ -28,6 +31,7 @@ public class Client {
 	private static Resource aResource = new Resource();
 
 	public final static Logger logger = Logger.getLogger(Client.class);
+	private static boolean secure =false;
 
 	
 	public static void main(String[] args) {
@@ -54,12 +58,19 @@ public class Client {
 		options.addOption("uri", true, "resource URI");
 		options.addOption("relay", true, "relay status");
 		options.addOption("h","help", false, "information about how to use");
+		options.addOption("secure",  "whether secure or not");
+		
 
 	   
 	    try {
 	    	// create the parser
 	    	CommandLineParser parser = new DefaultParser();
 			CommandLine commandline = parser.parse(options, args);
+		    
+		    	if (commandline.hasOption("secure")) {
+				secure = true;
+
+			}
 			
 			
 			if (commandline.hasOption("h")) {
