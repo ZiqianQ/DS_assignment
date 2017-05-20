@@ -86,6 +86,7 @@ public class Server {
 			logger.info("Using secret: " + secret + "\n");
 			logger.info("Using advertised hostname: " + hostname + " \n");
 			logger.info("Bound to port " + port + "\n");
+			logger.info("Bound to port " + sport + "\n");
 			// wait for connection
 			while (true) {
 				Socket client = server.accept();
