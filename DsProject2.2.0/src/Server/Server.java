@@ -1,217 +1,271 @@
-package Client;
+package Server;
 
-import org.apache.commons.cli.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.net.Socket;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.net.ServerSocket;
+import javax.net.ServerSocketFactory;
+
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser; 
+import org.apache.commons.cli.Options;
+
 import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.apache.commons.lang3.RandomStringUtils;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.*;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
- 
+public class Server {
+	public static int port = 3000;
+	private static Logger logger = Logger.getLogger(Server.class);
+	private static JSONArray Store = new JSONArray();
+	// private static String secret = "seed"
+	public static String secret = RandomStringUtils.randomAlphanumeric(20);
+	public static JSONArray serverList = new JSONArray();
+	private static int getinterval = 600000;
+	public static String hostname = "Aswecan server";
+	private static int connectinterval = 500000;
+	//public static int setport = 3000;
+	public static int sport =3781;
 
-public class Client {
 	
+	 
 
-	private static String ip;
-    private static int port;
-
-	private static String getchannel = null;
-	private static String getdescription = null;
-	private static String gethost = null;
-	private static String getname = null;
-	private static String getowner = null;
-	private static String getport = null;
-	private static String getsecret = null;
-	private static String getservers = null;
-	private static String gettags = null;
-	private static String geturi = null;
-	private static int getsport ;
-	private static String getid = null;
-	
-	private static boolean relay = false;
-
-	public static boolean debugMode = false;
-	public static String debugmode = "off";
-	
-	private static Resource aResource = new Resource();
-
-	public final static Logger logger = Logger.getLogger(Client.class);
-
-	public static boolean subscribing = false;
-	
 	public static void main(String[] args) {
-		
-		// create Options object
+
 		Options options = new Options();
-		
-		options.addOption("channel", true, "channel");
-		options.addOption("debug", false, "print debug information");
-		options.addOption("description", true, "resource description");
-		options.addOption("exchange", false, "exchange server list with server");
-		options.addOption("fetch", false, "fetch resources from server");
-		options.addOption("host", true, "server host, a domain name or IP address");
-		options.addOption("name", true, "resource name");
-		options.addOption("owner", true, "owner");
+
+		// command line argument
+		options.addOption("advertisedhostname", true, "advertised hostname");
+		options.addOption("connectionintervallimit", true, "connection interval limit in seconds");
+		options.addOption("exchangeinterval", true, "exchange interval in seconds");
 		options.addOption("port", true, "server port, an integer");
-		options.addOption("publish", false, "publish resource on server");
-		options.addOption("query", false, "query for resources from server");
-		options.addOption("remove", false, "remove resource from server");
 		options.addOption("secret", true, "secret");
-		options.addOption("servers", true, "server list, host1:port1,host2:port2,...");
-		options.addOption("share", false, "share resource on server");
-		options.addOption("tags", true, "resource tags, tag1,tag2,tag3,...");
-		options.addOption("uri", true, "resource URI");
-		options.addOption("relay", true, "relay status");
-		options.addOption("h","help", false, "information about how to use");
-		options.addOption("sport", true, "secure port");
-		options.addOption("id", true, "client name");
+		options.addOption("debug", false, "print debug information");
+		options.addOption("sport", false, "Secure server port, an integer");
 
-	   
-	    try {
-	    	// create the parser
-	    	CommandLineParser parser = new DefaultParser();
-			CommandLine commandline = parser.parse(options, args);
-			
-			
-			if (commandline.hasOption("h")) {
-				HelpFormatter formatter = new HelpFormatter();
-				formatter.printHelp("client command line argument", options);
+		CommandLineParser commandparser = new DefaultParser();
+		CommandLine commandLine;
+		try {
+			commandLine = commandparser.parse(options, args);
+			if (commandLine.hasOption("exchangeinterval")) {
+				getinterval = Integer.parseInt(commandLine.getOptionValue("exchangeinterval")) * 1000;
 			}
-
-
-            //get ip and port first
-			if (commandline.hasOption("host")) {
-				gethost = commandline.getOptionValue("host");
-				ip = gethost;
+			if (commandLine.hasOption("advertisedhostname")) {
+				hostname = commandLine.getOptionValue("advertisedhostname");
 			}
-
-			if (commandline.hasOption("port")) {
-				getport = commandline.getOptionValue("port");
-				port = Integer.parseInt(getport);
-				getsport = port;
+			if (commandLine.hasOption("connectionintervallimit")) {
+				connectinterval = Integer.parseInt(commandLine.getOptionValue("connectionintervallimit"));
 			}
-
-            //set a resource then
-			if (commandline.hasOption("channel")) {
-				getchannel = commandline.getOptionValue("channel");
-				aResource.setChannel(getchannel);
+			if (commandLine.hasOption("port")) {
+				port = Integer.parseInt(commandLine.getOptionValue("port"));
 			}
-			if (commandline.hasOption("description")) {
-				getdescription = commandline.getOptionValue("decription");
-				aResource.setDescription(getdescription);
-			}
-			
-			if (commandline.hasOption("name")) {
-				getname = commandline.getOptionValue("name");
-				aResource.setName(getname);
-			}
-			if (commandline.hasOption("owner")) {
-				getowner = commandline.getOptionValue("owner");
-				aResource.setOwner(getowner);
-			}
-
-			if (commandline.hasOption("tags")) {
-				gettags = commandline.getOptionValue("tags");
-				aResource.setTags(gettags);
-			}
-			if (commandline.hasOption("uri")) {
-				geturi = commandline.getOptionValue("uri");
-				aResource.setUri(geturi);
-			}
-
-			//this one is for shareCommand
-			if (commandline.hasOption("secret")) {
-				getsecret = commandline.getOptionValue("secret"); 
-				aResource.setSecret(getsecret);
-			}
-
-            //this one is for exhangeCommand
-			if (commandline.hasOption("servers")) {
-				getservers = commandline.getOptionValue("servers");
-			}
-			
-			//set relay status
-			if (commandline.hasOption("relay")) {
-				 relay = new Boolean(commandline.getOptionValue("relay"));
-	
-			}
-
-			//set debug status
-			if (commandline.hasOption("debug")) {
-				 debugMode = true;
-				 debugmode = "all";
-				 logger.info("setting debug on"+"\n");	
-	
-			}
-			//sercure port
-			if (commandline.hasOption("sport")) {
-				getsport = Integer.parseInt(commandline.getOptionValue("sport"));
-			}
-			//client id
-			if (commandline.hasOption("id")) {
-				getid = commandline.getOptionValue("id");
-			}
-
-
-
-			//整理好之后就可以向server端传command了，把整理好的resource跟着command传过去
-			//此处单独建立了一个ClientCommand 文件 管理执行Cmd
-			//因为query publish remove share exchange 很相似 就合并到一个method里面了，详见 ClientCommand.java 里面 executeCmd（）
-			//因为fetch跟其他命令相差较大 单独拿出来了 详见ClientCommand.java 里面 Fetch（）和 setChunkSize
-
-			//query resource from server
-			if (commandline.hasOption("query")) {
-				queryCommand query = new queryCommand(); 
-
-				query.queryCmd(ip, port, aResource, debugMode,relay);
-			}
-			//publish resource to server
-			if (commandline.hasOption("publish")) {
-				publishCommand publish = new publishCommand();
-				publish.publishCmd(ip, port, aResource,debugMode);
-			}
-			//remove resource from server
-			if (commandline.hasOption("remove")) {
-				removeCommand remove = new removeCommand();
-				remove.removeCmd(ip, port, aResource,debugMode);
-			}
-			//share file to server
-			if (commandline.hasOption("share")) {
-				shareCommand share = new shareCommand();
-				share.shareCmd(ip, port, aResource,debugMode);
-			}
-			//fetch files from server
-			if (commandline.hasOption("fetch")) {
-				fetchCommand fetch = new fetchCommand();
-				fetch.fetchCmd(ip, port, aResource,debugMode);
-			}
-			//exchange server address and port
-			if (commandline.hasOption("exchange")) {
-				exchangeCommand exchange = new exchangeCommand();
-				exchange.exchangeCmd(ip, port, getservers,debugMode); //实际上exchange用不到这个aResource,应该有一个servers list
+			if (commandLine.hasOption("secret")) {
+				secret = commandLine.getOptionValue("secret");
 			} 
-			//subscribe from server
-			if (commandline.hasOption("subscribe")) {
-				subscribeCommand subscribe = new subscribeCommand();
-				subscribing = false;
-				subscribeCommand.subscibeCmd(ip, port, aResource,getid, debugMode,relay); 
-			} 
-			//testing the sercure socket
-			/*if (commandline.hasOption("secure")) {
-				SSLClient sslClient = new SSLClient();
-				JSONObject newCommand = new JSONObject();
-
-				newCommand.put("command", "secure");
-				newCommand.put("sport", getsport);
-				sendMessage send = new sendMessage();
-				send.sender(ip, port, newCommand, debugMode);
-				sslClient.SSLClient(ip, getsport);
-			}*/
-			
-			
+			if (commandLine.hasOption("sport")) {
+				sport = Integer.parseInt(commandLine.getOptionValue("sport"));
+			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
 		}
-		
+			
+		while(true) {
+			thread1.start();
+			secureServ.run();
+			
+		}
+
 	}
 	
+	static Thread thread1 = new Thread(){
+		public void run(){
+		//servers(port);
+			//print out the server information 
+			logger.info("Starting the EZShare Server" + "\n");
+			logger.info("Bound to port " + port + "\n");
+			logger.info("Using secret: " + secret + "\n");
+			logger.info("Using advertised hostname: " + hostname + " \n");
+		servers(port);
+		
+		}
+	};
+	static Thread secureServ = new Thread(){
+		public void run(){
+			logger.info("Starting the EZShare Secure Server" + "\n");
+			logger.info("Bound to port " + sport + "\n");
+		SSLServer.SSLsocket(sport);
+		
+			
+		}
+	};
+	
+	private static void servers(int port){
+		ServerSocketFactory factory = ServerSocketFactory.getDefault();
+//		System.out.println("here");
+		try {
+			ServerSocket server = factory.createServerSocket(port); 
+			
+			// wait for connection
+			while (true) {
+				
+//				    System.out.println("here");
+					Socket client = server.accept();
+					Thread t = new Thread(() -> serverClient(client));
+					t.start();	
+			}
 
+		} catch (Exception e) {
+		//e.printStackTrace();
+		}
+	}
+
+	private static void serverClient(Socket client) {
+		try (Socket clientServer = client) {
+
+			// Input stream
+			DataInputStream input = new DataInputStream(clientServer.getInputStream());
+			// Output steam
+			DataOutputStream output = new DataOutputStream(clientServer.getOutputStream());
+			// json parser
+			JSONParser parser = new JSONParser();
+			JSONObject received;
+			JSONObject resource;
+			String owner;
+			Error error = new Error();
+			while (true) {
+				/*int interval = getinterval;
+				int delay = 1000;
+				Timer t = new Timer();
+				t.scheduleAtFixedRate(new TimerTask() {
+					public void run() {
+						if (serverList != null) {
+							Random random = new Random();
+							int index = random.nextInt(serverList.size());
+							JSONObject server = (JSONObject) serverList.get(index);
+							JSONArray serverlist = new JSONArray();
+							serverlist.add(server);
+							Exchange exchange = new Exchange();
+							exchange.exe(clientServer, serverlist);
+							
+						}
+					}
+				}, delay, interval);*/
+				if (input.available() > 0) {
+					received = (JSONObject) parser.parse(input.readUTF());
+					logger.info("RECEIVED:");
+
+					System.out.println(received.toJSONString());
+					// check if there is a resource field
+					if (received.containsKey("resource") || received.containsKey("resourceTemplate")) {
+						if (received.containsKey("resource")) {
+							resource = (JSONObject) received.get("resource");
+						} else {
+							resource = (JSONObject) received.get("resourceTemplate");
+						}
+						owner = (String) resource.get("owner");
+					} else {
+						if (received.containsKey("resource")) {
+							output.writeUTF(error.missingRes().toJSONString());
+						} else if (received.containsKey("resourceTemplate")) {
+							output.writeUTF(error.missingResT().toJSONString());
+						} else {
+							String command = ((String) received.get("command")).toLowerCase();
+							if (command.equals("exchange")) {
+								Exchange exchange = new Exchange();
+								JSONArray serverList = (JSONArray) received.get("serverList");
+								exchange.exe(clientServer, serverList);
+							}
+
+						}
+						output.close();
+						break;// exit while loop
+					}
+
+					// check if the resource is valid
+					if (!resource.containsKey("uri") || !resource.containsKey("channel")
+							|| !resource.containsKey("owner") || !resource.containsKey("name")
+							|| !resource.containsKey("description") || !resource.containsKey("ezserver")
+							|| !resource.containsKey("tags") || owner.equals("*") || resource.size() != 7) {
+						if (received.containsKey("resource")) {
+							output.writeUTF(error.invalidRes().toJSONString());
+						} else if (received.containsKey("resourceTemplate")) {
+							output.writeUTF(error.invalidResT().toJSONString());
+						}
+						output.close();
+						break;// exit while loop
+					}
+
+					// check if there is a command field
+					else if (!received.containsKey("command")) {
+						output.writeUTF(error.missingCmd().toJSONString());
+						output.close();
+						break;// exit while loop
+					}
+
+					String receivedCmd = received.get("command").toString();
+
+					switch (receivedCmd.toLowerCase()) {
+					case "query":
+						Query query = new Query();
+						query.exe(clientServer, Store, received);
+						break;
+
+					case "publish":
+						Publish publish = new Publish();
+						publish.exe(clientServer, Store, resource);
+						break;
+
+					case "remove":
+						Remove remove = new Remove();
+						remove.exe(clientServer, Store, resource);
+						break;
+
+					case "share":
+						if (received.containsKey("secret")) {
+							String receivedSecret = (String) received.get("secret");
+							if (receivedSecret.equals(secret)) {
+								Share share = new Share();
+								share.exe(clientServer, Store, resource);
+							} else {
+								output.writeUTF(error.incorrectSecret().toJSONString());
+								output.close();
+							}
+						} else {
+							output.writeUTF(error.noSecret().toJSONString());
+							output.close();
+						}
+						break;
+
+					case "fetch":
+						Fetch fetch = new Fetch();
+						fetch.exe(clientServer, Store, resource);
+						break;
+
+					default:
+						output.writeUTF(error.unknownCmd().toJSONString());
+						output.close();
+						break;
+					}
+
+				}
+			}
+
+		} catch (IOException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
