@@ -1,0 +1,55 @@
+package Client;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+
+import javax.net.ssl.SSLServerSocketFactory;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+
+import org.json.simple.JSONObject;
+
+public class SSLClient {
+
+	public static void SSLClient(String ip, int sport, Resource aResource, boolean debugMode, boolean relay){
+		
+		try {
+			
+			//location of the java keystore file containing the collection of
+			//certificates trusted by this appliaction (trust store)
+			System.setProperty("javax.net.ssl.trustStore", "client_keystore/clientkey");
+			
+			//set the debug mode according to the command
+			System.setProperty("javax.net.debug","off" );//Client.debugmode
+			
+			//create SSL socket and connect to the remote server
+			SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+			SSLSocket sslSocket = (SSLSocket) sslSocketFactory.createSocket(ip,sport);
+			
+			JSONObject newCommand = new JSONObject();
+			JSONObject resource = aResource.render();
+
+			newCommand.put("command", "QUERY");
+			newCommand.put("relay", relay);
+			newCommand.put("resourceTemplate", resource);
+
+			// print JSONObject
+			if (debugMode) {
+				Client.logger.info("querying to " + ip + ":" + sport + "\n");
+				Client.logger.info("SENT:");
+				System.out.println(newCommand.toJSONString());
+			}
+
+
+			SSLsendmessage.sender(ip, sport, newCommand, debugMode);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+}
