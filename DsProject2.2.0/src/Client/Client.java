@@ -152,14 +152,7 @@ public class Client {
 			if (commandline.hasOption("id")) {
 				getid = commandline.getOptionValue("id");
 			}
-
-
-
-			//整理好之后就可以向server端传command了，把整理好的resource跟着command传过去
-			//此处单独建立了一个ClientCommand 文件 管理执行Cmd
-			//因为query publish remove share exchange 很相似 就合并到一个method里面了，详见 ClientCommand.java 里面 executeCmd（）
-			//因为fetch跟其他命令相差较大 单独拿出来了 详见ClientCommand.java 里面 Fetch（）和 setChunkSize
-
+ 
 			//query resource from server
 			if (commandline.hasOption("query")) {
 				queryCommand query = new queryCommand(); 
