@@ -29,7 +29,7 @@ import java.util.*;
 public class Server {
 	public static int port = 3000;
 	private static Logger logger = Logger.getLogger(Server.class);
-	private static JSONArray Store = new JSONArray();
+	public static JSONArray Store = new JSONArray();
 	// private static String secret = "seed"
 	public static String secret = RandomStringUtils.randomAlphanumeric(20);
 	public static JSONArray serverList = new JSONArray();
@@ -114,7 +114,7 @@ public class Server {
 	
 	private static void servers(int port){
 		ServerSocketFactory factory = ServerSocketFactory.getDefault();
-//		System.out.println("here");
+		
 		try {
 			ServerSocket server = factory.createServerSocket(port); 
 			
@@ -134,7 +134,7 @@ public class Server {
 
 	private static void serverClient(Socket client) {
 		try (Socket clientServer = client) {
-
+			System.out.println("here");
 			// Input stream
 			DataInputStream input = new DataInputStream(clientServer.getInputStream());
 			// Output steam
@@ -146,23 +146,7 @@ public class Server {
 			String owner;
 			Error error = new Error();
 			while (true) {
-				/*int interval = getinterval;
-				int delay = 1000;
-				Timer t = new Timer();
-				t.scheduleAtFixedRate(new TimerTask() {
-					public void run() {
-						if (serverList != null) {
-							Random random = new Random();
-							int index = random.nextInt(serverList.size());
-							JSONObject server = (JSONObject) serverList.get(index);
-							JSONArray serverlist = new JSONArray();
-							serverlist.add(server);
-							Exchange exchange = new Exchange();
-							exchange.exe(clientServer, serverlist);
-							
-						}
-					}
-				}, delay, interval);*/
+		
 				if (input.available() > 0) {
 					received = (JSONObject) parser.parse(input.readUTF());
 					logger.info("RECEIVED:");
@@ -263,7 +247,10 @@ public class Server {
 				}
 			}
 
-		} catch (IOException | ParseException e) {
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
