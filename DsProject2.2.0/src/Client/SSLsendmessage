@@ -1,0 +1,80 @@
+package Client;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.RandomAccessFile;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class SSLsendmessage {
+	
+	public static void sender(String ip, int sport,JSONObject newCommand, boolean debugMode) throws ParseException{
+		
+		SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+		try(SSLSocket sslsocket = (SSLSocket) sslsocketfactory.createSocket("localhost", 3781);){
+		/*	//output stream
+			OutputStream outputStream = sslsocket.getOutputStream();
+			OutputStreamWriter outputwriter = new OutputStreamWriter(outputStream);
+			BufferedWriter bufferedWriter = new BufferedWriter(outputwriter);
+			//input stream
+			InputStream inputStream = sslsocket.getInputStream();
+			InputStreamReader inputReader = new InputStreamReader(inputStream);
+			BufferedReader bufferedReader = new BufferedReader(inputReader);
+			*/
+			// Input stream
+			DataInputStream input = new DataInputStream(sslsocket.getInputStream());
+
+			// Output steam
+			DataOutputStream output = new DataOutputStream(sslsocket.getOutputStream());
+			
+			
+			//send command to server
+			output.writeUTF(newCommand.toJSONString());
+			output.flush();
+
+			boolean send = false;
+						
+				JSONParser parser = new JSONParser();
+				
+				//read from server and print out
+				while(true){
+					String result="";
+					/*try {
+						result = input.readUTF();
+					} catch (IOException e) {
+						// TODO: handle exception
+					}*/
+					if(input.available()>0){
+						result = input.readUTF();
+						Client.logger.info("RECEIVED:");
+						System.out.println(result);
+						send=true;
+						
+						//ONLY USEFUL WHEN ITS FETCH COMMAND
+						JSONObject command = (JSONObject) parser.parse(result);	
+					}
+				}
+		
+		}catch (UnknownHostException e){
+			e.printStackTrace();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+	
