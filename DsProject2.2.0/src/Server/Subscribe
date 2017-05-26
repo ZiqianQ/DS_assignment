@@ -10,7 +10,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 public class Subscribe {
-	public void exe(Socket clientServer, JSONArray Store, JSONObject received, String clientname) throws IOException, ParseException {
+	public void exe(Socket clientServer, JSONArray Store, JSONObject received ) throws IOException, ParseException {
 		try {
 			// Input stream
 			DataInputStream input = new DataInputStream(clientServer.getInputStream());
@@ -20,8 +20,9 @@ public class Subscribe {
 
 			// tell client: received
 			JSONObject message = new JSONObject();
+			String id = (String) received.get("id");
 			message.put("response", "sucess");
-			message.put("id", clientname);
+			message.put("id", id);
 			output.writeUTF(message.toJSONString());
 			output.flush();
 			JSONObject resourceTemplate = (JSONObject) received.get("resourceTemplate");
@@ -89,9 +90,9 @@ public class Subscribe {
 
 					// if realy is true, query from serverList
 					if ((boolean) received.get("relay")) {
-						for (int i = 0; i < Server_ssl.serverList.size(); i++) {
-							String ip = (String) ((JSONObject) (Server_ssl.serverList.get(i))).get("host");
-							int port = (int) ((JSONObject) Server_ssl.serverList.get(i)).get("port");
+						for (int i = 0; i < Server.serverList.size(); i++) {
+							String ip = (String) ((JSONObject) (Server.serverList.get(i))).get("host");
+							int port = (int) ((JSONObject) Server.serverList.get(i)).get("port");
 							received.put("relay", false);
 							queryRelay.execute(ip, port, received, display);
 						}
@@ -102,7 +103,7 @@ public class Subscribe {
 						JSONObject displayResource = (JSONObject) display.get(i);
 
 						// the ezserver field be filled with hostname and port
-						displayResource.put("ezserver", Server_ssl.hostname + " " + Server_ssl.port);
+						displayResource.put("ezserver", Server.hostname + " " + Server.port);
 
 						// the server will never reveal the owner of a resource in a
 						// response
