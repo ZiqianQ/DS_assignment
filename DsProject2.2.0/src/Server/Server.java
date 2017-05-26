@@ -33,7 +33,7 @@ public class Server {
 	// private static String secret = "seed"
 	public static String secret = RandomStringUtils.randomAlphanumeric(20);
 	public static JSONArray serverList = new JSONArray();
-	private static int getinterval = 600000;
+	private static int getinterval = 600;
 	public static String hostname = "Aswecan server";
 	private static int connectinterval = 500000;
 	//public static int setport = 3000;
@@ -44,6 +44,11 @@ public class Server {
 
 	public static void main(String[] args) {
 
+		JSONObject server = new JSONObject();
+		server.put("host", "10.12.44.238");
+		server.put("port", "3000");
+		serverList.add(server);
+		
 		Options options = new Options();
 
 		// command line argument
@@ -77,13 +82,44 @@ public class Server {
 			if (commandLine.hasOption("sport")) {
 				sport = Integer.parseInt(commandLine.getOptionValue("sport"));
 			}
+			int interval = getinterval;
+			   int delay = 1000;
+			   Timer timer = new Timer();
+			   
+			   timer.schedule(new TimerTask() {
+			    public void run() {
+			     if (serverList.size()>0) {
+			      Random random = new Random();
+			      int index = random.nextInt(serverList.size());
+			      JSONObject server = (JSONObject) serverList.get(index);
+			      String host1 = (String) server.get("host");
+			      int port1 = Integer.parseInt((String)server.get("port"));
+			      
+			      try(Socket socket1 = new Socket(host1, port1);){
+			       //System.out.println("connected");
+			       if (socket1.isConnected()) {
+			        socket1.close();
+			       // System.out.println("fine!");
+			       }
+			      } catch (Exception e) {
+			       // TODO: handle exception
+			       serverList.remove(index);
+			       //System.out.println("cannot conncet");
+			      }  
+			     } 
+			    }
+			   }, delay, interval);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 		}
+		
+		
 			
 		while(true) {
-			thread1.start();
+			
+		    thread1.start();
 			secureServ.run();
 			
 		}
@@ -94,18 +130,19 @@ public class Server {
 		public void run(){
 		//servers(port);
 			//print out the server information 
-			logger.info("Starting the EZShare Server" + "\n");
-			logger.info("Bound to port " + port + "\n");
-			logger.info("Using secret: " + secret + "\n");
-			logger.info("Using advertised hostname: " + hostname + " \n");
+			
+			logger.info("Starting the EZShare Server");
+			logger.info("Bound to port " + port ); 
+			logger.info("Using secret: " + secret );
+			logger.info("Using advertised hostname: " + hostname  );
 		servers(port);
 		
 		}
 	};
 	static Thread secureServ = new Thread(){
 		public void run(){
-			logger.info("Starting the EZShare Secure Server" + "\n");
-			logger.info("Bound to port " + sport + "\n");
+			logger.info("Starting the EZShare Secure Server" );
+			logger.info("Bound to secure port " + sport   );
 		SSLServer.SSLsocket(sport);
 		
 			
@@ -133,8 +170,7 @@ public class Server {
 	}
 
 	private static void serverClient(Socket client) {
-		try (Socket clientServer = client) {
-			System.out.println("here");
+		try (Socket clientServer = client) { 
 			// Input stream
 			DataInputStream input = new DataInputStream(clientServer.getInputStream());
 			// Output steam
@@ -146,7 +182,7 @@ public class Server {
 			String owner;
 			Error error = new Error();
 			while (true) {
-		
+				
 				if (input.available() > 0) {
 					received = (JSONObject) parser.parse(input.readUTF());
 					logger.info("RECEIVED:");
