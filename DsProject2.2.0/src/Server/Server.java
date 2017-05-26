@@ -33,6 +33,7 @@ public class Server {
 	// private static String secret = "seed"
 	public static String secret = RandomStringUtils.randomAlphanumeric(20);
 	public static JSONArray serverList = new JSONArray();
+	public static JSONArray secureServerList = new JSONArray();
 	private static int getinterval = 600;
 	public static String hostname = "Aswecan server";
 	private static int connectinterval = 500000;
@@ -157,15 +158,13 @@ public class Server {
 			
 			// wait for connection
 			while (true) {
-				
-//				    System.out.println("here");
+				 
 					Socket client = server.accept();
 					Thread t = new Thread(() -> serverClient(client));
 					t.start();	
 			}
 
-		} catch (Exception e) {
-		//e.printStackTrace();
+		} catch (Exception e) { 
 		}
 	}
 
@@ -272,6 +271,10 @@ public class Server {
 					case "fetch":
 						Fetch fetch = new Fetch();
 						fetch.exe(clientServer, Store, resource);
+						break;
+					case "subscribe": 
+						Subscribe subscribe = new Subscribe();
+						subscribe.exe(clientServer, Store, resource); 
 						break;
 
 					default:
