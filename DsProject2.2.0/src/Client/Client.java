@@ -4,9 +4,6 @@ import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
-
-import SSLquery.SSLquery;
  
 
 public class Client {
@@ -62,11 +59,10 @@ public class Client {
 		options.addOption("tags", true, "resource tags, tag1,tag2,tag3,...");
 		options.addOption("uri", true, "resource URI");
 		options.addOption("relay", true, "relay status");
-		options.addOption("h","help", false, "information about how to use");
-		options.addOption("sport", true, "secure port");
+		options.addOption("h","help", false, "information about how to use"); 
 		options.addOption("id", true, "client name");
 		options.addOption("secure", false, "secure connection");
-	   
+		options.addOption("subscribe", false, "subscribe channel");
 	    try {
 	    	
 	    	// create the parser
@@ -141,13 +137,13 @@ public class Client {
 			if (commandline.hasOption("debug")) {
 				 debugMode = true;
 				 debugmode = "all";
-				 logger.info("setting debug on"+"\n");	
+				 logger.info("setting debug on");	
 	
 			}
 			//sercure port
-			if (commandline.hasOption("sport")) {
-				getsport = Integer.parseInt(commandline.getOptionValue("sport"));
-			}
+//			if (commandline.hasOption("sport")) {
+//				port = Integer.parseInt(commandline.getOptionValue("sport"));
+//			}
 			//client id
 			if (commandline.hasOption("id")) {
 				getid = commandline.getOptionValue("id");
@@ -163,7 +159,7 @@ public class Client {
 			//secure query
 			if (commandline.hasOption("secure")) {
 				SSLClient sslClient = new SSLClient(); 
-				sslClient.SSLClient(ip, getsport, aResource, debugMode,relay);
+				sslClient.SSLClient(ip, port, aResource, debugMode,relay);
 			}
 			//publish resource to server
 			if (commandline.hasOption("publish")) {
