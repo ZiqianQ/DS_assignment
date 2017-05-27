@@ -8,8 +8,11 @@ import java.io.RandomAccessFile;
 import java.net.Socket;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import javax.net.ServerSocketFactory;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -21,9 +24,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import com.sun.org.apache.bcel.internal.util.SecuritySupport;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -36,27 +36,29 @@ public class Server {
 	// private static String secret = "seed"
 	public static String secret = RandomStringUtils.randomAlphanumeric(20);
 	public static JSONArray serverList = new JSONArray();
-	public static JSONArray secureserverList = new JSONArray();
+	public static JSONArray sslserverList = new JSONArray();
 	private static int getinterval = 600;
 	public static String hostname = "Aswecan server";
 	private static int connectinterval = 500000;
 	//public static int setport = 3000;
 	public static int sport =3781;
+	private static Date lastTime = new Date();
+	private static InetAddress lastip;
 
 	
 	 
 
 	public static void main(String[] args) {
 
-		JSONObject server = new JSONObject();
-		server.put("hostname", "10.12.44.238");
-		server.put("port", 3000);
-		serverList.add(server);
-		/*
-		JSONObject sserver = new JSONObject();
-		sserver.put("hostname", "10.12.55.207");
-		sserver.put("port", "3000");
-		serverList.add(sserver);*/
+//		JSONObject server = new JSONObject();
+//		server.put("hostname", "10.12.65.16");
+//		server.put("port", 3000);
+//		serverList.add(server);
+//		
+//		JSONObject sserver = new JSONObject();
+//		sserver.put("hostname", "10.13.64.37");
+//		sserver.put("port", 3781);
+//		sslserverList.add(sserver);
 		
 		Options options = new Options();
 
@@ -67,7 +69,7 @@ public class Server {
 		options.addOption("port", true, "server port, an integer");
 		options.addOption("secret", true, "secret");
 		options.addOption("debug", false, "print debug information");
-		options.addOption("sport", false, "Secure server port, an integer");
+		options.addOption("sport", true, "Secure server port, an integer");
 
 		CommandLineParser commandparser = new DefaultParser();
 		CommandLine commandLine;
@@ -94,75 +96,67 @@ public class Server {
 			int interval = getinterval;
 			   int delay = 1000;
 			   Timer timer = new Timer();
-		/////auto exchange	   
+			   
 			   timer.schedule(new TimerTask() {
 			    public void run() {
-			    	System.out.println("auto exchange");
-			    	System.out.println("serverlsit:"+serverList.toJSONString());
-			     if (serverList.size()>0) {
-			    	 System.out.println("inside");
-			      Random random = new Random();
-			      int index = random.nextInt(serverList.size());
-			      JSONObject server = (JSONObject) serverList.get(index);
-			      String host1 = (String) server.get("hostname");
-			      int port1 = (int)server.get("port");
-			      System.out.println("getport :"+server.get("port").getClass());
-			      System.out.println("host1"+host1);
-			      System.out.println("port1"+port1);
-			      
-			      try(Socket socket1 = new Socket(host1, port1);){
-			       //System.out.println("connected");
-
-			    	JSONObject newCommand = new JSONObject();
-			  		newCommand.put("command", "QUERY");
-			       if (socket1.isConnected()) {
-			        socket1.close();
-			        System.out.println("fine!");
-			       }
-			      } catch (Exception e) {
-			       // TODO: handle exception
-			       serverList.remove(index);
-			       System.out.println(serverList.toJSONString());
-			       System.out.println("cannot conncet");
-			      }  
-			     } 
-			    }
-			   }, delay, interval);
-////////secure autoexchange
-			   timer.schedule(new TimerTask() {
-				    public void run() {
-				    	System.out.println("auto exchange");
-				    	System.out.println("serverlsit:"+serverList.toJSONString());
-				     if (serverList.size()>0) {
-				    	 System.out.println("inside");
+//			     if (serverList.size()>0) {
+//			    	 for (int i = 0; i < serverList.size(); i++){
+//			    		 System.out.println(serverList.get(i).toString());
+//			    	 }
+//			      Random random = new Random();
+//			      int index = random.nextInt(serverList.size());
+//			      System.out.println(index);
+//			      JSONObject server = (JSONObject) serverList.get(index);
+//			      System.out.println(server.toString());
+//			      String host1 = (String) server.get("hostname");
+//			      System.out.println(host1);
+//			      int port1 = (int)server.get("port");
+//			      System.out.println(port1);
+//			      
+//			      try(Socket socket1 = new Socket(host1, port1);){
+//			    	  AutoExchange exchange = new AutoExchange();
+//			    	  exchange.exe(host1, port1, serverList);
+//			       //System.out.println("connected");
+//			       if (socket1.isConnected()) {
+//			        socket1.close();
+//			       // System.out.println("fine!");
+//			       }
+//			      } catch (Exception e) {
+//			       // TODO: handle exception
+//			       serverList.remove(index);
+//			       //System.out.println("cannot conncet");
+//			      }  
+//			     } 
+			     
+			     if (sslserverList.size()>0) {
+			    	  
 				      Random random = new Random();
-				      int index = random.nextInt(serverList.size());
-				      JSONObject server = (JSONObject) serverList.get(index);
-				      String host1 = (String) server.get("hostname");
-				      int port1 = (int)server.get("port");
-				      System.out.println("getport :"+server.get("port").getClass());
-				      System.out.println("host1"+host1);
-				      System.out.println("port1"+port1);
-				      
-				      try(Socket socket1 = new Socket(host1, port1);){
-				       //System.out.println("connected");
-
-				    	JSONObject newCommand = new JSONObject();
-				  		newCommand.put("command", "QUERY");
+				      int index = random.nextInt(sslserverList.size());
+				      //System.out.println(index);
+				      JSONObject sserver = (JSONObject) sslserverList.get(index);
+				     // System.out.println(sserver.toString());
+				      String host1 = (String) sserver.get("hostname");
+				      //System.out.println(host1);
+				      int port1 = (int)sserver.get("port");
+				      //System.out.println(port1);
+				      SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+				      try(SSLSocket socket1 = (SSLSocket) sslsocketfactory.createSocket(host1, port1);){
+				    	  SSLAutoExchange exchange = new SSLAutoExchange();
+				    	  exchange.exe(host1, port1, sslserverList); 
 				       if (socket1.isConnected()) {
-				        socket1.close();
-				        System.out.println("fine!");
+				        socket1.close(); 
 				       }
 				      } catch (Exception e) {
 				       // TODO: handle exception
-				       serverList.remove(index);
-				       System.out.println(serverList.toJSONString());
+				       sslserverList.remove(index);
 				       System.out.println("cannot conncet");
 				      }  
 				     } 
-				    }
-				   }, delay, interval);
-			   
+			     
+			     
+			    }
+			   }, delay, interval);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
@@ -186,16 +180,17 @@ public class Server {
 			
 			logger.info("Starting the EZShare Server");
 			logger.info("Bound to port " + port ); 
+			logger.info("Starting the EZShare Secure Server" );
+			logger.info("Bound to secure port " + sport);
 			logger.info("Using secret: " + secret );
-			logger.info("Using advertised hostname: " + hostname  );
+			logger.info("Using advertised hostname: " + hostname);
 		servers(port);
 		
 		}
 	};
 	static Thread secureServ = new Thread(){
 		public void run(){
-			logger.info("Starting the EZShare Secure Server" );
-			logger.info("Bound to secure port " + sport   );
+			
 		SSLServer.SSLsocket(sport);
 		
 			
@@ -210,11 +205,21 @@ public class Server {
 			
 			// wait for connection
 			while (true) {
-				
-//				    System.out.println("here");
+				Date date = new Date(); 
 					Socket client = server.accept();
-					Thread t = new Thread(() -> serverClient(client));
+					if(((date.getTime()-lastTime.getTime())>getinterval&& client.getLocalAddress()!=lastip||(lastip==null))){
+					lastip = client.getLocalAddress();
+					lastTime = date;
+						Thread t = new Thread(() -> serverClient(client));
 					t.start();	
+					} else{
+						DataOutputStream response = new DataOutputStream(client.getOutputStream());
+						Error error1 = new Error();
+						response.writeUTF(error1.interval().toJSONString());
+						response.flush();
+						response.close();
+						client.close();
+					}
 			}
 
 		} catch (Exception e) {
@@ -238,8 +243,8 @@ public class Server {
 				
 				if (input.available() > 0) {
 					received = (JSONObject) parser.parse(input.readUTF());
-					logger.info("RECEIVED:"+received.toJSONString());
-	
+					logger.info("RECEIVED:");
+					System.out.println(received.toJSONString());
 					// check if there is a resource field
 					if (received.containsKey("resource") || received.containsKey("resourceTemplate")) {
 						if (received.containsKey("resource")) {
