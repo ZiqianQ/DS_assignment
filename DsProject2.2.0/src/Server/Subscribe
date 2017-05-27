@@ -4,20 +4,31 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
+import org.jnativehook.keyboard.NativeKeyEvent;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import Client.keylogger;
+import sun.security.x509.IPAddressName;
 
 
 public class Subscribe {
 	
+	
 public static JSONArray historystore = new JSONArray();
 
-
+private static int subscribesize=0;
 	
 	public void exe(Socket clientServer, JSONObject received ) throws IOException, ParseException {
 		try {
+			
 			// Input stream
 			DataInputStream input = new DataInputStream(clientServer.getInputStream());
 
@@ -26,17 +37,31 @@ public static JSONArray historystore = new JSONArray();
 
 			// tell client: received
 			JSONObject message = new JSONObject();
-			String id = (String) received.get("id");
-			message.put("response", "sucess");
-			message.put("id", id);
+		
+			message.put("response", "success");
+			message.put("id", received.get("id"));
 			output.writeUTF(message.toJSONString());
 			output.flush();
 			/////when subscribing , get the old resoucre first
 			gethisresource(received);
 			
 			JSONObject resourceTemplate = (JSONObject) received.get("resourceTemplate");
-			int resultsize = Server.Store.size();
+			String unsubscribe = "";
+			JSONObject unsub = new JSONObject();
+			JSONParser parser = new JSONParser();
+			JSONObject acunsub = new JSONObject();
+			
 			while(true){
+				  if (input.available()>0) {
+					unsub = (JSONObject)parser.parse(input.readUTF());
+					unsubscribe = ((String) unsub.get("command")).toLowerCase();
+					if (unsubscribe.equals("unsubscribe")) {
+						//send the resouce size and then close
+						acunsub.put("resultSize", subscribesize);
+						output.writeUTF(acunsub.toJSONString());
+						break;
+					}
+				}
 				JSONArray freshStore = new JSONArray();
 				JSONArray fresh = new JSONArray();
 					//here put the timer or trigger
@@ -71,6 +96,7 @@ public static JSONArray historystore = new JSONArray();
 					}
 					
 			if (fresh.size()>0) {
+				subscribesize=+fresh.size();
 //				System.out.println("freshresouce: "+fresh.toJSONString());
 				for (int i = 0; i < fresh.size(); i++) {
 
@@ -155,6 +181,8 @@ public static JSONArray historystore = new JSONArray();
 		}
 
 	}
+	
+	 
 	private void gethisresource(JSONObject received) throws ParseException{
 		
 		for (int i = 0; i < Server.Store.size(); i++) {
@@ -171,7 +199,6 @@ public static JSONArray historystore = new JSONArray();
 				continue;
 			}
 			historystore.add(storeResource);
-			System.out.println("hisresouse: "+historystore.toJSONString());
 		}
 		//get the resource from relay server
 		if ((boolean) received.get("relay")) {
@@ -199,6 +226,9 @@ public static JSONArray historystore = new JSONArray();
 				received.put("relay", false);
 				queryRelay.execute(ip, port, received, freshStore);
 			}
+			
 		}
+		
 	}
+	
 }
