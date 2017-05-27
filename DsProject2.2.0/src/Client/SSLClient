@@ -20,8 +20,10 @@ public class SSLClient {
 			
 			//location of the java keystore file containing the collection of
 			//certificates trusted by this appliaction (trust store)
-			System.setProperty("javax.net.ssl.trustStore", "client_keystore/clientkey");
-			
+			System.setProperty( "javax.net.ssl.trustStore", "client_keystore/root.jks");
+			System.setProperty("javax.net.ssl.keyStore", "client_keystore/client.jks");
+			//password to access the private key from keystore file
+			System.setProperty("javax.net.ssl.keyStorePassword", "comp90015");
 			//set the debug mode according to the command
 			System.setProperty("javax.net.debug","off" );//Client.debugmode
 			
@@ -38,9 +40,9 @@ public class SSLClient {
 
 			// print JSONObject
 			if (debugMode) {
-				Client.logger.info("querying to " + ip + ":" + sport + "\n");
-				Client.logger.info("SENT:");
-				System.out.println(newCommand.toJSONString());
+				Client.logger.info("querying to " + ip + ":" + sport);
+				Client.logger.info("SENT:"+newCommand.toJSONString());
+	
 			}
 
 
