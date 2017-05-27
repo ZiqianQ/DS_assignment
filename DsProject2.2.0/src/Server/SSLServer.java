@@ -27,8 +27,10 @@ public static void SSLsocket(int sport){
 	
 		//specify the keystore details
 		//the keystore file contains an application's own certificate and private key
-//	    System.out.println("hey ");
-		System.setProperty("javax.net.ssl.keyStore", "server_keystore/serverkey");
+//	    System.out.printn("hey ");
+	    System.setProperty( "javax.net.ssl.trustStore", "server_keystore/root.jks");
+	    
+		System.setProperty("javax.net.ssl.keyStore", "server_keystore/server.jks");
 		//password to access the private key from keystore file
 		System.setProperty("javax.net.ssl.keyStorePassword", "comp90015");
 		//if the debug is on , set it to all mode
@@ -92,9 +94,7 @@ private static void SSLserverClient(SSLSocket sslclient) {
 						if (rece != null) {
 							
 							received = (JSONObject) parser.parse(rece);
-							logger.info("RECEIVED:");
-
-							System.out.println(received.toJSONString());
+							logger.info("RECEIVED:"+received.toJSONString());
 							// check if there is a resource field
 							if (received.containsKey("resource") || received.containsKey("resourceTemplate")) {
 								if (received.containsKey("resource")) {
