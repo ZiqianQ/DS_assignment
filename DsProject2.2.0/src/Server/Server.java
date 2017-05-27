@@ -21,6 +21,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import com.sun.org.apache.bcel.internal.util.SecuritySupport;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,7 +36,7 @@ public class Server {
 	// private static String secret = "seed"
 	public static String secret = RandomStringUtils.randomAlphanumeric(20);
 	public static JSONArray serverList = new JSONArray();
-	public static JSONArray secureServerList = new JSONArray();
+	public static JSONArray secureserverList = new JSONArray();
 	private static int getinterval = 600;
 	public static String hostname = "Aswecan server";
 	private static int connectinterval = 500000;
@@ -46,9 +49,14 @@ public class Server {
 	public static void main(String[] args) {
 
 		JSONObject server = new JSONObject();
-		server.put("host", "10.12.44.238");
-		server.put("port", "3000");
+		server.put("hostname", "10.12.44.238");
+		server.put("port", 3000);
 		serverList.add(server);
+		/*
+		JSONObject sserver = new JSONObject();
+		sserver.put("hostname", "10.12.55.207");
+		sserver.put("port", "3000");
+		serverList.add(sserver);*/
 		
 		Options options = new Options();
 
@@ -86,31 +94,75 @@ public class Server {
 			int interval = getinterval;
 			   int delay = 1000;
 			   Timer timer = new Timer();
-			   
+		/////auto exchange	   
 			   timer.schedule(new TimerTask() {
 			    public void run() {
+			    	System.out.println("auto exchange");
+			    	System.out.println("serverlsit:"+serverList.toJSONString());
 			     if (serverList.size()>0) {
+			    	 System.out.println("inside");
 			      Random random = new Random();
 			      int index = random.nextInt(serverList.size());
 			      JSONObject server = (JSONObject) serverList.get(index);
-			      String host1 = (String) server.get("host");
-			      int port1 = Integer.parseInt((String)server.get("port"));
+			      String host1 = (String) server.get("hostname");
+			      int port1 = (int)server.get("port");
+			      System.out.println("getport :"+server.get("port").getClass());
+			      System.out.println("host1"+host1);
+			      System.out.println("port1"+port1);
 			      
 			      try(Socket socket1 = new Socket(host1, port1);){
 			       //System.out.println("connected");
+
+			    	JSONObject newCommand = new JSONObject();
+			  		newCommand.put("command", "QUERY");
 			       if (socket1.isConnected()) {
 			        socket1.close();
-			       // System.out.println("fine!");
+			        System.out.println("fine!");
 			       }
 			      } catch (Exception e) {
 			       // TODO: handle exception
 			       serverList.remove(index);
-			       //System.out.println("cannot conncet");
+			       System.out.println(serverList.toJSONString());
+			       System.out.println("cannot conncet");
 			      }  
 			     } 
 			    }
 			   }, delay, interval);
+////////secure autoexchange
+			   timer.schedule(new TimerTask() {
+				    public void run() {
+				    	System.out.println("auto exchange");
+				    	System.out.println("serverlsit:"+serverList.toJSONString());
+				     if (serverList.size()>0) {
+				    	 System.out.println("inside");
+				      Random random = new Random();
+				      int index = random.nextInt(serverList.size());
+				      JSONObject server = (JSONObject) serverList.get(index);
+				      String host1 = (String) server.get("hostname");
+				      int port1 = (int)server.get("port");
+				      System.out.println("getport :"+server.get("port").getClass());
+				      System.out.println("host1"+host1);
+				      System.out.println("port1"+port1);
+				      
+				      try(Socket socket1 = new Socket(host1, port1);){
+				       //System.out.println("connected");
 
+				    	JSONObject newCommand = new JSONObject();
+				  		newCommand.put("command", "QUERY");
+				       if (socket1.isConnected()) {
+				        socket1.close();
+				        System.out.println("fine!");
+				       }
+				      } catch (Exception e) {
+				       // TODO: handle exception
+				       serverList.remove(index);
+				       System.out.println(serverList.toJSONString());
+				       System.out.println("cannot conncet");
+				      }  
+				     } 
+				    }
+				   }, delay, interval);
+			   
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
@@ -158,13 +210,15 @@ public class Server {
 			
 			// wait for connection
 			while (true) {
-				 
+				
+//				    System.out.println("here");
 					Socket client = server.accept();
 					Thread t = new Thread(() -> serverClient(client));
 					t.start();	
 			}
 
-		} catch (Exception e) { 
+		} catch (Exception e) {
+		//e.printStackTrace();
 		}
 	}
 
@@ -184,9 +238,8 @@ public class Server {
 				
 				if (input.available() > 0) {
 					received = (JSONObject) parser.parse(input.readUTF());
-					logger.info("RECEIVED:");
-
-					System.out.println(received.toJSONString());
+					logger.info("RECEIVED:"+received.toJSONString());
+	
 					// check if there is a resource field
 					if (received.containsKey("resource") || received.containsKey("resourceTemplate")) {
 						if (received.containsKey("resource")) {
@@ -272,9 +325,10 @@ public class Server {
 						Fetch fetch = new Fetch();
 						fetch.exe(clientServer, Store, resource);
 						break;
-					case "subscribe": 
+						
+					case "subscribe":
 						Subscribe subscribe = new Subscribe();
-						subscribe.exe(clientServer, Store, resource); 
+						subscribe.exe(clientServer, received);
 						break;
 
 					default:
