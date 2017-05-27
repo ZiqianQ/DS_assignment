@@ -18,7 +18,9 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 public class subscribeCommand {
 
-public static boolean subscribing = false;
+	public static String getid = RandomStringUtils.randomAlphabetic(4);
+	
+public static boolean subscribing = true;
 
 	public static void subscibeCmd(String ip, int port, Resource aResource, boolean debugMode,
 			boolean relay) throws ParseException {
@@ -26,7 +28,7 @@ public static boolean subscribing = false;
 		JSONObject newCommand = new JSONObject();
 		JSONObject resource = aResource.render();
 		//create random client id
-		String getid = RandomStringUtils.randomAlphabetic(4);
+		
 		
 		newCommand.put("command", "SUBSCRIBE");
 		newCommand.put("relay", relay);
@@ -39,8 +41,13 @@ public static boolean subscribing = false;
 			Client.logger.info("SENT:"+newCommand.toJSONString());
 		}
 
-		
+		if (Client.getsecure) {
+			System.out.println(Client.getsecure); 
+			SSLsendmessage.sender(ip, port, newCommand, debugMode);	
+			System.out.println("finished: subscritbuing"+subscribing);
+			
+		}else{
 		sendMessage.sender(ip, port, newCommand, debugMode);
+		}
 	}
-
 }
