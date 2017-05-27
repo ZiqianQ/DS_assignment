@@ -1,0 +1,244 @@
+package Server;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
+public class SSLSubscribe {
+	
+	private static int subscribesize=0;
+	
+public static JSONArray SSLhistorystore = new JSONArray();
+
+
+	
+	public void exe(SSLSocket sslclientServer, JSONObject received ) throws IOException, ParseException {
+		try {
+			
+			//location of the java keystore file containing the collection of
+			//certificates trusted by this appliaction (trust store)
+			System.setProperty( "javax.net.ssl.trustStore", "server_keystore/root.jks");
+			System.setProperty("javax.net.ssl.keyStore", "server_keystore/server.jks");
+			//password to access the private key from keystore file
+			System.setProperty("javax.net.ssl.keyStorePassword", "comp90015");
+			//set the debug mode according to the command
+			System.setProperty("javax.net.debug","off" );//Client.debugmode
+			
+			/*//create SSL socket and connect to the remote server
+			SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+			SSLSocket sslclientServer = (SSLSocket) sslSocketFactory.createSocket(ip,sport);*/
+			
+			// Input stream
+			DataInputStream input = new DataInputStream(sslclientServer.getInputStream());
+
+			// Output steam
+			DataOutputStream output = new DataOutputStream(sslclientServer.getOutputStream());
+
+			// tell client: received
+			JSONObject message = new JSONObject();
+			String id = (String) received.get("id");
+			message.put("response", "success");
+			message.put("id", id);
+			output.writeUTF(message.toJSONString());
+			output.flush();
+//			System.out.println(message.toJSONString());
+			/////when subscribing , get the old resoucre first
+			SSLgethisresource(received);
+			System.out.println("historyresource:"+SSLhistorystore);
+			JSONObject resourceTemplate = (JSONObject) received.get("resourceTemplate");
+			String unsubscribe = "";
+			JSONObject unsub = new JSONObject();
+			JSONParser parser = new JSONParser();
+			JSONObject acunsub = new JSONObject();
+			String result="";
+			while(true){
+				
+				result = input.readUTF();
+				if (result!=""){				
+					unsub = (JSONObject)parser.parse(input.readUTF());
+					unsubscribe = ((String) unsub.get("command")).toLowerCase();
+					if (unsubscribe.equals("unsubscribe")) {
+						//send the resouce size and then close
+						acunsub.put("resultSize", subscribesize);
+						output.writeUTF(acunsub.toJSONString());
+						break;
+					}
+				} 
+				 
+					
+					
+				JSONArray freshStore = new JSONArray();
+				JSONArray fresh = new JSONArray();
+					//here put the timer or trigger
+					for (int i = 0; i < 10000; i++) {
+						for (int j = 0; j < 500; j++) {
+							//do nothing
+						}
+					}
+					// primary key && other rules
+					String uri = (String) resourceTemplate.get("uri");
+					String channel = (String) resourceTemplate.get("channel");
+					String owner = (String) resourceTemplate.get("owner");
+					JSONArray tags = (JSONArray) resourceTemplate.get("tags");
+					CharSequence name = (CharSequence) resourceTemplate.get("name");
+					CharSequence description = (CharSequence) resourceTemplate.get("description");
+
+		            //this array will store the data returned to client
+					JSONArray display = new JSONArray();
+					///////get updated resources 
+					SSLgetfresresource(received,freshStore);
+					
+					for (int i = 0;i<freshStore.size();i++){	
+						boolean exist = false;
+						for (int j = 0;j<SSLhistorystore.size();j++){
+							if (freshStore.get(i).equals(SSLhistorystore.get(j))) {
+								exist = true;
+							}
+						}
+						if (!exist) {
+							fresh.add(freshStore.get(i));
+						}
+					}
+					
+			if (fresh.size()>0) {
+//				System.out.println("freshresouce: "+fresh.toJSONString());
+				for (int i = 0; i < fresh.size(); i++) {
+
+					// compare primary key
+					JSONObject storeResource = (JSONObject) fresh.get(i);
+					String storeUri = (String) storeResource.get("uri");
+					String storeChannel = (String) storeResource.get("channel");
+					// System.out.println(storeChannel);
+					String storeOwner = (String) storeResource.get("owner");
+					JSONArray storeTags = (JSONArray) storeResource.get("tags");
+					String storeName = (String) storeResource.get("name");
+					String storeDesc = (String) storeResource.get("description");
+
+					// the template channel must equal the resource channel
+					if (!channel.equals(storeChannel)) {
+						// do nothing
+					}
+
+					// if the template contains an owner that is not"", must equal
+					// the resource owner
+					else if (!owner.equals("") && !owner.equals(storeOwner)) {
+						// do nothing
+					}
+
+					// if any tags, should equal
+					else if (!tags.isEmpty() && !tags.equals(storeTags)) {
+						// do nothing
+					}
+
+					// if uri, must equal
+					else if (!uri.equals("") && !uri.equals(storeUri)) {
+						// do nothing
+					}
+
+					// if name, must contain
+					else if (!name.equals("") && !storeName.contains(name)) {
+						// do nothing
+					}
+
+					// if any description, must contain
+					else if (!description.equals("") && storeDesc.contains(description)) {
+						// do nothing
+					}
+
+					else {
+						display.add(storeResource);
+					}
+					SSLhistorystore.add(fresh.get(i));				
+				}
+				
+
+				int count = 0;
+				for (int i = 0; i < display.size(); i++) {
+					JSONObject displayResource = (JSONObject) display.get(i);
+
+					// the ezserver field be filled with hostname and port
+					displayResource.put("ezserver", Server.hostname + " " + Server.port);
+
+					// the server will never reveal the owner of a resource in a
+					// response
+					String displayOwner = (String) displayResource.get("owner");
+					if (!displayOwner.equals("")) {
+						displayResource.put("owner", "*");
+					}
+					output.writeUTF(displayResource.toJSONString());
+					output.flush();
+					count++;
+				}
+
+				// print {"resultSize" : int }
+				JSONObject resultSize = new JSONObject();
+				resultSize.put("resultSize", count);
+				output.writeUTF(resultSize.toJSONString());
+				output.flush();
+			
+		}
+			}
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	private void SSLgethisresource(JSONObject received) throws ParseException{
+		
+		for (int i = 0; i < Server.Store.size(); i++) {
+			boolean exist = false;
+			//get the resource from local
+			JSONObject storeResource = (JSONObject) Server.Store.get(i);
+			for (int j = 0; j < SSLhistorystore.size(); j++) {
+				if (SSLhistorystore.get(j).equals(Server.Store.get(i))) {
+					exist= true;
+					break;
+				}
+			}
+			if (exist) {
+				continue;
+			}
+			SSLhistorystore.add(storeResource);
+			
+		}
+		//get the resource from relay server
+		if ((boolean) received.get("relay")) {
+			for (int i = 0; i < Server.serverList.size(); i++) {
+				String ip = (String) ((JSONObject) (Server.serverList.get(i))).get("host");
+				int port = (int) ((JSONObject) Server.serverList.get(i)).get("port");
+				received.put("relay", false);
+				/////////cannot update??
+				
+				queryRelay.execute(ip, port, received, SSLhistorystore);
+			}
+		}
+	}
+	private void SSLgetfresresource(JSONObject received,JSONArray freshStore) throws ParseException{
+		for (int i = 0; i < Server.Store.size(); i++) {
+			//get the resource from local
+			JSONObject storeResource = (JSONObject) Server.Store.get(i);
+			freshStore.add(storeResource);
+		}
+		//get the resource from relay server
+		if ((boolean) received.get("relay")) {
+			for (int i = 0; i < Server.serverList.size(); i++) {
+				String ip = (String) ((JSONObject) (Server.serverList.get(i))).get("host");
+				int port = (int) ((JSONObject) Server.serverList.get(i)).get("port");
+				received.put("relay", false);
+				queryRelay.execute(ip, port, received, freshStore);
+			}
+		}
+	}
+}
