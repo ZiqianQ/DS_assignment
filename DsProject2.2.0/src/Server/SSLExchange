@@ -6,37 +6,41 @@ import java.io.IOException;
 import java.net.Socket;
 
 import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class SSLExchange {
 
-	public void exe(SSLSocket sslclientServer, JSONArray serverList) {
-
+	public void exe(SSLSocket clientServer, JSONArray serverList) {
+		
 		try {
 			// Input stream
-			DataInputStream input = new DataInputStream(sslclientServer.getInputStream());
+			DataInputStream input = new DataInputStream(clientServer.getInputStream());
 
 			// Output steam
-			DataOutputStream output = new DataOutputStream(sslclientServer.getOutputStream());
+			DataOutputStream output = new DataOutputStream(clientServer.getOutputStream());
+			
+			System.out.println("connected");
 
 			// tell client: received
 			JSONObject message = new JSONObject();
 			message.put("response", "sucess");
 			output.writeUTF(message.toJSONString());
 			output.flush();
+			System.out.println("flushed");
 
 			for (int i = 0; i < serverList.size(); i++) {
 				JSONObject servers = (JSONObject) serverList.get(i);
 				String host = (String) servers.get("hostname");
-				int port = Integer.parseInt((String) servers.get("port"));
+				int port = Integer.parseInt((String) servers.get("port")); 
 				Socket socket = new Socket(host, port);
 				if (socket.isConnected()) {
 					JSONObject server = new JSONObject();
 					server.put("hostname", host);
 					server.put("port", port);
-					Server.secureserverList.add(server);
+					Server.sslserverList.add(server);
 					socket.close();
 				} 
 				
@@ -45,6 +49,7 @@ public class SSLExchange {
 			output.flush();*/
 			
 		} catch (IOException e) {
+			System.out.println("fail");
 			// TODO: handle exception
 		}
 
