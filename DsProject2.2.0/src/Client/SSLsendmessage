@@ -26,7 +26,7 @@ public class SSLsendmessage {
 	public static void sender(String ip, int sport,JSONObject newCommand, boolean debugMode) throws ParseException{
 		
 		SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-		try(SSLSocket sslsocket = (SSLSocket) sslsocketfactory.createSocket("localhost", 3781);){
+		try(SSLSocket sslsocket = (SSLSocket) sslsocketfactory.createSocket(ip, 3781);){
 		/*	//output stream
 			OutputStream outputStream = sslsocket.getOutputStream();
 			OutputStreamWriter outputwriter = new OutputStreamWriter(outputStream);
@@ -54,12 +54,12 @@ public class SSLsendmessage {
 				//read from server and print out
 				while(true){
 					String result="";
-					/*try {
+					try {
 						result = input.readUTF();
 					} catch (IOException e) {
 						// TODO: handle exception
-					}*/
-					if(input.available()>0){
+					}
+					if( result!=null){
 						result = input.readUTF();
 						Client.logger.info("RECEIVED:");
 						System.out.println(result);
