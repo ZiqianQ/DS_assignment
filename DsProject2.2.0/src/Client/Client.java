@@ -23,7 +23,7 @@ public class Client {
 	private static String gettags = null;
 	private static String geturi = null;
 	private static int getsport ;
-	private static String getid = null;
+
 	
 	private static boolean relay = false;
 
@@ -60,7 +60,6 @@ public class Client {
 		options.addOption("uri", true, "resource URI");
 		options.addOption("relay", true, "relay status");
 		options.addOption("h","help", false, "information about how to use"); 
-		options.addOption("id", true, "client name");
 		options.addOption("secure", false, "secure connection");
 		options.addOption("subscribe", false, "subscribe channel");
 	    try {
@@ -144,11 +143,7 @@ public class Client {
 //			if (commandline.hasOption("sport")) {
 //				port = Integer.parseInt(commandline.getOptionValue("sport"));
 //			}
-			//client id
-			if (commandline.hasOption("id")) {
-				getid = commandline.getOptionValue("id");
-			}
- 
+			 
 			//query resource from server
 			if (commandline.hasOption("query")) {
 				queryCommand query = new queryCommand(); 
@@ -190,7 +185,7 @@ public class Client {
 			if (commandline.hasOption("subscribe")) {
 				subscribeCommand subscribe = new subscribeCommand();
 				subscribing = false;
-				subscribeCommand.subscibeCmd(ip, port, aResource,getid, debugMode,relay); 
+				subscribeCommand.subscibeCmd(ip, port, aResource, debugMode,relay); 
 			} 
 			//testing the sercure socket
 			/*if (commandline.hasOption("secure")) {
