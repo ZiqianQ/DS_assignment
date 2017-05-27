@@ -8,9 +8,13 @@ import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
+import org.json.simple.JSONObject;
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 public class keylogger implements NativeKeyListener {
-	 public static void main(String[] args) {
+	 
+	
+	/* public static void main(String[] args) {
 //		// Clear previous logging configurations.
 //		 LogManager.getLogManager().reset();
 //
@@ -21,16 +25,16 @@ public class keylogger implements NativeKeyListener {
 	            GlobalScreen.registerNativeHook();
 	            
 	        } catch (NativeHookException ex) {
-	            ex.printStackTrace();	              
+//	            ex.printStackTrace();	              
 	        }
 	       GlobalScreen.addNativeKeyListener(new keylogger());
-	    } 
+	    } */
 	 
 
 
     /* Key Pressed */
     public void nativeKeyPressed(NativeKeyEvent e) {
-        System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+//        System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
 
         /* Terminate program when one press ESCAPE */
         if (e.getKeyCode() == NativeKeyEvent.VC_ENTER) {
@@ -41,18 +45,29 @@ public class keylogger implements NativeKeyListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+            
+            sendMessage.unsubscribeCommand.put("command", "UNSUBSCRIBE");
+            sendMessage.unsubscribeCommand.put("id", subscribeCommand.getid);
+              
+//            SSLsendmessage.unsubscribeCommand.put("command", "UNSUBSCRIBE");
+//            SSLsendmessage.unsubscribeCommand.put("id", subscribeCommand.getid);
+            
+            
+//        	System.out.println("unsubscribe");
         }
     }
 
     /* Key Released */
     public void nativeKeyReleased(NativeKeyEvent e) {
-        System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+//        System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
     }
 
     /* I can't find any output from this call */
     public void nativeKeyTyped(NativeKeyEvent e) {
-        System.out.println("Key Typed: " + e.getKeyText(e.getKeyCode()));
+//        System.out.println("Key Typed: " + e.getKeyText(e.getKeyCode()));
     }
+    
+    
 
    
 }
