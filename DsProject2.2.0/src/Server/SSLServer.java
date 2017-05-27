@@ -22,7 +22,7 @@ import jdk.nashorn.internal.ir.debug.JSONWriter;
 
 public class SSLServer {
 	private static Logger logger = Logger.getLogger(SSLServer.class);
-
+	public static boolean sslsubscribing = false;
 public static void SSLsocket(int sport){
 	
 		//specify the keystore details
@@ -61,6 +61,20 @@ public static void SSLsocket(int sport){
 private static void SSLserverClient(SSLSocket sslclient) {
 	try(SSLSocket sslclientServer = sslclient) {
 		
+		//location of the java keystore file containing the collection of
+		//certificates trusted by this appliaction (trust store)
+		System.setProperty( "javax.net.ssl.trustStore", "server_keystore/root.jks");
+		System.setProperty("javax.net.ssl.keyStore", "server_keystore/server.jks");
+		//password to access the private key from keystore file
+		System.setProperty("javax.net.ssl.keyStorePassword", "comp90015");
+		//set the debug mode according to the command
+		System.setProperty("javax.net.debug","off" );//Client.debugmode
+		
+		/*//create SSL socket and connect to the remote server
+		SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+		SSLSocket sslclientServer = (SSLSocket) sslSocketFactory.createSocket(ip,sport);*/
+		
+		
 				/*	//output stream
 					OutputStream outputStream = sslclientServer.getOutputStream();
 					OutputStreamWriter outputwriter = new OutputStreamWriter(outputStream);
@@ -83,6 +97,7 @@ private static void SSLserverClient(SSLSocket sslclient) {
 					String owner;
 					Error error = new Error();
 					while (true) {
+						
 						String rece;
 						try {
 							rece =  input.readUTF();
@@ -113,9 +128,9 @@ private static void SSLserverClient(SSLSocket sslclient) {
 								} else {
 									String command = ((String) received.get("command")).toLowerCase();
 									if (command.equals("exchange")) {
-										Exchange exchange = new Exchange();
-										JSONArray serverList = (JSONArray) received.get("serverList");
-										exchange.exe(sslclientServer, serverList);
+										SSLExchange sslexchange = new SSLExchange();
+										JSONArray sslserverList = (JSONArray) received.get("serverList");
+										sslexchange.exe(sslclientServer, sslserverList);
 									}
 								}
 								output.close();
@@ -152,7 +167,11 @@ private static void SSLserverClient(SSLSocket sslclient) {
 								Query query = new Query();
 								query.exe(sslclientServer, Server.Store, received);
 								break;
-
+							case "subscribe":
+								sslsubscribing = true;
+								SSLSubscribe sslsubscribe = new SSLSubscribe();
+								sslsubscribe.exe(sslclientServer, received);
+								break;
 							default:
 								output.writeUTF(error.unknownCmd().toJSONString());
 								output.close();
