@@ -1,5 +1,6 @@
 package Server;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Error {
@@ -59,6 +60,13 @@ public class Error {
 		JSONObject message = new JSONObject();
 		message.put("response", "error");
 		message.put("errorMessage","missing resource and/or secret");	
+		return message;
+	}
+
+	public JSONObject interval() {
+		JSONObject message = new JSONObject();
+		message.put("response", "error");
+		message.put("errorMessage","try again after interval");	
 		return message;
 	}
 	
