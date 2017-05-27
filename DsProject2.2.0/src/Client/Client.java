@@ -1,5 +1,7 @@
 package Client;
 
+import java.rmi.server.SocketSecurityException;
+
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
@@ -23,7 +25,7 @@ public class Client {
 	private static String gettags = null;
 	private static String geturi = null;
 	private static int getsport ;
-
+	public static boolean getsecure = false;
 	
 	private static boolean relay = false;
 
@@ -69,6 +71,7 @@ public class Client {
 			CommandLine commandline = parser.parse(options, args);
 			
 			
+	
 			if (commandline.hasOption("h")) {
 				HelpFormatter formatter = new HelpFormatter();
 				formatter.printHelp("client command line argument", options);
@@ -132,6 +135,12 @@ public class Client {
 	
 			}
 
+			//secure query
+			if (commandline.hasOption("secure")) {
+				getsecure = true;
+				/*SSLClient sslClient = new SSLClient(); 
+				sslClient.SSLClient(ip, port, aResource, debugMode,relay);*/
+			}
 			//set debug status
 			if (commandline.hasOption("debug")) {
 				 debugMode = true;
@@ -146,16 +155,16 @@ public class Client {
 			 
 			//query resource from server
 			if (commandline.hasOption("query")) {
+				if (getsecure) {
+					SSLClient sslClient = new SSLClient();
+					sslClient.SSLClient(ip, port, aResource, debugMode, relay);
+				}
 				queryCommand query = new queryCommand(); 
-
 				query.queryCmd(ip, port, aResource, debugMode,relay);
 			}
 			
-			//secure query
-			if (commandline.hasOption("secure")) {
-				SSLClient sslClient = new SSLClient(); 
-				sslClient.SSLClient(ip, port, aResource, debugMode,relay);
-			}
+	
+			
 			//publish resource to server
 			if (commandline.hasOption("publish")) {
 				publishCommand publish = new publishCommand();
@@ -184,7 +193,7 @@ public class Client {
 			//subscribe from server
 			if (commandline.hasOption("subscribe")) {
 				subscribeCommand subscribe = new subscribeCommand();
-				subscribing = false;
+				subscribing = true;
 				subscribeCommand.subscibeCmd(ip, port, aResource, debugMode,relay); 
 			} 
 			//testing the sercure socket
