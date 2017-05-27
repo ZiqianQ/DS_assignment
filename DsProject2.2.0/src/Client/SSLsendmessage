@@ -13,61 +13,131 @@ import java.io.RandomAccessFile;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import Server.SSLServer;
+import Server.Server;
+
 public class SSLsendmessage {
-	
+	public static JSONObject unsubscribeCommand = new JSONObject();
 	public static void sender(String ip, int sport,JSONObject newCommand, boolean debugMode) throws ParseException{
 		
-		SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-		try(SSLSocket sslsocket = (SSLSocket) sslsocketfactory.createSocket(ip, 3781);){
-		/*	//output stream
-			OutputStream outputStream = sslsocket.getOutputStream();
-			OutputStreamWriter outputwriter = new OutputStreamWriter(outputStream);
-			BufferedWriter bufferedWriter = new BufferedWriter(outputwriter);
-			//input stream
-			InputStream inputStream = sslsocket.getInputStream();
-			InputStreamReader inputReader = new InputStreamReader(inputStream);
-			BufferedReader bufferedReader = new BufferedReader(inputReader);
-			*/
+
+		try{
+			
+			//location of the java keystore file containing the collection of
+			//certificates trusted by this appliaction (trust store)
+			System.setProperty( "javax.net.ssl.trustStore", "client_keystore/root.jks");
+			System.setProperty("javax.net.ssl.keyStore", "client_keystore/client.jks");
+			//password to access the private key from keystore file
+			System.setProperty("javax.net.ssl.keyStorePassword", "comp90015");
+			//set the debug mode according to the command
+			System.setProperty("javax.net.debug","off" );//Client.debugmode
+			///////////////
+//			System.out.println("start");
+			//create SSL socket and connect to the remote server
+			SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+			SSLSocket sslsocket = (SSLSocket) sslSocketFactory.createSocket(ip,sport);
+			
 			// Input stream
 			DataInputStream input = new DataInputStream(sslsocket.getInputStream());
 
 			// Output steam
 			DataOutputStream output = new DataOutputStream(sslsocket.getOutputStream());
 			
+
+			 Logger logger1 = Logger.getLogger(GlobalScreen.class.getPackage().getName());
+			 logger1.setLevel(Level.OFF);
+		        try { 
+		            GlobalScreen.registerNativeHook();
+		            
+		        } catch (NativeHookException ex) {
+		            ex.printStackTrace();	              
+		        }
+		       GlobalScreen.addNativeKeyListener(new SSLkeylogger());
+		     
 			
 			//send command to server
 			output.writeUTF(newCommand.toJSONString());
 			output.flush();
 
-			boolean send = false;
+			boolean sslsend = false;
 						
+			boolean send = false;
+			/////exit the subscribe	
+			boolean sslexit = false;
 				JSONParser parser = new JSONParser();
+				JSONObject getcommand = new JSONObject();
 				
 				//read from server and print out
+				
 				while(true){
+//					System.out.println("here");
+//					System.out.println(unsubscribeCommand.toJSONString());
+//					System.out.println("isemty:"+unsubscribeCommand.isEmpty());
+					
+					if (unsubscribeCommand.size()>0) {
+						//send unsubscribe command to server
+						System.out.println("(sslsend91)unsubscrib"+unsubscribeCommand);
+//						System.out.println(unsubscribeCommand.toJSONString());
+						output.writeUTF(unsubscribeCommand.toJSONString());
+						output.flush();
+						while(true) {
+							try{
+								System.out.println("help me");
+								getcommand = (JSONObject) parser.parse(input.readUTF());
+								Client.logger.info(getcommand.toJSONString());
+								sslsocket.close();
+								sslexit = true;
+								subscribeCommand.subscribing=false;
+//								break;
+							} catch (Exception e) {
+								// TODO: handle exception
+							}
+						}
+						
+						
+					}
 					String result="";
+//					System.out.println("jsjsjd");
 					try {
 						result = input.readUTF();
+						System.out.println("sslsend115");
+//						System.out.println("result:"+result);
+						if( result!=null){
+//							result = input.readUTF();
+							Client.logger.info("RECEIVED:"+result);
+//							System.out.println(result);
+							sslsend=true;
+							
+							//ONLY USEFUL WHEN ITS FETCH COMMAND
+//							JSONObject command = (JSONObject) parser.parse(result);	
+						}
+						
 					} catch (IOException e) {
 						// TODO: handle exception
+						e.printStackTrace();
 					}
-					if( result!=null){
-						result = input.readUTF();
-						Client.logger.info("RECEIVED:");
-						System.out.println(result);
-						send=true;
-						
-						//ONLY USEFUL WHEN ITS FETCH COMMAND
-						JSONObject command = (JSONObject) parser.parse(result);	
-					}
+					
+					/*if (sslexit) {
+						break;
+					}*/
+				    
+//					System.out.println("ssleng:"+sslsend);
+//					System.out.println("subsfcringngg"+subscribeCommand.subscribing);
+				/*if (sslsend&&!subscribeCommand.subscribing) {
+					break;
+				}*/
 				}
 		
 		}catch (UnknownHostException e){
